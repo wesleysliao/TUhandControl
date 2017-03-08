@@ -1,0 +1,2 @@
+ros_tivac
+-DCATKIN_DEVEL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install -G Unix Makefiles
