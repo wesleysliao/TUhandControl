@@ -8,6 +8,8 @@
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gpio.h
 
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/interrupt.h
+
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom.h
@@ -262,6 +264,8 @@ usb_serial_structs.h
 stdbool.h
 -
 stdint.h
+-
+driverlib/interrupt.h
 -
 driverlib/sysctl.h
 -
