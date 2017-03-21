@@ -31,6 +31,7 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/usbcdc.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/usblib.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.h
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/adc_joystick_msg/ADC_Joystick.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/ros.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/ros/duration.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/ros/msg.h

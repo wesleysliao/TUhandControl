@@ -58,4 +58,5 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj: \
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h \
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/uart.h \
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.h \
- /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/String.h
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/String.h \
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/adc_joystick_msg/ADC_Joystick.h

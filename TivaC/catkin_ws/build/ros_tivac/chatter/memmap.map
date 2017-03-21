@@ -90,7 +90,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .data          0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
- .data.hello    0x0000000000000000        0xd CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .text          0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
@@ -599,7 +598,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb
 LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a
 END GROUP
 
-.text           0x0000000000000000     0x2700
+.text           0x0000000000000000     0x2714
                 0x0000000000000000                . = ALIGN (0x4)
                 0x0000000000000000                _text = .
  *(.isr_vector)
@@ -636,179 +635,179 @@ END GROUP
  .text._ZN14rosserial_msgs20RequestParamResponse6getMD5Ev
                 0x0000000000000308        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
                 0x0000000000000308                rosserial_msgs::RequestParamResponse::getMD5()
- .text._ZN8std_msgs6String7getTypeEv
-                0x0000000000000310        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000310                std_msgs::String::getType()
- .text._ZN8std_msgs6String6getMD5Ev
-                0x0000000000000318        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000318                std_msgs::String::getMD5()
+ .text._ZNK16adc_joystick_msg12ADC_Joystick9serializeEPh
+                0x0000000000000310       0x1c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000310                adc_joystick_msg::ADC_Joystick::serialize(unsigned char*) const
+ .text._ZN16adc_joystick_msg12ADC_Joystick11deserializeEPh
+                0x000000000000032c       0x20 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x000000000000032c                adc_joystick_msg::ADC_Joystick::deserialize(unsigned char*)
+ .text._ZN16adc_joystick_msg12ADC_Joystick7getTypeEv
+                0x000000000000034c        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x000000000000034c                adc_joystick_msg::ADC_Joystick::getType()
+ .text._ZN16adc_joystick_msg12ADC_Joystick6getMD5Ev
+                0x0000000000000354        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000354                adc_joystick_msg::ADC_Joystick::getMD5()
  .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE9connectedEv
-                0x0000000000000320        0x6 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000320                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::connected()
- *fill*         0x0000000000000326        0x2 
+                0x000000000000035c        0x6 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x000000000000035c                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::connected()
+ *fill*         0x0000000000000362        0x2 
  .text._ZN13TivaCHardware14UARTIntHandlerEv
-                0x0000000000000328       0x84 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000328                TivaCHardware::UARTIntHandler()
+                0x0000000000000364       0x84 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000364                TivaCHardware::UARTIntHandler()
  .text._ZN13TivaCHardware17SystickIntHandlerEv
-                0x00000000000003ac       0x48 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000003ac                TivaCHardware::SystickIntHandler()
+                0x00000000000003e8       0x48 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000003e8                TivaCHardware::SystickIntHandler()
  .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE
-                0x00000000000003f4       0xe8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000003f4                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::publish(int, ros::Msg const*)
+                0x0000000000000430       0xe8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000430                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::publish(int, ros::Msg const*)
  .text._ZN3ros9Publisher7publishEPKNS_3MsgE
-                0x00000000000004dc       0x16 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000004dc                ros::Publisher::publish(ros::Msg const*)
- *fill*         0x00000000000004f2        0x2 
+                0x0000000000000518       0x16 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000518                ros::Publisher::publish(ros::Msg const*)
+ *fill*         0x000000000000052e        0x2 
  .text._Z12onButtonDownv
-                0x00000000000004f4       0x54 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000004f4                onButtonDown()
+                0x0000000000000530       0x50 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000530                onButtonDown()
  .text._Z10onButtonUpv
-                0x0000000000000548       0x54 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000548                onButtonUp()
+                0x0000000000000580       0x50 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000580                onButtonUp()
  .text._ZN13TivaCHardware4initEv
-                0x000000000000059c      0x130 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x000000000000059c                TivaCHardware::init()
+                0x00000000000005d0      0x130 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000005d0                TivaCHardware::init()
  .text._ZN3ros3Msg8varToArrIPhmEEvT_T0_
-                0x00000000000006cc       0x14 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000006cc                void ros::Msg::varToArr<unsigned char*, unsigned long>(unsigned char*, unsigned long)
- .text._ZNK8std_msgs6String9serializeEPh
-                0x00000000000006e0       0x24 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000006e0                std_msgs::String::serialize(unsigned char*) const
+                0x0000000000000700       0x14 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000700                void ros::Msg::varToArr<unsigned char*, unsigned long>(unsigned char*, unsigned long)
  .text._ZNK14rosserial_msgs20RequestParamResponse9serializeEPh
-                0x0000000000000704       0xe2 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000704                rosserial_msgs::RequestParamResponse::serialize(unsigned char*) const
+                0x0000000000000714       0xe2 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000714                rosserial_msgs::RequestParamResponse::serialize(unsigned char*) const
  .text._ZNK14rosserial_msgs3Log9serializeEPh
-                0x00000000000007e6       0x2c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000007e6                rosserial_msgs::Log::serialize(unsigned char*) const
+                0x00000000000007f6       0x2c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000007f6                rosserial_msgs::Log::serialize(unsigned char*) const
  .text._ZNK14rosserial_msgs9TopicInfo9serializeEPh
-                0x0000000000000812       0x86 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000812                rosserial_msgs::TopicInfo::serialize(unsigned char*) const
+                0x0000000000000822       0x86 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000822                rosserial_msgs::TopicInfo::serialize(unsigned char*) const
  .text._ZN3ros3Msg8arrToVarImPhEEvRT_T0_
-                0x0000000000000898       0x1e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000898                void ros::Msg::arrToVar<unsigned long, unsigned char*>(unsigned long&, unsigned char*)
+                0x00000000000008a8       0x1e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000008a8                void ros::Msg::arrToVar<unsigned long, unsigned char*>(unsigned long&, unsigned char*)
  .text._ZN14rosserial_msgs3Log11deserializeEPh
-                0x00000000000008b6       0x36 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000008b6                rosserial_msgs::Log::deserialize(unsigned char*)
+                0x00000000000008c6       0x36 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000008c6                rosserial_msgs::Log::deserialize(unsigned char*)
  .text._ZN14rosserial_msgs9TopicInfo11deserializeEPh
-                0x00000000000008ec       0xb6 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000008ec                rosserial_msgs::TopicInfo::deserialize(unsigned char*)
+                0x00000000000008fc       0xb6 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000008fc                rosserial_msgs::TopicInfo::deserialize(unsigned char*)
  .text._ZN14rosserial_msgs20RequestParamResponse11deserializeEPh
-                0x00000000000009a2      0x12e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x00000000000009a2                rosserial_msgs::RequestParamResponse::deserialize(unsigned char*)
- .text._ZN8std_msgs6String11deserializeEPh
-                0x0000000000000ad0       0x30 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000ad0                std_msgs::String::deserialize(unsigned char*)
+                0x00000000000009b2      0x12e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000009b2                rosserial_msgs::RequestParamResponse::deserialize(unsigned char*)
  .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15requestSyncTimeEv
-                0x0000000000000b00       0x2c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000b00                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::requestSyncTime()
+                0x0000000000000ae0       0x2c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000ae0                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::requestSyncTime()
  .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv
-                0x0000000000000b2c       0xbc CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000b2c                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::negotiateTopics()
+                0x0000000000000b0c       0xbc CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000b0c                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::negotiateTopics()
  .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE8spinOnceEv
-                0x0000000000000be8      0x268 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000be8                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::spinOnce()
+                0x0000000000000bc8      0x268 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000bc8                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::spinOnce()
  .text.startup.main
-                0x0000000000000e50       0xe8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000000e50                main
+                0x0000000000000e30       0xe8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000000e30                main
  .text.startup._GLOBAL__sub_I_nh
-                0x0000000000000f38       0xa4 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
- .text.NmiSR    0x0000000000000fdc        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
+                0x0000000000000f18       0xa0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+ .text.NmiSR    0x0000000000000fb8        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
  .text.FaultISR
-                0x0000000000000fde        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
+                0x0000000000000fba        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
  .text.IntDefaultHandler
-                0x0000000000000fe0        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
- *fill*         0x0000000000000fe2        0x2 
+                0x0000000000000fbc        0x2 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
+ *fill*         0x0000000000000fbe        0x2 
  .text.ResetISR
-                0x0000000000000fe4       0x94 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
-                0x0000000000000fe4                ResetISR
+                0x0000000000000fc0       0x94 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj
+                0x0000000000000fc0                ResetISR
  .text.UpdateIndexAtomic
-                0x0000000000001078       0x2a CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x0000000000001054       0x2a CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
  .text.RingBufEmpty
-                0x00000000000010a2        0xc CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
-                0x00000000000010a2                RingBufEmpty
+                0x000000000000107e        0xc CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x000000000000107e                RingBufEmpty
  .text.RingBufReadOne
-                0x00000000000010ae       0x16 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
-                0x00000000000010ae                RingBufReadOne
+                0x000000000000108a       0x16 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x000000000000108a                RingBufReadOne
  .text.RingBufWriteOne
-                0x00000000000010c4       0x12 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
-                0x00000000000010c4                RingBufWriteOne
+                0x00000000000010a0       0x12 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x00000000000010a0                RingBufWriteOne
  .text.RingBufWrite
-                0x00000000000010d6       0x1a CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
-                0x00000000000010d6                RingBufWrite
+                0x00000000000010b2       0x1a CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x00000000000010b2                RingBufWrite
  .text.RingBufInit
-                0x00000000000010f0        0xc CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
-                0x00000000000010f0                RingBufInit
+                0x00000000000010cc        0xc CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+                0x00000000000010cc                RingBufInit
  .text._ZN3ros16normalizeSecNSecERmS0_
-                0x00000000000010fc       0x1c CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/time.cpp.obj
-                0x00000000000010fc                ros::normalizeSecNSec(unsigned long&, unsigned long&)
+                0x00000000000010d8       0x1c CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/time.cpp.obj
+                0x00000000000010d8                ros::normalizeSecNSec(unsigned long&, unsigned long&)
  .text._GPIOIntNumberGet
-                0x0000000000001118       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000010f4       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
  .text.GPIODirModeSet
-                0x000000000000115c       0x26 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x000000000000115c                GPIODirModeSet
+                0x0000000000001138       0x26 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x0000000000001138                GPIODirModeSet
  .text.GPIOIntTypeSet
-                0x0000000000001182       0x4e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x0000000000001182                GPIOIntTypeSet
+                0x000000000000115e       0x4e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x000000000000115e                GPIOIntTypeSet
  .text.GPIOPadConfigSet
-                0x00000000000011d0      0x106 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x00000000000011d0                GPIOPadConfigSet
+                0x00000000000011ac      0x106 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000011ac                GPIOPadConfigSet
  .text.GPIOIntEnable
-                0x00000000000012d6        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x00000000000012d6                GPIOIntEnable
+                0x00000000000012b2        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012b2                GPIOIntEnable
  .text.GPIOIntDisable
-                0x00000000000012e2        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x00000000000012e2                GPIOIntDisable
+                0x00000000000012be        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012be                GPIOIntDisable
  .text.GPIOIntStatus
-                0x00000000000012f0        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x00000000000012f0                GPIOIntStatus
+                0x00000000000012cc        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012cc                GPIOIntStatus
  .text.GPIOIntClear
-                0x00000000000012fe        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x00000000000012fe                GPIOIntClear
+                0x00000000000012da        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012da                GPIOIntClear
  .text.GPIOIntRegister
-                0x0000000000001304       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x0000000000001304                GPIOIntRegister
+                0x00000000000012e0       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012e0                GPIOIntRegister
  .text.GPIOPinTypeGPIOInput
-                0x000000000000131e       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
-                0x000000000000131e                GPIOPinTypeGPIOInput
+                0x00000000000012fa       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000012fa                GPIOPinTypeGPIOInput
  .text.IntMasterEnable
-                0x0000000000001336        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
-                0x0000000000001336                IntMasterEnable
+                0x0000000000001312        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000001312                IntMasterEnable
  .text.IntMasterDisable
-                0x0000000000001344        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
-                0x0000000000001344                IntMasterDisable
- *fill*         0x0000000000001352        0x2 
+                0x0000000000001320        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000001320                IntMasterDisable
+ *fill*         0x000000000000132e        0x2 
  .text.IntRegister
-                0x0000000000001354       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
-                0x0000000000001354                IntRegister
+                0x0000000000001330       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000001330                IntRegister
  .text.IntEnable
-                0x0000000000001388       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
-                0x0000000000001388                IntEnable
+                0x0000000000001364       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000001364                IntEnable
  .text.SysCtlPeripheralEnable
-                0x00000000000013e8       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
-                0x00000000000013e8                SysCtlPeripheralEnable
+                0x00000000000013c4       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+                0x00000000000013c4                SysCtlPeripheralEnable
  .text.SysTickIntRegister
-                0x0000000000001410       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
-                0x0000000000001410                SysTickIntRegister
+                0x00000000000013ec       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+                0x00000000000013ec                SysTickIntRegister
  .text._UARTIntNumberGet
-                0x000000000000142c       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
+                0x0000000000001408       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
  .text.UARTIntRegister
-                0x0000000000001470       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
-                0x0000000000001470                UARTIntRegister
+                0x000000000000144c       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
+                0x000000000000144c                UARTIntRegister
  .text.CPUcpsid
-                0x000000000000148a        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
-                0x000000000000148a                CPUcpsid
+                0x0000000000001466        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+                0x0000000000001466                CPUcpsid
  .text.CPUcpsie
-                0x0000000000001492        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
-                0x0000000000001492                CPUcpsie
- *fill*         0x000000000000149a        0x2 
- .text          0x000000000000149c      0x134 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
-                0x000000000000149c                memcpy
- .text.realloc  0x00000000000015d0       0x10 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
-                0x00000000000015d0                realloc
+                0x000000000000146e        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+                0x000000000000146e                CPUcpsie
+ *fill*         0x0000000000001476        0x2 
+ .text          0x0000000000001478      0x134 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+                0x0000000000001478                memcpy
+ .text.realloc  0x00000000000015ac       0x10 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+                0x00000000000015ac                realloc
  .text._realloc_r
-                0x00000000000015e0      0x34c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
-                0x00000000000015e0                _realloc_r
- *fill*         0x000000000000192c       0x14 
+                0x00000000000015bc      0x34c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+                0x00000000000015bc                _realloc_r
+ *fill*         0x0000000000001908       0x38 
  .text          0x0000000000001940       0xdc /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
                 0x0000000000001940                strlen
  .text._malloc_trim_r
@@ -848,165 +847,162 @@ END GROUP
  .rodata._ZTVN14rosserial_msgs20RequestParamResponseE
                 0x0000000000002340       0x18 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
                 0x0000000000002340                vtable for rosserial_msgs::RequestParamResponse
- .rodata._ZTVN8std_msgs6StringE
+ .rodata._ZTVN16adc_joystick_msg12ADC_JoystickE
                 0x0000000000002358       0x18 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000002358                vtable for std_msgs::String
+                0x0000000000002358                vtable for adc_joystick_msg::ADC_Joystick
  .rodata._ZTVN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EEE
                 0x0000000000002370       0x14 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
                 0x0000000000002370                vtable for ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>
  .rodata._GLOBAL__sub_I_nh.str1.1
-                0x0000000000002384        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000002384        0xd CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgs20RequestParamResponse6getMD5Ev.str1.1
-                0x000000000000238c       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000002391       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgs3Log6getMD5Ev.str1.1
-                0x00000000000023ad       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000023b2       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgs3Log7getTypeEv.str1.1
-                0x00000000000023ce       0x13 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000023d3       0x13 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgs9TopicInfo6getMD5Ev.str1.1
-                0x00000000000023e1       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000023e6       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgs9TopicInfo7getTypeEv.str1.1
-                0x0000000000002402       0x19 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000002407       0x19 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN14rosserial_msgsL12REQUESTPARAME
-                0x000000000000241b       0x1c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000002420       0x1c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+ .rodata._ZN16adc_joystick_msg12ADC_Joystick6getMD5Ev.str1.1
+                0x000000000000243c       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+ .rodata._ZN16adc_joystick_msg12ADC_Joystick7getTypeEv.str1.1
+                0x000000000000245d       0x1e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv.str1.1
-                0x0000000000002437       0x19 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x000000000000247b       0x1e CMakeFiles/chatter.axf.dir/chatter.cpp.obj
                                           0x1 (size before relaxing)
  .rodata._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE.str1.1
-                0x0000000000002437       0x39 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x000000000000247b       0x39 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN8std_msgs4Time6getMD5Ev.str1.1
-                0x0000000000002470       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000024b4       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  .rodata._ZN8std_msgs4Time7getTypeEv.str1.1
-                0x0000000000002491        0xe CMakeFiles/chatter.axf.dir/chatter.cpp.obj
- .rodata._ZN8std_msgs6String6getMD5Ev.str1.1
-                0x000000000000249f       0x21 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
- .rodata._ZN8std_msgs6String7getTypeEv.str1.1
-                0x00000000000024c0       0x10 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x00000000000024d5        0xe CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+ *fill*         0x00000000000024e3        0x1 
  .rodata.g_ppui32GPIOIntMapBlizzard
-                0x00000000000024d0       0xc0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000024e4       0xc0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
  .rodata.g_ppui32GPIOIntMapSnowflake
-                0x0000000000002590       0xd8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
+                0x00000000000025a4       0xd8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(gpio.o)
  .rodata.g_pui32EnRegs
-                0x0000000000002668       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x000000000000267c       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
  .rodata.g_ppui32UARTIntMap
-                0x000000000000267c       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
+                0x0000000000002690       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
  .rodata.g_ppui32UARTIntMapSnowflake
-                0x00000000000026bc       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
+                0x00000000000026d0       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(uart.o)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000000000026fc                . = ALIGN (0x4)
+                0x0000000000002710                . = ALIGN (0x4)
  *(.init)
-                0x00000000000026fc                . = ALIGN (0x4)
-                0x00000000000026fc                __preinit_array_start = .
+                0x0000000000002710                . = ALIGN (0x4)
+                0x0000000000002710                __preinit_array_start = .
  *(SORT(.preinit_array*))
  *(.preinit_array)
-                0x00000000000026fc                __preinit_array_end = .
-                0x00000000000026fc                . = ALIGN (0x4)
-                0x00000000000026fc                __init_array_start = .
+                0x0000000000002710                __preinit_array_end = .
+                0x0000000000002710                . = ALIGN (0x4)
+                0x0000000000002710                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00000000000026fc        0x4 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000000002700                __init_array_end = .
-                0x0000000000002700                . = ALIGN (0x4)
+ .init_array    0x0000000000002710        0x4 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000000002714                __init_array_end = .
+                0x0000000000002714                . = ALIGN (0x4)
  *(.fini)
-                0x0000000000002700                . = ALIGN (0x4)
-                0x0000000000002700                __fini_array_start = .
+                0x0000000000002714                . = ALIGN (0x4)
+                0x0000000000002714                __fini_array_start = .
  *(.fini_array)
  *(SORT(.fini_array.*))
-                0x0000000000002700                __fini_array_end = .
-                0x0000000000002700                . = ALIGN (0x4)
-                0x0000000000002700                _etext = .
+                0x0000000000002714                __fini_array_end = .
+                0x0000000000002714                . = ALIGN (0x4)
+                0x0000000000002714                _etext = .
 
-.vfp11_veneer   0x0000000000002700        0x0
- .vfp11_veneer  0x0000000000002700        0x0 linker stubs
+.vfp11_veneer   0x0000000000002714        0x0
+ .vfp11_veneer  0x0000000000002714        0x0 linker stubs
 
-.v4_bx          0x0000000000002700        0x0
- .v4_bx         0x0000000000002700        0x0 linker stubs
+.v4_bx          0x0000000000002714        0x0
+ .v4_bx         0x0000000000002714        0x0 linker stubs
 
-.iplt           0x0000000000002700        0x0
- .iplt          0x0000000000002700        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+.iplt           0x0000000000002714        0x0
+ .iplt          0x0000000000002714        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
 
-.rel.dyn        0x0000000000002700        0x0
- .rel.iplt      0x0000000000002700        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+.rel.dyn        0x0000000000002714        0x0
+ .rel.iplt      0x0000000000002714        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
 
-.data           0x0000000020000000      0xac0 load address 0x0000000000002700
+.data           0x0000000020000000      0xaa8 load address 0x0000000000002714
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _data = .
  *(vtable)
  vtable         0x0000000020000000      0x26c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
  *(.data .data* .gnu.linkonce.d.*)
- .data.down     0x000000002000026c        0xd CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x000000002000026c                down
- .data.up       0x0000000020000279        0xb CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000020000279                up
  .data._impure_ptr
-                0x0000000020000284        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
-                0x0000000020000284                _impure_ptr
+                0x000000002000026c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x000000002000026c                _impure_ptr
  .data.impure_data
-                0x0000000020000288      0x428 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x0000000020000270      0x428 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
  .data.__malloc_av_
-                0x00000000200006b0      0x408 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x00000000200006b0                __malloc_av_
+                0x0000000020000698      0x408 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020000698                __malloc_av_
  .data.__malloc_sbrk_base
-                0x0000000020000ab8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x0000000020000ab8                __malloc_sbrk_base
+                0x0000000020000aa0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020000aa0                __malloc_sbrk_base
  .data.__malloc_trim_threshold
-                0x0000000020000abc        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x0000000020000abc                __malloc_trim_threshold
-                0x0000000020000ac0                _edata = .
+                0x0000000020000aa4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020000aa4                __malloc_trim_threshold
+                0x0000000020000aa8                _edata = .
 
-.igot.plt       0x0000000020000ac0        0x0 load address 0x00000000000031c0
- .igot.plt      0x0000000020000ac0        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+.igot.plt       0x0000000020000aa8        0x0 load address 0x00000000000031bc
+ .igot.plt      0x0000000020000aa8        0x0 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
 
-.bss            0x0000000020000ac0      0x7b0 load address 0x00000000000031c0
-                0x0000000020000ac0                . = ALIGN (0x4)
-                0x0000000020000ac0                _bss = .
-                0x0000000020000ac0                __bss_start__ = _bss
+.bss            0x0000000020000aa8      0x7b0 load address 0x00000000000031bc
+                0x0000000020000aa8                . = ALIGN (0x4)
+                0x0000000020000aa8                _bss = .
+                0x0000000020000aa8                __bss_start__ = _bss
  *(.bss*)
- .bss.chatter   0x0000000020000ac0       0x14 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000020000ac0                chatter
- .bss.nh        0x0000000020000ad4      0x72c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000020000ad4                nh
- .bss.str_msg   0x0000000020001200        0x8 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
-                0x0000000020001200                str_msg
+ .bss.adc_joystick
+                0x0000000020000aa8       0x14 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000020000aa8                adc_joystick
+ .bss.js_msg    0x0000000020000abc        0xc CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000020000abc                js_msg
+ .bss.nh        0x0000000020000ac8      0x72c CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+                0x0000000020000ac8                nh
  .bss.g_ui32heartbeat
-                0x0000000020001208        0x4 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
-                0x0000000020001208                g_ui32heartbeat
+                0x00000000200011f4        0x4 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
+                0x00000000200011f4                g_ui32heartbeat
  .bss.g_ui32milliseconds
-                0x000000002000120c        0x4 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
-                0x000000002000120c                g_ui32milliseconds
- .bss.rxBuffer  0x0000000020001210       0x10 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
-                0x0000000020001210                rxBuffer
- .bss.txBuffer  0x0000000020001220       0x10 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
-                0x0000000020001220                txBuffer
+                0x00000000200011f8        0x4 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
+                0x00000000200011f8                g_ui32milliseconds
+ .bss.rxBuffer  0x00000000200011fc       0x10 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
+                0x00000000200011fc                rxBuffer
+ .bss.txBuffer  0x000000002000120c       0x10 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.cpp.obj
+                0x000000002000120c                txBuffer
  .bss.__malloc_current_mallinfo
-                0x0000000020001230       0x28 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x0000000020001230                __malloc_current_mallinfo
+                0x000000002000121c       0x28 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x000000002000121c                __malloc_current_mallinfo
  .bss.__malloc_max_sbrked_mem
-                0x0000000020001258        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x0000000020001258                __malloc_max_sbrked_mem
+                0x0000000020001244        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020001244                __malloc_max_sbrked_mem
  .bss.__malloc_max_total_mem
-                0x000000002000125c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x000000002000125c                __malloc_max_total_mem
+                0x0000000020001248        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020001248                __malloc_max_total_mem
  .bss.__malloc_top_pad
-                0x0000000020001260        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x0000000020001260                __malloc_top_pad
+                0x000000002000124c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x000000002000124c                __malloc_top_pad
  .bss.heap_end.5239
-                0x0000000020001264        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+                0x0000000020001250        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
  *(COMMON)
- COMMON         0x0000000020001268        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
-                0x0000000020001268                errno
-                0x000000002000126c                . = ALIGN (0x4)
-                0x000000002000126c                _ebss = .
-                0x000000002000126c                __bss_end__ = _ebss
-                0x0000000020001270                . = ALIGN (0x8)
- *fill*         0x000000002000126c        0x4 
+ COMMON         0x0000000020001254        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+                0x0000000020001254                errno
+                0x0000000020001258                . = ALIGN (0x4)
+                0x0000000020001258                _ebss = .
+                0x0000000020001258                __bss_end__ = _ebss
+                0x0000000020001258                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
                 [!provide]                        PROVIDE (__exidx_end, .)
-                0x0000000020001270                . = ALIGN (0x4)
-                0x0000000020001270                _end = .
-                0x0000000020001270                PROVIDE (end, _end)
+                0x0000000020001258                . = ALIGN (0x4)
+                0x0000000020001258                _end = .
+                0x0000000020001258                PROVIDE (end, _end)
                 0x0000000020008000                PROVIDE (_estack, (ORIGIN (SRAM) + LENGTH (SRAM)))
 OUTPUT(/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel/share/ros_tivac/chatter.axf elf32-littlearm)
 

@@ -46,6 +46,16 @@ usbdevicepriv.h
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.h
 
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/adc_joystick_msg/ADC_Joystick.h
+stdint.h
+-
+string.h
+-
+stdlib.h
+-
+ros/msg.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/adc_joystick_msg/ros/msg.h
+
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp
 math.h
 -
@@ -275,4 +285,6 @@ ros.h
 -
 std_msgs/String.h
 -
+adc_joystick_msg/ADC_Joystick.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/adc_joystick_msg/ADC_Joystick.h
 

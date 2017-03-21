@@ -90,16 +90,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install/local
-install/local/fast: install/local
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : install/local/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -122,16 +122,16 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target install/local
+install/local/fast: install/local
 
-.PHONY : edit_cache/fast
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,96 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make ros_tivac/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ros_tivac/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
-.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
-
-# Convenience name for target.
-ros_tivac_chatter_size: ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
-
-.PHONY : ros_tivac_chatter_size
-
-# fast build rule for target.
-ros_tivac_chatter_size/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/build
-.PHONY : ros_tivac_chatter_size/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
-.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
-
-# Convenience name for target.
-ros_tivac_chatter: ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
-
-.PHONY : ros_tivac_chatter
-
-# fast build rule for target.
-ros_tivac_chatter/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter.dir/build
-.PHONY : ros_tivac_chatter/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make ros_tivac/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/build.make ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
 ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/rule:
 	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/rule
 .PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/rule
@@ -269,36 +179,6 @@ ros_tivac_chatter_dump: ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/rule
 ros_tivac_chatter_dump/fast:
 	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_dump.dir/build
 .PHONY : ros_tivac_chatter_dump/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make ros_tivac/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/build.make ros_tivac/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 ros_tivac/CMakeFiles/ros_tivac_ros_lib.dir/rule:
@@ -316,19 +196,19 @@ ros_tivac_ros_lib/fast:
 .PHONY : ros_tivac_ros_lib/fast
 
 # Convenience name for target.
-ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
-.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
+ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-ros_tivac_chatter_flash: ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
+_catkin_empty_exported_target: ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
-.PHONY : ros_tivac_chatter_flash
+.PHONY : _catkin_empty_exported_target
 
 # fast build rule for target.
-ros_tivac_chatter_flash/fast:
-	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/build
-.PHONY : ros_tivac_chatter_flash/fast
+_catkin_empty_exported_target/fast:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/build.make ros_tivac/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
 
 # Convenience name for target.
 ros_tivac/CMakeFiles/ros_tivac_chatter_chatter.axf.dir/rule:
@@ -345,6 +225,51 @@ ros_tivac_chatter_chatter.axf/fast:
 	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_chatter.axf.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_chatter.axf.dir/build
 .PHONY : ros_tivac_chatter_chatter.axf/fast
 
+# Convenience name for target.
+ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
+.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
+
+# Convenience name for target.
+ros_tivac_chatter_flash: ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/rule
+
+.PHONY : ros_tivac_chatter_flash
+
+# fast build rule for target.
+ros_tivac_chatter_flash/fast:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_flash.dir/build
+.PHONY : ros_tivac_chatter_flash/fast
+
+# Convenience name for target.
+ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
+.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
+
+# Convenience name for target.
+ros_tivac_chatter: ros_tivac/CMakeFiles/ros_tivac_chatter.dir/rule
+
+.PHONY : ros_tivac_chatter
+
+# fast build rule for target.
+ros_tivac_chatter/fast:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter.dir/build
+.PHONY : ros_tivac_chatter/fast
+
+# Convenience name for target.
+ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
+.PHONY : ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
+
+# Convenience name for target.
+ros_tivac_chatter_size: ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/rule
+
+.PHONY : ros_tivac_chatter_size
+
+# fast build rule for target.
+ros_tivac_chatter_size/fast:
+	cd /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build && $(MAKE) -f ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/build.make ros_tivac/CMakeFiles/ros_tivac_chatter_size.dir/build
+.PHONY : ros_tivac_chatter_size/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -353,23 +278,18 @@ help:
 	@echo "... depend"
 	@echo "... install"
 	@echo "... rebuild_cache"
+	@echo "... ros_tivac_chatter_dump"
 	@echo "... test"
-	@echo "... install/local"
+	@echo "... ros_tivac_ros_lib"
+	@echo "... _catkin_empty_exported_target"
+	@echo "... ros_tivac_chatter_chatter.axf"
+	@echo "... ros_tivac_chatter_flash"
+	@echo "... edit_cache"
+	@echo "... ros_tivac_chatter"
+	@echo "... ros_tivac_chatter_size"
 	@echo "... list_install_components"
 	@echo "... install/strip"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... edit_cache"
-	@echo "... ros_tivac_chatter_size"
-	@echo "... ros_tivac_chatter"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... _catkin_empty_exported_target"
-	@echo "... ros_tivac_chatter_dump"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... ros_tivac_ros_lib"
-	@echo "... ros_tivac_chatter_flash"
-	@echo "... ros_tivac_chatter_chatter.axf"
+	@echo "... install/local"
 .PHONY : help
 
 

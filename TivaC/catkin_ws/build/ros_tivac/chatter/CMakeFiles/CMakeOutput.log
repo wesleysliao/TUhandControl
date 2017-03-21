@@ -390,3 +390,20 @@ make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/b
 make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp'
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_31f18/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_31f18.dir/build.make CMakeFiles/cmTC_31f18.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_31f18.dir/CheckIncludeFile.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -o CMakeFiles/cmTC_31f18.dir/CheckIncludeFile.c.obj   -c /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_31f18
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_31f18.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_31f18.dir/CheckIncludeFile.c.obj  -o cmTC_31f18 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/CMakeTmp'
+
+

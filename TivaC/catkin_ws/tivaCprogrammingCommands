@@ -1,0 +1,23 @@
+
+#open all terminals in catkin_ws and run "source devel/setup.bash"
+
+#build
+catkin_make
+
+#flash TivaC
+catkin_make ros_tivac_chatter_flash
+sudo lm4flash devel/share/ros_tivac/chatter.bin
+
+
+#to run:
+
+#start ros
+roscore
+
+
+## start rosserial
+
+  #
+  sudo chmod a+rw /dev/ttyACM0
+  rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0
+

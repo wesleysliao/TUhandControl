@@ -1,0 +1,8 @@
+prefix=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install
+
+Name: adc_joystick_msg
+Description: Description of adc_joystick_msg
+Version: 0.0.0
+Cflags: -I/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install/include
+Libs: -L/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install/lib 
+Requires: message_runtime
