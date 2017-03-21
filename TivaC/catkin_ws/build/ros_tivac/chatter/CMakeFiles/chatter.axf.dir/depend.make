@@ -11,6 +11,7 @@ CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/bui
 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_types.h
 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c
 
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/adc.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gpio.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/interrupt.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h
@@ -43,7 +44,6 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/T
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
-CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/String.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware_usb.h

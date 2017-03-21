@@ -12,6 +12,7 @@ CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/bui
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_types.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/startup_gcc.c
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj
+ /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/adc.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gpio.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/interrupt.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h
@@ -44,7 +45,6 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
- /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/String.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware_usb.h
