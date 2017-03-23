@@ -46,6 +46,29 @@ void onButtonUp(void) {
     }
 }
 
+
+void xAxisMoved(void){
+  ADCIntClear(ADC1_BASE,0);
+  ADCIntClearEx(ADC1_BASE, ADC_INT_DCON_SS0);
+
+  uint32_t intStatus = ADCComparatorIntStatus( ADC1_BASE );
+  if( intStatus  != 0)
+  {
+      ADCComparatorIntClear(ADC1_BASE, intStatus);
+  }
+
+  uint32_t deadband = 1;
+  uint32_t x_axis_value;
+  
+  ADCSequenceDataGet(ADC1_BASE, 0, &x_axis_value);
+  ADCComparatorRegionSet(ADC1_BASE, 0, x_axis_value-deadband, x_axis_value+deadband);
+
+  js_msg.x_axis_raw = x_axis_value;
+  js_msg.y_axis_raw = x_axis_value-deadband;
+  adc_joystick.publish(&js_msg);
+
+}
+
 int main(void)
 {
   // TivaC application specific code
@@ -69,32 +92,42 @@ int main(void)
   GPIOIntEnable(GPIO_PORTA_BASE, GPIO_PIN_5);     // Enable interrupt for PF4
 
 
-  uint32_t ui32ADC0Value[4];
   SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC1);
-  ADCSequenceConfigure(ADC1_BASE, 1, ADC_TRIGGER_PROCESSOR, 0);
-  ADCSequenceStepConfigure(ADC1_BASE, 1, 0, ADC_CTL_TS);
-  ADCSequenceStepConfigure(ADC1_BASE, 1, 1, ADC_CTL_TS);
-  ADCSequenceStepConfigure(ADC1_BASE, 1, 2, ADC_CTL_TS);
-  ADCSequenceStepConfigure(ADC1_BASE,1,3,ADC_CTL_TS|ADC_CTL_IE|ADC_CTL_END);
-  ADCSequenceEnable(ADC1_BASE, 1);
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC1))
+  {
+  }
+  ADCReferenceSet(ADC1_BASE, ADC_REF_INT);
+  ADCSequenceConfigure(ADC1_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
+  ADCSequenceStepConfigure(ADC1_BASE, 0, 0, ADC_CTL_END | ADC_CTL_CH1 | ADC_CTL_CMP0);
+  ADCSequenceEnable(ADC1_BASE, 0);
 
+  ADCComparatorConfigure(ADC1_BASE, 0, ADC_COMP_INT_LOW_ALWAYS|ADC_COMP_INT_HIGH_ALWAYS);
+  ADCComparatorIntEnable(ADC1_BASE, 0);
 
-  // ROS nodehandle initialization and topic registration
+  ADCIntRegister(ADC1_BASE, 0, xAxisMoved);
+  ADCIntEnable(ADC1_BASE, 0);
+  ADCIntEnableEx(ADC1_BASE, ADC_INT_DCON_SS0);
+  
   nh.initNode();
   nh.advertise(adc_joystick);
+
+
+  ADCProcessorTrigger(ADC1_BASE, 0);
+
+  nh.getHardware()->delay(100);
+  
+  uint32_t deadband = 1;
+  uint32_t x_axis_value;
+  
+  ADCSequenceDataGet(ADC1_BASE, 0, &x_axis_value);
+  ADCComparatorRegionSet(ADC1_BASE, 0, x_axis_value-deadband, x_axis_value+deadband);
+
 
   while (1)
   {
 
-    // ADCIntClear(ADC1_BASE, 1);
-    // ADCProcessorTrigger(ADC1_BASE, 1);
-    // while(!ADCIntStatus(ADC1_BASE, 1, false))
-    // {
-    //   nh.spinOnce();
-    //   nh.getHardware()->delay(100);
-    // }
-    // ADCSequenceDataGet(ADC1_BASE, 1, ui32ADC0Value);
-
+    ADCProcessorTrigger(ADC1_BASE, 0);
+    
     nh.spinOnce();
     nh.getHardware()->delay(100);
   }
