@@ -7,6 +7,7 @@ main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_memmap.h
 main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_types.h
 main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/debug.h
 main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/sysctl.h
+main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gpio.h
 main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/adc.h
 
 ../main.c: 
@@ -16,4 +17,5 @@ main.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/adc.h
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_types.h: 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/debug.h: 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/sysctl.h: 
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gpio.h: 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/adc.h: 
