@@ -47,25 +47,20 @@ void onButtonUp(void) {
 }
 
 
-void xAxisMoved(void){
-  ADCIntClear(ADC1_BASE,0);
-  ADCIntClearEx(ADC1_BASE, ADC_INT_DCON_SS0);
+void readADC(void){
 
-  uint32_t intStatus = ADCComparatorIntStatus( ADC1_BASE );
-  if( intStatus  != 0)
+  ADCIntClear(ADC0_BASE,1);
+
+  uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
+
+  ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
+
+  if( abs(adc_values[0] - js_msg.x_axis_raw) > 100 || abs(adc_values[2] - js_msg.y_axis_raw) > 100)
   {
-      ADCComparatorIntClear(ADC1_BASE, intStatus);
+      js_msg.x_axis_raw = adc_values[0];
+      js_msg.y_axis_raw = adc_values[2];
+      adc_joystick.publish(&js_msg);
   }
-
-  uint32_t deadband = 1;
-  uint32_t x_axis_value;
-  
-  ADCSequenceDataGet(ADC1_BASE, 0, &x_axis_value);
-  ADCComparatorRegionSet(ADC1_BASE, 0, x_axis_value-deadband, x_axis_value+deadband);
-
-  js_msg.x_axis_raw = x_axis_value;
-  js_msg.y_axis_raw = x_axis_value-deadband;
-  adc_joystick.publish(&js_msg);
 
 }
 
@@ -92,41 +87,37 @@ int main(void)
   GPIOIntEnable(GPIO_PORTA_BASE, GPIO_PIN_5);     // Enable interrupt for PF4
 
 
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC1);
-  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC1))
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+  GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_1|GPIO_PIN_2);
+
+
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
   {
   }
-  ADCReferenceSet(ADC1_BASE, ADC_REF_INT);
-  ADCSequenceConfigure(ADC1_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
-  ADCSequenceStepConfigure(ADC1_BASE, 0, 0, ADC_CTL_END | ADC_CTL_CH1 | ADC_CTL_CMP0);
-  ADCSequenceEnable(ADC1_BASE, 0);
 
-  ADCComparatorConfigure(ADC1_BASE, 0, ADC_COMP_INT_LOW_ALWAYS|ADC_COMP_INT_HIGH_ALWAYS);
-  ADCComparatorIntEnable(ADC1_BASE, 0);
+  ADCSequenceDisable( ADC0_BASE, 0 );
+  ADCSequenceDisable( ADC0_BASE, 1 );
+  ADCSequenceDisable( ADC0_BASE, 2 );
+  ADCSequenceDisable( ADC0_BASE, 3 );
 
-  ADCIntRegister(ADC1_BASE, 0, xAxisMoved);
-  ADCIntEnable(ADC1_BASE, 0);
-  ADCIntEnableEx(ADC1_BASE, ADC_INT_DCON_SS0);
+  ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_PROCESSOR, 0);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CTL_CH1);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CTL_CH1);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 2, ADC_CTL_CH2);
+  ADCSequenceStepConfigure(ADC0_BASE,1,3, ADC_CTL_END | ADC_CTL_CH2 | ADC_CTL_IE);
+  ADCSequenceEnable(ADC0_BASE, 1);
+
+  ADCIntRegister(ADC0_BASE, 1, readADC);
+  ADCIntEnable(ADC0_BASE, 1);
   
   nh.initNode();
   nh.advertise(adc_joystick);
 
-
-  ADCProcessorTrigger(ADC1_BASE, 0);
-
-  nh.getHardware()->delay(100);
-  
-  uint32_t deadband = 1;
-  uint32_t x_axis_value;
-  
-  ADCSequenceDataGet(ADC1_BASE, 0, &x_axis_value);
-  ADCComparatorRegionSet(ADC1_BASE, 0, x_axis_value-deadband, x_axis_value+deadband);
-
-
   while (1)
   {
 
-    ADCProcessorTrigger(ADC1_BASE, 0);
+    ADCProcessorTrigger(ADC0_BASE, 1);
     
     nh.spinOnce();
     nh.getHardware()->delay(100);
