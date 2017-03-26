@@ -28,7 +28,7 @@
 		<link>
 			<name>driverlib.lib</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TivaWare/driverlib/ccs/Debug/driverlib.lib</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/TivaWare/driverlib/ccs/Debug/driverlib.lib</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>
