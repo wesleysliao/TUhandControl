@@ -118,6 +118,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/gtest/cmake_install.cmake")
   include("/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/adc_joystick_msg/cmake_install.cmake")
+  include("/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/stepper_msg/cmake_install.cmake")
   include("/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/cmake_install.cmake")
 
 endif()

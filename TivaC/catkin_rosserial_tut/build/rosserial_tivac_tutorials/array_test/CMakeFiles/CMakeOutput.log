@@ -1,0 +1,392 @@
+The target system is: Generic -  - arm
+The host system is: Linux - 4.4.0-21-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/arm-none-eabi-gcc 
+Build flags: -mthumb;-mcpu=cortex-m4;-mfpu=fpv4-sp-d16;-mfloat-abi=hard;-std=gnu99;-Os;-ffunction-sections;-fdata-sections;-MD;-Wall;-pedantic;-fsingle-precision-constant
+Id flags: -c
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.d"
+
+The C compiler identification is GNU, found in "/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/arm-none-eabi-g++ 
+Build flags: -mthumb;-mcpu=cortex-m4;-mfpu=fpv4-sp-d16;-mfloat-abi=hard;-std=c++11;-Os;-ffunction-sections;-fdata-sections;-MD;-Wall;-pedantic;-fno-exceptions;-fno-rtti;-fsingle-precision-constant;-nostartfiles
+Id flags: 
+
+The output was:
+0
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start; defaulting to 0000000000008000
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.d"
+
+The CXX compiler identification is GNU, found in "/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_66ff2/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_66ff2.dir/build.make CMakeFiles/cmTC_66ff2.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_66ff2.dir/testCCompiler.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -o CMakeFiles/cmTC_66ff2.dir/testCCompiler.c.obj   -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_66ff2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66ff2.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_66ff2.dir/testCCompiler.c.obj  -o cmTC_66ff2 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3179d/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_3179d.dir/build.make CMakeFiles/cmTC_3179d.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -o CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_3179d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3179d.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map -v CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj  -o cmTC_3179d  
+Using built-in specs.
+Reading specs from /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs
+COLLECT_GCC=/usr/bin/arm-none-eabi-gcc
+COLLECT_LTO_WRAPPER=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper
+Target: arm-none-eabi
+Configured with: /build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/src/gcc/configure --target=arm-none-eabi --prefix=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native --libexecdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/lib --infodir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/arm-none-eabi --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=rmprofile
+Thread model: single
+gcc version 6.2.1 20161205 (release) [ARM/embedded-6-branch revision 243739] (GNU Tools for ARM Embedded Processors) 
+COMPILER_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=gnu99' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fsingle-precision-constant' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_3179d'
+ /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2 -plugin /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaT2qDu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lnosys --entry ResetISR --gc-sections -o cmTC_3179d /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib -Map=memmap.map CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lgcc -lc -lm -lnosys --end-group /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o -T /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=gnu99' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fsingle-precision-constant' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_3179d'
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-eabi-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_3179d/fast"]
+  ignore line: [make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_3179d.dir/build.make CMakeFiles/cmTC_3179d.dir/build]
+  ignore line: [make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -o CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_3179d]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3179d.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map -v CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj  -o cmTC_3179d  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs]
+  ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper]
+  ignore line: [Target: arm-none-eabi]
+  ignore line: [Configured with: /build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/src/gcc/configure --target=arm-none-eabi --prefix=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native --libexecdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/lib --infodir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/arm-none-eabi --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=rmprofile]
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 6.2.1 20161205 (release) [ARM/embedded-6-branch revision 243739] (GNU Tools for ARM Embedded Processors) ]
+  ignore line: [COMPILER_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/]
+  ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=gnu99' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fsingle-precision-constant' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_3179d']
+  link line: [ /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2 -plugin /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaT2qDu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lnosys --entry ResetISR --gc-sections -o cmTC_3179d /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib -Map=memmap.map CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lgcc -lc -lm -lnosys --end-group /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o -T /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld]
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccaT2qDu.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
+    arg [--entry] ==> ignore
+    arg [ResetISR] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_3179d] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o] ==> ignore
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1]
+    arg [-L/usr/bin/../lib/gcc] ==> dir [/usr/bin/../lib/gcc]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib]
+    arg [-L/usr/bin/../arm-none-eabi/lib] ==> dir [/usr/bin/../arm-none-eabi/lib]
+    arg [-Map=memmap.map] ==> ignore
+    arg [CMakeFiles/cmTC_3179d.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lm] ==> lib [m]
+    arg [-lnosys] ==> lib [nosys]
+    arg [--end-group] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o] ==> ignore
+    arg [-T] ==> ignore
+    arg [/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1] ==> [/usr/lib/gcc/arm-none-eabi/6.2.1]
+  collapse library dir [/usr/bin/../lib/gcc] ==> [/usr/lib/gcc]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib] ==> [/usr/arm-none-eabi/lib]
+  collapse library dir [/usr/bin/../arm-none-eabi/lib] ==> [/usr/arm-none-eabi/lib]
+  implicit libs: [c;m;nosys]
+  implicit dirs: [/usr/lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard;/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard;/usr/lib/gcc/arm-none-eabi/6.2.1;/usr/lib/gcc;/usr/arm-none-eabi/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7a89d/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_7a89d.dir/build.make CMakeFiles/cmTC_7a89d.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7a89d.dir/feature_tests.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -std=c11 -o CMakeFiles/cmTC_7a89d.dir/feature_tests.c.obj   -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.c
+Linking C executable cmTC_7a89d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7a89d.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_7a89d.dir/feature_tests.c.obj  -o cmTC_7a89d 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a9d18/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a9d18.dir/build.make CMakeFiles/cmTC_a9d18.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a9d18.dir/feature_tests.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -std=c99 -o CMakeFiles/cmTC_a9d18.dir/feature_tests.c.obj   -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.c
+Linking C executable cmTC_a9d18
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9d18.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_a9d18.dir/feature_tests.c.obj  -o cmTC_a9d18 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_52e87/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_52e87.dir/build.make CMakeFiles/cmTC_52e87.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52e87.dir/feature_tests.c.obj
+/usr/bin/arm-none-eabi-gcc  -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant    -std=c90 -o CMakeFiles/cmTC_52e87.dir/feature_tests.c.obj   -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.c
+Linking C executable cmTC_52e87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52e87.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-gcc  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=gnu99 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fsingle-precision-constant   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_52e87.dir/feature_tests.c.obj  -o cmTC_52e87 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a1d51/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a1d51.dir/build.make CMakeFiles/cmTC_a1d51.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a1d51.dir/testCXXCompiler.cxx.obj
+/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -o CMakeFiles/cmTC_a1d51.dir/testCXXCompiler.cxx.obj -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_a1d51
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1d51.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_a1d51.dir/testCXXCompiler.cxx.obj  -o cmTC_a1d51 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_59077/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_59077.dir/build.make CMakeFiles/cmTC_59077.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -o CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_59077
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59077.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map -v CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_59077  
+Using built-in specs.
+Reading specs from /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs
+COLLECT_GCC=/usr/bin/arm-none-eabi-g++
+COLLECT_LTO_WRAPPER=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper
+Target: arm-none-eabi
+Configured with: /build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/src/gcc/configure --target=arm-none-eabi --prefix=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native --libexecdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/lib --infodir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/arm-none-eabi --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=rmprofile
+Thread model: single
+gcc version 6.2.1 20161205 (release) [ARM/embedded-6-branch revision 243739] (GNU Tools for ARM Embedded Processors) 
+COMPILER_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=c++11' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fno-exceptions' '-fno-rtti' '-fsingle-precision-constant' '-nostartfiles' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_59077'
+ /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2 -plugin /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccl1obnS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lnosys --entry ResetISR --gc-sections -o cmTC_59077 -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib -Map=memmap.map CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lgcc -lc -lm -lnosys --end-group -T /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=c++11' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fno-exceptions' '-fno-rtti' '-fsingle-precision-constant' '-nostartfiles' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_59077'
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-eabi-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_59077/fast"]
+  ignore line: [make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_59077.dir/build.make CMakeFiles/cmTC_59077.dir/build]
+  ignore line: [make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -o CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_59077]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59077.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map -v CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_59077  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs]
+  ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper]
+  ignore line: [Target: arm-none-eabi]
+  ignore line: [Configured with: /build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/src/gcc/configure --target=arm-none-eabi --prefix=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native --libexecdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/lib --infodir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/build/gcc-arm-none-eabi-CE0_5N/gcc-arm-none-eabi-6-2016q4/install-native/arm-none-eabi --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=rmprofile]
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 6.2.1 20161205 (release) [ARM/embedded-6-branch revision 243739] (GNU Tools for ARM Embedded Processors) ]
+  ignore line: [COMPILER_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/]
+  ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-mthumb' '-mcpu=cortex-m4' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-std=c++11' '-Os' '-ffunction-sections' '-fdata-sections' '-MD' '-Wall' '-Wpedantic' '-fno-exceptions' '-fno-rtti' '-fsingle-precision-constant' '-nostartfiles' '-T' '/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld' '-specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs' '-v' '-o' 'cmTC_59077']
+  link line: [ /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2 -plugin /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccl1obnS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lnosys --entry ResetISR --gc-sections -o cmTC_59077 -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib -Map=memmap.map CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lgcc -lc -lm -lnosys --end-group -T /opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld]
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccl1obnS.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
+    arg [--entry] ==> ignore
+    arg [ResetISR] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_59077] ==> ignore
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> dir [/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1]
+    arg [-L/usr/bin/../lib/gcc] ==> dir [/usr/bin/../lib/gcc]
+    arg [-L/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib]
+    arg [-L/usr/bin/../arm-none-eabi/lib] ==> dir [/usr/bin/../arm-none-eabi/lib]
+    arg [-Map=memmap.map] ==> ignore
+    arg [CMakeFiles/cmTC_59077.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lm] ==> lib [m]
+    arg [-lnosys] ==> lib [nosys]
+    arg [--end-group] ==> ignore
+    arg [-T] ==> ignore
+    arg [/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard] ==> [/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1] ==> [/usr/lib/gcc/arm-none-eabi/6.2.1]
+  collapse library dir [/usr/bin/../lib/gcc] ==> [/usr/lib/gcc]
+  collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib] ==> [/usr/arm-none-eabi/lib]
+  collapse library dir [/usr/bin/../arm-none-eabi/lib] ==> [/usr/arm-none-eabi/lib]
+  implicit libs: [stdc++;m;c;m;nosys]
+  implicit dirs: [/usr/lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard;/usr/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard;/usr/lib/gcc/arm-none-eabi/6.2.1;/usr/lib/gcc;/usr/arm-none-eabi/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b6a2a/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b6a2a.dir/build.make CMakeFiles/cmTC_b6a2a.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b6a2a.dir/feature_tests.cxx.obj
+/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -std=c++14 -o CMakeFiles/cmTC_b6a2a.dir/feature_tests.cxx.obj -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_b6a2a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6a2a.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_b6a2a.dir/feature_tests.cxx.obj  -o cmTC_b6a2a 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ff77b/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ff77b.dir/build.make CMakeFiles/cmTC_ff77b.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ff77b.dir/feature_tests.cxx.obj
+/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -std=c++11 -o CMakeFiles/cmTC_ff77b.dir/feature_tests.cxx.obj -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_ff77b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff77b.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_ff77b.dir/feature_tests.cxx.obj  -o cmTC_ff77b 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_168de/fast"
+make[3]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_168de.dir/build.make CMakeFiles/cmTC_168de.dir/build
+make[4]: Entering directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_168de.dir/feature_tests.cxx.obj
+/usr/bin/arm-none-eabi-g++   -Dgcc -I/home/wesley/Sources/TUhandControl/TivaC/TivaWare  -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles    -std=c++98 -o CMakeFiles/cmTC_168de.dir/feature_tests.cxx.obj -c /home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_168de
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_168de.dir/link.txt --verbose=1
+/usr/bin/arm-none-eabi-g++   -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -std=c++11 -Os -ffunction-sections -fdata-sections -MD -Wall -pedantic -fno-exceptions -fno-rtti -fsingle-precision-constant -nostartfiles   -T/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tm4c123g.ld -specs=/opt/ros/kinetic/share/rosserial_tivac/tivac-cmake/cmake/../tiva.specs -Wl,-Map=memmap.map  CMakeFiles/cmTC_168de.dir/feature_tests.cxx.obj  -o cmTC_168de 
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol ResetISR; defaulting to 0000000000000000
+make[4]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/array_test/CMakeFiles/CMakeTmp'
+
+

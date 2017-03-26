@@ -6,4 +6,5 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs(gtest)
 subdirs(adc_joystick_msg)
+subdirs(stepper_msg)
 subdirs(ros_tivac)

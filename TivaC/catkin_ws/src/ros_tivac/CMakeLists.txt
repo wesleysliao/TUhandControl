@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   rosserial_tivac
   std_msgs
   adc_joystick_msg
+  stepper_msg
 )
 
 ## System dependencies are found with CMake's conventions

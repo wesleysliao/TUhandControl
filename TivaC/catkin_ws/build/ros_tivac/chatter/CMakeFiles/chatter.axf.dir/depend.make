@@ -44,11 +44,15 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/T
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ColorRGBA.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Status.h
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Target.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware_usb.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/usb_serial_structs.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/chatter.cpp
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/include/tivacpin.h
 
 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp
 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/ros/duration.h

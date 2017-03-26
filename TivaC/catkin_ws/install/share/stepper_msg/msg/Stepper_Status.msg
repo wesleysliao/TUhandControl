@@ -1,0 +1,3 @@
+uint32 position_steps
+uint32 speed_steps_per_second
+bool direction_forward

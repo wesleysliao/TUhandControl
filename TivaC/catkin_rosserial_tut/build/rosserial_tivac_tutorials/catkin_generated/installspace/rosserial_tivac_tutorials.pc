@@ -1,0 +1,8 @@
+prefix=/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/install
+
+Name: rosserial_tivac_tutorials
+Description: Description of rosserial_tivac_tutorials
+Version: 0.0.1
+Cflags: -I/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/install/include
+Libs: -L/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/install/lib 
+Requires: message_runtime std_msgs

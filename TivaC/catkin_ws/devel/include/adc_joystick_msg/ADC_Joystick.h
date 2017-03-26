@@ -173,7 +173,7 @@ namespace serialization
       stream.next(m.y_axis_raw);
     }
 
-    ROS_DECLARE_ALLINONE_SERIALIZER;
+    ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct ADC_Joystick_
 
 } // namespace serialization

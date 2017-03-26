@@ -45,11 +45,15 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ColorRGBA.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Status.h
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Target.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/tivac_hardware_usb.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/usb_serial_structs.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/chatter.cpp
+ /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/include/tivacpin.h
 CMakeFiles/chatter.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/duration.cpp
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/ros/duration.h

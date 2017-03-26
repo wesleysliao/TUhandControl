@@ -1,0 +1,2 @@
+uint32 position_steps
+uint32 top_speed_steps_per_second

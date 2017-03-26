@@ -1,0 +1,2 @@
+rosserial_tivac_tutorials
+-DCATKIN_DEVEL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/devel -DCMAKE_INSTALL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/install -G Unix Makefiles

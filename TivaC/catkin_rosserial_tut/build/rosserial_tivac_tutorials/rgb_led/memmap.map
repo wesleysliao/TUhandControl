@@ -1,0 +1,2050 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (USBBufferInit)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (USBDCDCInit)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o) (USBDCDDeviceInfoInit)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (USB0DeviceIntHandler)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o) (USBLibDMAInit)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (USBStackModeSet)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o) (USBRingBufFlush)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o) (InternalUSBTickInit)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o) (ULPIConfigSet)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o) (USBDCDConfigDescGetSize)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o) (USBDeviceConfig)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o) (USBDescGetNum)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o) (USBHCDPowerConfigGet)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o) (USBHHubMain)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                              CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj (IntMasterEnable)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o) (SysCtlPeripheralReset)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (SysTickIntRegister)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o) (uDMAChannelEnable)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o) (USBHostSuspend)
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+                              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o) (CPUcpsid)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+                              CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj (__aeabi_i2d)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+                              CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj (__aeabi_dmul)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+                              CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj (__aeabi_d2iz)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+                              CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj (__aeabi_f2ulz)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o) (__aeabi_d2uiz)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (memcpy)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (realloc)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o) (_realloc_r)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
+                              CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj (strlen)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o) (_free_r)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o) (_impure_ptr)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o) (_malloc_r)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o) (memmove)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o) (__malloc_lock)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o) (_sbrk_r)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o) (errno)
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+                              /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o) (_sbrk)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+g_psDCDInst         0x50              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+g_pui8USBRxBuffer   0x100             CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+g_eOTGModeState     0x1               /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+g_pui8USBTxBuffer   0x100             CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+g_ui32PollRate      0x4               /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+g_ppsDevInfo        0x4               /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+g_pvTickInstance    0x18              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+g_pfnTickHandlers   0x18              /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+
+Discarded input sections
+
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .group         0x0000000000000000        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .text.RGBBlinkIntHandler
+                0x0000000000000000       0x3c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .text.RGBBlinkRateSet
+                0x0000000000000000       0x78 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .text.RGBColorGet
+                0x0000000000000000       0x14 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .bss.ulFlags.5738
+                0x0000000000000000        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .bss.__dso_handle
+                0x0000000000000000        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.UpdateIndexAtomic
+                0x0000000000000000       0x2a CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufFull
+                0x0000000000000000       0x1a CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufEmpty
+                0x0000000000000000        0xc CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufFlush
+                0x0000000000000000       0x18 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufUsed
+                0x0000000000000000       0x12 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufFree
+                0x0000000000000000        0xe CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufContigUsed
+                0x0000000000000000       0x10 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufContigFree
+                0x0000000000000000       0x1a CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufSize
+                0x0000000000000000        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufReadOne
+                0x0000000000000000       0x16 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufRead
+                0x0000000000000000       0x1a CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufAdvanceRead
+                0x0000000000000000       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufAdvanceWrite
+                0x0000000000000000       0x46 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufWriteOne
+                0x0000000000000000       0x12 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufWrite
+                0x0000000000000000       0x1a CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text.RingBufInit
+                0x0000000000000000        0xc CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .comment       0x0000000000000000       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .ARM.attributes
+                0x0000000000000000       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .text._ZN3ros22normalizeSecNSecSignedERlS0_
+                0x0000000000000000       0x28 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .text._ZN3ros8DurationpLERKS0_
+                0x0000000000000000       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .text._ZN3ros8DurationmIERKS0_
+                0x0000000000000000       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .text._ZN3ros8DurationmLEd
+                0x0000000000000000       0x3e CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .comment       0x0000000000000000       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .ARM.attributes
+                0x0000000000000000       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .text._ZN3ros4Time8fromNSecEl
+                0x0000000000000000       0x20 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .text._ZN3ros4TimepLERKNS_8DurationE
+                0x0000000000000000       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .text._ZN3ros4TimemIERKNS_8DurationE
+                0x0000000000000000       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .bss.g_ui32heartbeat
+                0x0000000000000000        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .text          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .data          0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .bss           0x0000000000000000        0x0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferZeroLengthPacketInsert
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferInfoGet
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferDataWritten
+                0x0000000000000000       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferDataRemoved
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferCallbackDataSet
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferSpaceAvailable
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCTerm
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCSetControlCBData
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCSetRxCBData
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCSetTxCBData
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCSerialStateChange
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCPowerStatusSet
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCRemoteWakeupRequest
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDTerm
+                0x0000000000000000       0x5c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDSetDefaultConfiguration
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDPowerStatusSet
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDFeatureSet
+                0x0000000000000000       0x78 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDRemoteWakeLPM
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDRemoteWakeupRequest
+                0x0000000000000000       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.USBLibDMAAddrGet
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.USBLibDMASizeGet
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGSetMode
+                0x0000000000000000       0x90 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USB0DualModeIntHandler
+                0x0000000000000000       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBDualModeInit
+                0x0000000000000000       0x6c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBDualModeTerm
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGModeTerm
+                0x0000000000000000       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGModeInit
+                0x0000000000000000       0xb4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGPollRate
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USB0OTGModeIntHandler
+                0x0000000000000000       0xc0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.OTGDeviceDisconnect
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGMain
+                0x0000000000000000       0x88 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text.USBOTGFeatureSet
+                0x0000000000000000       0x22 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .bss.g_ui32WaitTicks
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .data.g_iDualMode
+                0x0000000000000000        0x1 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ COMMON         0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .text.USBRingBufFull
+                0x0000000000000000       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .text.USBRingBufEmpty
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .text.USBRingBufSize
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .text.InternalUSBTickReset
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .text.ULPIPowerTransceiver
+                0x0000000000000000        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .text.USBDCDConfigGetNumAlternateInterfaces
+                0x0000000000000000       0x36 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .text.USBDescGetNumAlternateInterfaces
+                0x0000000000000000       0x26 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .text.USBDescGetInterface
+                0x0000000000000000       0x3e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .text.USBDescGetInterfaceEndpoint
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.FIFOFree
+                0x0000000000000000       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.FIFOAlloc
+                0x0000000000000000       0x98 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.ConfigDescFree.part.1
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.ConfigDescAlloc
+                0x0000000000000000       0x54 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.ConfigDescFree
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDEventEnable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDEventDisable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeTransferSizeGet
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeAllocSize
+                0x0000000000000000      0x1ac /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeAlloc
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeConfig
+                0x0000000000000000       0xd4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeStatus
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeSchedule
+                0x0000000000000000       0xb4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeReadNonBlocking
+                0x0000000000000000       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeDataAck
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeFree
+                0x0000000000000000       0xe4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPowerConfigInit
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPowerConfigGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPowerConfigSet
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDInitInternal
+                0x0000000000000000      0x178 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPowerAutomatic
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDInit
+                0x0000000000000000       0xf8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDRegisterDrivers
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDTerm
+                0x0000000000000000       0x7c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDReset
+                0x0000000000000000       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDSuspend
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDResume
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHostCheckPipes
+                0x0000000000000000       0x68 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHostIntHandlerInternal
+                0x0000000000000000      0x430 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USB0HostIntHandler
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.InternalUSBHCDSendEvent
+                0x0000000000000000       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.SendUnknownConnect.isra.2
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDeviceDisconnected.constprop.5
+                0x0000000000000000       0x94 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDControlTransfer
+                0x0000000000000000      0x1f8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDStringDescriptorGet
+                0x0000000000000000       0x36 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDSetAddress
+                0x0000000000000000       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDSetConfig
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDSetInterface
+                0x0000000000000000       0x32 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDMain
+                0x0000000000000000      0x380 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDClearFeature.constprop.8
+                0x0000000000000000       0x84 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeRead
+                0x0000000000000000      0x150 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDPipeWrite
+                0x0000000000000000      0x13c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDHubDeviceConnected
+                0x0000000000000000       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDHubDeviceDisconnected
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDevHubPort
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDevAddress
+                0x0000000000000000       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDevClass
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDevSubClass
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDDevProtocol
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDFeatureSet
+                0x0000000000000000       0x80 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDLPMStatus
+                0x0000000000000000        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDLPMSleep
+                0x0000000000000000       0x54 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text.USBHCDLPMResume
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_pi32USBHActiveDriver
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_ppvDriverInstance
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_pui32Alloc
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_sUSBHCD
+                0x0000000000000000      0x6cc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_sUSBHEP0State
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_ui32CurrentTick
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_ui32Tickms
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.g_ui32ULPISupport
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .bss.ui32SOFDivide.6614
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .data.g_ui32PLLDiv
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .data.g_ui32PowerConfig
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .rodata.CSWTCH.35
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .comment       0x0000000000000000       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .ARM.attributes
+                0x0000000000000000       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhostenum.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubDriverClose
+                0x0000000000000000       0x80 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubIntINCallback
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubGetPortStatus.constprop.1
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubClearPortFeature.constprop.2
+                0x0000000000000000       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubSetPortFeature.constprop.3
+                0x0000000000000000       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.HubDriverOpen
+                0x0000000000000000      0x14c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubMain
+                0x0000000000000000      0x200 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubEnumerationComplete
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubEnumerationError
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubOpen
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubClose
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubInit
+                0x0000000000000000       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubLPMSleep
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text.USBHHubLPMStatus
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .bss.g_sRootHub
+                0x0000000000000000       0x9c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .bss.g_ui32ChangeFlags
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .bss.g_ui32HubChanges
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .rodata.g_sUSBHubClassDriver
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .comment       0x0000000000000000       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .ARM.attributes
+                0x0000000000000000       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbhhub.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text._IntDefaultHandler
+                0x0000000000000000        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntUnregister
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPriorityGroupingSet
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPriorityGroupingGet
+                0x0000000000000000       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPrioritySet
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPriorityGet
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPendSet
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPendClear
+                0x0000000000000000       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPriorityMaskSet
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntPriorityMaskGet
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text.IntTrigger
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .rodata.g_pui32PendRegs
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .rodata.g_pui32Priority
+                0x0000000000000000       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .rodata.g_pui32Regs
+                0x0000000000000000       0x9c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .rodata.g_pui32UnpendRegs
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text._SysCtlMemTimingGet
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlSRAMSizeGet
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlFlashSizeGet
+                0x0000000000000000       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlFlashSectorSizeGet
+                0x0000000000000000       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralPresent
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralReady
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralPowerOn
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralPowerOff
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralDisable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralSleepEnable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralSleepDisable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralDeepSleepEnable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralDeepSleepDisable
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPeripheralClockGating
+                0x0000000000000000       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntRegister
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntUnregister
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntEnable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntDisable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntClear
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlIntStatus
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlLDOSleepSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlLDOSleepGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlLDODeepSleepSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlLDODeepSleepGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlSleepPowerSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlDeepSleepPowerSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlReset
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlSleep
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlDeepSleep
+                0x0000000000000000       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlResetCauseGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlResetCauseClear
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlDelay
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlMOSCConfigSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPIOSCCalibrate
+                0x0000000000000000       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlResetBehaviorSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlResetBehaviorGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlClockFreqSet
+                0x0000000000000000      0x23c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlClockSet
+                0x0000000000000000      0x110 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlClockGet
+                0x0000000000000000      0x150 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlDeepSleepClockSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlDeepSleepClockConfigSet
+                0x0000000000000000       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPWMClockSet
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlPWMClockGet
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlGPIOAHBEnable
+                0x0000000000000000       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlGPIOAHBDisable
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlUSBPLLDisable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlVoltageEventConfig
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlVoltageEventStatus
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlVoltageEventClear
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlVCOGet
+                0x0000000000000000       0x70 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlNMIStatus
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlNMIClear
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlClockOutConfig
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text.SysCtlAltClkConfig
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .rodata.g_pppui32XTALtoVCO
+                0x0000000000000000      0x1b0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .rodata.g_pui32VCOFrequencies
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .rodata.g_pui32Xtals
+                0x0000000000000000       0x6c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .rodata.g_sXTALtoMEMTIM
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickEnable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickDisable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickIntUnregister
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickIntEnable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickIntDisable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickPeriodSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickPeriodGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text.SysTickValueGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAEnable
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMADisable
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAErrorStatusGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAErrorStatusClear
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelIsEnabled
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAControlBaseSet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAControlBaseGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAControlAlternateBaseGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelRequest
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelAttributeEnable
+                0x0000000000000000       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelAttributeGet
+                0x0000000000000000       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelScatterGatherSet
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelSizeGet
+                0x0000000000000000       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAIntRegister
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAIntUnregister
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAIntStatus
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAIntClear
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelAssign
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelSelectSecondary
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text.uDMAChannelSelectDefault
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostSuspend
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostReset
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHighSpeed
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostSpeedGet
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDevSpeedGet
+                0x0000000000000000        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBIntDisableControl
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBIntDisableEndpoint
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBIntUnregister
+                0x0000000000000000       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointStatusClear
+                0x0000000000000000       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointDataToggle
+                0x0000000000000000       0x56 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBEndpointDataToggleClear
+                0x0000000000000000       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointPing
+                0x0000000000000000       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDevAddrGet
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointConfig
+                0x0000000000000000       0xd0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointSpeed
+                0x0000000000000000       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDevEndpointConfigGet
+                0x0000000000000000       0x76 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBFIFOConfigGet
+                0x0000000000000000       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostEndpointDataAck
+                0x0000000000000000       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBFIFOFlush
+                0x0000000000000000       0x3c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostRequestIN
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostRequestINClear
+                0x0000000000000000       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostRequestStatus
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostAddrSet
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostAddrGet
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostHubAddrSet
+                0x0000000000000000       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostHubAddrGet
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostPwrConfig
+                0x0000000000000000       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostPwrFaultEnable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostPwrFaultDisable
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostPwrEnable
+                0x0000000000000000       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostPwrDisable
+                0x0000000000000000       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBFrameNumberGet
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBOTGSessionRequest
+                0x0000000000000000       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBModeGet
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostMode
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBModeConfig
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBPHYPowerOff
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBPHYPowerOn
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBNumEndpointsGet
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBClockDisable
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDMAChannelStatusClear
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDMAChannelAddressGet
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDMAChannelCountGet
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDMANumChannels
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBULPIConfig
+                0x0000000000000000        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostLPMSend
+                0x0000000000000000       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostLPMConfig
+                0x0000000000000000       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBDevLPMRemoteWake
+                0x0000000000000000        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostLPMResume
+                0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBLPMLinkStateGet
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBLPMEndpointGet
+                0x0000000000000000        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBLPMRemoteWakeEnabled
+                0x0000000000000000        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBLPMIntDisable
+                0x0000000000000000        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .data          0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .bss           0x0000000000000000        0x0 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .text.CPUprimask
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .text.CPUwfi   0x0000000000000000        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .text.CPUbasepriSet
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .text.CPUbasepriGet
+                0x0000000000000000        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .text          0x0000000000000000      0x370 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x0000000000000000       0xac /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x0000000000000000       0x22 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .text          0x0000000000000000      0x424 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x0000000000000000       0x50 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x0000000000000000       0x22 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .text          0x0000000000000000       0x50 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x0000000000000000       0x24 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .ARM.attributes
+                0x0000000000000000       0x22 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .text          0x0000000000000000       0x4c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+ .debug_frame   0x0000000000000000       0x2c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+ .ARM.attributes
+                0x0000000000000000       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_fixunssfdi.o)
+ .text          0x0000000000000000       0x40 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x0000000000000000       0x24 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .ARM.attributes
+                0x0000000000000000       0x22 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x0000000000000000        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .text.cleanup_glue
+                0x0000000000000000       0x1c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .text._reclaim_reent
+                0x0000000000000000       0x88 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .text          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+ .data          0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+ .bss           0x0000000000000000        0x0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x0000000000040000 xr
+SRAM             0x0000000020000000 0x0000000000008000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/utils/ringbuf.c.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/duration.cpp.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+LOAD CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+LOAD /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a
+LOAD /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libstdc++.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a
+START GROUP
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a
+LOAD /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a
+END GROUP
+
+.text           0x0000000000000000     0x50bc
+                0x0000000000000000                . = ALIGN (0x4)
+                0x0000000000000000                _text = .
+ *(.isr_vector)
+ .isr_vector    0x0000000000000000      0x26c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+                0x0000000000000000                g_pfnVectors
+ *(.text .text* .gnu.linkonce.t.*)
+ .text._ZNK8std_msgs4Time9serializeEPh
+                0x000000000000026c       0x28 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000000000026c                std_msgs::Time::serialize(unsigned char*) const
+ .text._ZN8std_msgs4Time11deserializeEPh
+                0x0000000000000294       0x3c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000294                std_msgs::Time::deserialize(unsigned char*)
+ .text._ZN8std_msgs4Time7getTypeEv
+                0x00000000000002d0        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002d0                std_msgs::Time::getType()
+ .text._ZN8std_msgs4Time6getMD5Ev
+                0x00000000000002d8        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002d8                std_msgs::Time::getMD5()
+ .text._ZN14rosserial_msgs9TopicInfo7getTypeEv
+                0x00000000000002e0        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002e0                rosserial_msgs::TopicInfo::getType()
+ .text._ZN14rosserial_msgs9TopicInfo6getMD5Ev
+                0x00000000000002e8        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002e8                rosserial_msgs::TopicInfo::getMD5()
+ .text._ZN14rosserial_msgs3Log7getTypeEv
+                0x00000000000002f0        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002f0                rosserial_msgs::Log::getType()
+ .text._ZN14rosserial_msgs3Log6getMD5Ev
+                0x00000000000002f8        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000002f8                rosserial_msgs::Log::getMD5()
+ .text._ZN14rosserial_msgs20RequestParamResponse7getTypeEv
+                0x0000000000000300        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000300                rosserial_msgs::RequestParamResponse::getType()
+ .text._ZN14rosserial_msgs20RequestParamResponse6getMD5Ev
+                0x0000000000000308        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000308                rosserial_msgs::RequestParamResponse::getMD5()
+ .text._ZN13TivaCHardware17SystickIntHandlerEv
+                0x0000000000000310       0x10 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000310                TivaCHardware::SystickIntHandler()
+ .text._ZNK8std_msgs9ColorRGBA9serializeEPh
+                0x0000000000000320       0x44 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000320                std_msgs::ColorRGBA::serialize(unsigned char*) const
+ .text._ZN8std_msgs9ColorRGBA11deserializeEPh
+                0x0000000000000364       0x14 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000364                std_msgs::ColorRGBA::deserialize(unsigned char*)
+ .text._ZN8std_msgs9ColorRGBA7getTypeEv
+                0x0000000000000378        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000378                std_msgs::ColorRGBA::getType()
+ .text._ZN8std_msgs9ColorRGBA6getMD5Ev
+                0x0000000000000380        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000380                std_msgs::ColorRGBA::getMD5()
+ .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE9connectedEv
+                0x0000000000000388        0x6 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000388                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::connected()
+ .text._ZN3ros10SubscriberIN8std_msgs9ColorRGBAEvE8callbackEPh
+                0x000000000000038e       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000000000038e                ros::Subscriber<std_msgs::ColorRGBA, void>::callback(unsigned char*)
+ .text._ZN3ros10SubscriberIN8std_msgs9ColorRGBAEvE15getEndpointTypeEv
+                0x00000000000003a6        0x4 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000003a6                ros::Subscriber<std_msgs::ColorRGBA, void>::getEndpointType()
+ *fill*         0x00000000000003aa        0x2 
+ .text._ZN3ros10SubscriberIN8std_msgs9ColorRGBAEvE10getMsgTypeEv
+                0x00000000000003ac        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000003ac                ros::Subscriber<std_msgs::ColorRGBA, void>::getMsgType()
+ .text._ZN3ros10SubscriberIN8std_msgs9ColorRGBAEvE9getMsgMD5Ev
+                0x00000000000003b4        0x8 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000003b4                ros::Subscriber<std_msgs::ColorRGBA, void>::getMsgMD5()
+ .text._Z8color_cbRKN8std_msgs9ColorRGBAE
+                0x00000000000003bc       0x54 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000003bc                color_cb(std_msgs::ColorRGBA const&)
+ .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE
+                0x0000000000000410       0xbc CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000410                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::publish(int, ros::Msg const*)
+ .text._ZN13TivaCHardware4initEv
+                0x00000000000004cc       0xc0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000004cc                TivaCHardware::init()
+ .text._ZN3ros3Msg8varToArrIPhmEEvT_T0_
+                0x000000000000058c       0x14 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000000000058c                void ros::Msg::varToArr<unsigned char*, unsigned long>(unsigned char*, unsigned long)
+ .text._ZNK14rosserial_msgs20RequestParamResponse9serializeEPh
+                0x00000000000005a0       0xe2 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000005a0                rosserial_msgs::RequestParamResponse::serialize(unsigned char*) const
+ .text._ZNK14rosserial_msgs3Log9serializeEPh
+                0x0000000000000682       0x2c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000682                rosserial_msgs::Log::serialize(unsigned char*) const
+ .text._ZNK14rosserial_msgs9TopicInfo9serializeEPh
+                0x00000000000006ae       0x86 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000006ae                rosserial_msgs::TopicInfo::serialize(unsigned char*) const
+ .text._ZN3ros3Msg8arrToVarImPhEEvRT_T0_
+                0x0000000000000734       0x1e CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000734                void ros::Msg::arrToVar<unsigned long, unsigned char*>(unsigned long&, unsigned char*)
+ .text._ZN14rosserial_msgs3Log11deserializeEPh
+                0x0000000000000752       0x36 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000752                rosserial_msgs::Log::deserialize(unsigned char*)
+ .text._ZN14rosserial_msgs9TopicInfo11deserializeEPh
+                0x0000000000000788       0xb6 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000788                rosserial_msgs::TopicInfo::deserialize(unsigned char*)
+ .text._ZN14rosserial_msgs20RequestParamResponse11deserializeEPh
+                0x000000000000083e      0x12e CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000000000083e                rosserial_msgs::RequestParamResponse::deserialize(unsigned char*)
+ .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15requestSyncTimeEv
+                0x000000000000096c       0x2c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000000000096c                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::requestSyncTime()
+ .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv
+                0x0000000000000998       0xbc CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000998                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::negotiateTopics()
+ .text._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE8spinOnceEv
+                0x0000000000000a54      0x25c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000a54                ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>::spinOnce()
+ .text.startup.main
+                0x0000000000000cb0       0xcc CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000000cb0                main
+ .text.startup._GLOBAL__sub_I_current_color
+                0x0000000000000d7c       0xac CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .text.RGBEnable
+                0x0000000000000e28       0xc0 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x0000000000000e28                RGBEnable
+ .text.RGBInit  0x0000000000000ee8      0x100 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x0000000000000ee8                RGBInit
+ .text.RGBDisable
+                0x0000000000000fe8       0x64 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x0000000000000fe8                RGBDisable
+ .text.RGBColorSet
+                0x000000000000104c       0x8c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x000000000000104c                RGBColorSet
+ .text.RGBIntensitySet
+                0x00000000000010d8       0x14 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x00000000000010d8                RGBIntensitySet
+ .text.RGBSet   0x00000000000010ec       0x1e CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+                0x00000000000010ec                RGBSet
+ .text.NmiSR    0x000000000000110a        0x2 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .text.FaultISR
+                0x000000000000110c        0x2 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .text.IntDefaultHandler
+                0x000000000000110e        0x2 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .text.ResetISR
+                0x0000000000001110       0x94 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+                0x0000000000001110                ResetISR
+ .text._ZN3ros16normalizeSecNSecERmS0_
+                0x00000000000011a4       0x1c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+                0x00000000000011a4                ros::normalizeSecNSec(unsigned long&, unsigned long&)
+ .text.TxHandler
+                0x00000000000011c0        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x00000000000011c0                TxHandler
+ .text.RxHandler
+                0x00000000000011c4       0x14 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x00000000000011c4                RxHandler
+ .text.ControlHandler
+                0x00000000000011d8       0x34 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x00000000000011d8                ControlHandler
+ .text.ScheduleNextTransmission
+                0x000000000000120c       0x9a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .text.USBBufferInit
+                0x00000000000012a6       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x00000000000012a6                USBBufferInit
+ .text.USBBufferWrite
+                0x00000000000012bc       0x2e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x00000000000012bc                USBBufferWrite
+ .text.USBBufferFlush
+                0x00000000000012ea        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x00000000000012ea                USBBufferFlush
+ .text.USBBufferRead
+                0x00000000000012f0       0x26 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x00000000000012f0                USBBufferRead
+ .text.USBBufferDataAvailable
+                0x0000000000001316        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x0000000000001316                USBBufferDataAvailable
+ .text.USBBufferEventCallback
+                0x000000000000131c      0x12e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+                0x000000000000131c                USBBufferEventCallback
+ *fill*         0x000000000000144a        0x2 
+ .text.SetDeferredOpFlag
+                0x000000000000144c       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.DeviceConsumedAllData
+                0x0000000000001468       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.SendBreak
+                0x000000000000147e       0x3c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.SendLineCodingChange
+                0x00000000000014ba       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.SendLineStateChange
+                0x00000000000014de       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleConfigChange
+                0x0000000000001502       0x32 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleDevice
+                0x0000000000001534       0xa6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleDisconnect
+                0x00000000000015da       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleSuspend
+                0x00000000000015f8       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleResume
+                0x000000000000160c       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.SendSerialState
+                0x0000000000001620       0x92 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleEP0Data
+                0x00000000000016b2       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.HandleRequests
+                0x00000000000016fe       0xfc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.CDCTickHandler
+                0x00000000000017fa       0x9e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.ProcessDataFromHost
+                0x0000000000001898       0x74 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001898                ProcessDataFromHost
+ .text.ProcessNotificationToHost
+                0x000000000000190c       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x000000000000190c                ProcessNotificationToHost
+ .text.ProcessDataToHost
+                0x0000000000001940       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001940                ProcessDataToHost
+ .text.HandleEndpoints
+                0x00000000000019a0       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .text.USBDCDCCompositeInit
+                0x00000000000019ec       0xe8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x00000000000019ec                USBDCDCCompositeInit
+ .text.USBDCDCInit
+                0x0000000000001ad4       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001ad4                USBDCDCInit
+ .text.USBDCDCPacketWrite
+                0x0000000000001b20       0x58 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001b20                USBDCDCPacketWrite
+ .text.USBDCDCPacketRead
+                0x0000000000001b78       0x92 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001b78                USBDCDCPacketRead
+ *fill*         0x0000000000001c0a        0x2 
+ .text.USBDCDCTxPacketAvailable
+                0x0000000000001c0c       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001c0c                USBDCDCTxPacketAvailable
+ .text.USBDCDCRxPacketAvailable
+                0x0000000000001c20       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000001c20                USBDCDCRxPacketAvailable
+ .text.USBDSetAddress
+                0x0000000000001c50       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDEP0StateTx.isra.0
+                0x0000000000001c74       0x70 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDGetConfiguration
+                0x0000000000001ce4       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDEP0StateTxConfig.isra.1
+                0x0000000000001d18      0x148 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDStallEP0.constprop.7
+                0x0000000000001e60       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDGetStatus
+                0x0000000000001e7c       0x6c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDClearFeature
+                0x0000000000001ee8       0x74 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDSetFeature
+                0x0000000000001f5c       0x64 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDGetDescriptor
+                0x0000000000001fc0      0x124 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDSetDescriptor
+                0x00000000000020e4       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDSetConfiguration
+                0x00000000000020fc       0x88 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDGetInterface
+                0x0000000000002184       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDSetInterface
+                0x00000000000021c8       0x98 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDSyncFrame
+                0x0000000000002260       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDReadAndDispatchRequest.isra.2
+                0x0000000000002278       0x68 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .text.USBDCDDeviceInfoInit
+                0x00000000000022e0       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x00000000000022e0                USBDCDDeviceInfoInit
+ .text.USBDCDInit
+                0x0000000000002328      0x14c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x0000000000002328                USBDCDInit
+ .text.USBDCDRequestDataEP0
+                0x0000000000002474       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x0000000000002474                USBDCDRequestDataEP0
+ .text.USBDCDSendDataEP0
+                0x0000000000002488       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x0000000000002488                USBDCDSendDataEP0
+ .text.USBDCDStallEP0
+                0x0000000000002498       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x0000000000002498                USBDCDStallEP0
+ .text.USBDCDFeatureGet
+                0x00000000000024b4       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x00000000000024b4                USBDCDFeatureGet
+ .text.USBDeviceResumeTickHandler
+                0x00000000000024cc       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x00000000000024cc                USBDeviceResumeTickHandler
+ .text.USBDeviceEnumHandler
+                0x000000000000251c       0xcc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x000000000000251c                USBDeviceEnumHandler
+ .text.USBDeviceEnumResetHandler
+                0x00000000000025e8       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x00000000000025e8                USBDeviceEnumResetHandler
+ .text.USBDeviceIntHandlerInternal
+                0x000000000000262c      0x144 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x000000000000262c                USBDeviceIntHandlerInternal
+ .text.USB0DeviceIntHandler
+                0x0000000000002770       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+                0x0000000000002770                USB0DeviceIntHandler
+ .text.uDMAUSBChannelStatus
+                0x0000000000002788       0x22 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.DMAUSBIntStatusClear
+                0x00000000000027aa        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelIntDisable
+                0x00000000000027b8        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBArbSizeSet
+                0x00000000000027ba        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.DMAUSBStatus
+                0x00000000000027bc        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelRelease
+                0x00000000000027c0       0x3a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelAllocate
+                0x00000000000027fa       0x82 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelDisable
+                0x000000000000287c       0x32 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelIntDisable
+                0x00000000000028ae        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelIntEnable
+                0x00000000000028b6        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelEnable
+                0x00000000000028be       0x50 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBIntStatus
+                0x000000000000290e        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBUnitSizeSet
+                0x0000000000002914       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBArbSizeSet
+                0x0000000000002974       0x6e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBIntStatus
+                0x00000000000029e2       0x2c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelRelease
+                0x0000000000002a0e       0x56 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelEnable
+                0x0000000000002a64       0x6a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelDisable
+                0x0000000000002ace       0x4e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelAllocate
+                0x0000000000002b1c       0xb4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.DMAUSBIntHandler
+                0x0000000000002bd0       0x32 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBTransfer
+                0x0000000000002c02       0xde /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBChannelStatus
+                0x0000000000002ce0       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBTransfer
+                0x0000000000002d14       0xb8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.iDMAUSBUnitSizeSet
+                0x0000000000002dcc        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.uDMAUSBChannelIntEnable
+                0x0000000000002dce        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .text.USBLibDMAInit
+                0x0000000000002dd0      0x164 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+                0x0000000000002dd0                USBLibDMAInit
+ .text.USBStackModeSet
+                0x0000000000002f34       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+                0x0000000000002f34                USBStackModeSet
+ .text.UpdateIndexAtomic
+                0x0000000000002f50       0x2a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .text.USBRingBufFlush
+                0x0000000000002f7a       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002f7a                USBRingBufFlush
+ .text.USBRingBufUsed
+                0x0000000000002f92       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002f92                USBRingBufUsed
+ .text.USBRingBufFree
+                0x0000000000002fa4        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002fa4                USBRingBufFree
+ .text.USBRingBufContigUsed
+                0x0000000000002fb2       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002fb2                USBRingBufContigUsed
+ .text.USBRingBufContigFree
+                0x0000000000002fc2       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002fc2                USBRingBufContigFree
+ .text.USBRingBufReadOne
+                0x0000000000002fdc       0x16 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002fdc                USBRingBufReadOne
+ .text.USBRingBufRead
+                0x0000000000002ff2       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000002ff2                USBRingBufRead
+ .text.USBRingBufAdvanceRead
+                0x000000000000300c       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x000000000000300c                USBRingBufAdvanceRead
+ .text.USBRingBufAdvanceWrite
+                0x0000000000003028       0x36 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000003028                USBRingBufAdvanceWrite
+ .text.USBRingBufWriteOne
+                0x000000000000305e       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x000000000000305e                USBRingBufWriteOne
+ .text.USBRingBufWrite
+                0x0000000000003070       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x0000000000003070                USBRingBufWrite
+ .text.USBRingBufInit
+                0x000000000000308a        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+                0x000000000000308a                USBRingBufInit
+ *fill*         0x0000000000003096        0x2 
+ .text.InternalUSBTickInit
+                0x0000000000003098       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x0000000000003098                InternalUSBTickInit
+ .text.InternalUSBRegisterTickHandler
+                0x00000000000030c8       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x00000000000030c8                InternalUSBRegisterTickHandler
+ .text.InternalUSBStartOfFrameTick
+                0x00000000000030f8       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x00000000000030f8                InternalUSBStartOfFrameTick
+ .text.ULPIConfigSet
+                0x000000000000312c       0x54 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+                0x000000000000312c                ULPIConfigSet
+ .text.NextConfigDescGet
+                0x0000000000003180       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .text.USBDCDConfigDescGetSize
+                0x00000000000031b4       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                0x00000000000031b4                USBDCDConfigDescGetSize
+ .text.USBDCDConfigDescGetNum
+                0x00000000000031d2       0x2a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                0x00000000000031d2                USBDCDConfigDescGetNum
+ .text.USBDCDConfigDescGet
+                0x00000000000031fc       0x58 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                0x00000000000031fc                USBDCDConfigDescGet
+ .text.USBDCDConfigGetInterface
+                0x0000000000003254       0x58 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                0x0000000000003254                USBDCDConfigGetInterface
+ .text.USBDCDConfigGetInterfaceEndpoint
+                0x00000000000032ac       0x38 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+                0x00000000000032ac                USBDCDConfigGetInterfaceEndpoint
+ .text.GetEPDescriptorType
+                0x00000000000032e4       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .text.USBDeviceConfig
+                0x0000000000003328      0x164 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+                0x0000000000003328                USBDeviceConfig
+ .text.USBDeviceConfigAlternate
+                0x000000000000348c       0x88 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+                0x000000000000348c                USBDeviceConfigAlternate
+ .text.USBDescGetNum
+                0x0000000000003514       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+                0x0000000000003514                USBDescGetNum
+ .text.USBDescGet
+                0x0000000000003538       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+                0x0000000000003538                USBDescGet
+ .text.IntMasterEnable
+                0x0000000000003560        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000003560                IntMasterEnable
+ .text.IntMasterDisable
+                0x000000000000356e        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x000000000000356e                IntMasterDisable
+ .text.IntRegister
+                0x000000000000357c       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x000000000000357c                IntRegister
+ .text.IntEnable
+                0x00000000000035b0       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x00000000000035b0                IntEnable
+ .text.IntDisable
+                0x0000000000003610       0x60 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000003610                IntDisable
+ .text.IntIsEnabled
+                0x0000000000003670       0x64 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+                0x0000000000003670                IntIsEnabled
+ .text.SysCtlPeripheralReset
+                0x00000000000036d4       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+                0x00000000000036d4                SysCtlPeripheralReset
+ .text.SysCtlPeripheralEnable
+                0x0000000000003714       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+                0x0000000000003714                SysCtlPeripheralEnable
+ .text.SysCtlUSBPLLEnable
+                0x000000000000373c       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+                0x000000000000373c                SysCtlUSBPLLEnable
+ .text.SysTickIntRegister
+                0x000000000000374c       0x1c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+                0x000000000000374c                SysTickIntRegister
+ .text.uDMAChannelEnable
+                0x0000000000003768       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x0000000000003768                uDMAChannelEnable
+ .text.uDMAChannelDisable
+                0x000000000000377c       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x000000000000377c                uDMAChannelDisable
+ .text.uDMAChannelAttributeDisable
+                0x0000000000003790       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x0000000000003790                uDMAChannelAttributeDisable
+ .text.uDMAChannelControlSet
+                0x00000000000037dc       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x00000000000037dc                uDMAChannelControlSet
+ .text.uDMAChannelTransferSet
+                0x00000000000037fc       0x88 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x00000000000037fc                uDMAChannelTransferSet
+ .text.uDMAChannelModeGet
+                0x0000000000003884       0x24 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+                0x0000000000003884                uDMAChannelModeGet
+ .text._USBIntNumberGet.isra.0
+                0x00000000000038a8       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .text.USBHostResume
+                0x00000000000038dc       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x00000000000038dc                USBHostResume
+ *fill*         0x00000000000038ee        0x2 
+ .text.USBIntEnableControl
+                0x00000000000038f0       0x28 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x00000000000038f0                USBIntEnableControl
+ .text.USBIntStatusControl
+                0x0000000000003918       0x3c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003918                USBIntStatusControl
+ .text.USBIntEnableEndpoint
+                0x0000000000003954       0x18 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003954                USBIntEnableEndpoint
+ .text.USBIntStatusEndpoint
+                0x000000000000396c        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x000000000000396c                USBIntStatusEndpoint
+ .text.USBIntRegister
+                0x0000000000003978       0x1a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003978                USBIntRegister
+ .text.USBEndpointStatus
+                0x0000000000003992       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003992                USBEndpointStatus
+ .text.USBDevEndpointStatusClear
+                0x00000000000039a4       0x5a /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x00000000000039a4                USBDevEndpointStatusClear
+ .text.USBDevEndpointStall
+                0x00000000000039fe       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x00000000000039fe                USBDevEndpointStall
+ .text.USBDevEndpointStallClear
+                0x0000000000003a2e       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003a2e                USBDevEndpointStallClear
+ .text.USBDevConnect
+                0x0000000000003a6e        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003a6e                USBDevConnect
+ .text.USBDevDisconnect
+                0x0000000000003a78        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003a78                USBDevDisconnect
+ .text.USBDevAddrSet
+                0x0000000000003a82        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003a82                USBDevAddrSet
+ .text.USBDevEndpointConfigSet
+                0x0000000000003a88       0x80 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003a88                USBDevEndpointConfigSet
+ .text.USBFIFOConfigSet
+                0x0000000000003b08       0x44 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003b08                USBFIFOConfigSet
+ .text.USBEndpointDMAConfigSet
+                0x0000000000003b4c       0x4c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003b4c                USBEndpointDMAConfigSet
+ .text.USBEndpointDMAEnable
+                0x0000000000003b98       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003b98                USBEndpointDMAEnable
+ .text.USBEndpointDMADisable
+                0x0000000000003bb6       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003bb6                USBEndpointDMADisable
+ .text.USBEndpointDataAvail
+                0x0000000000003bd4       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003bd4                USBEndpointDataAvail
+ .text.USBEndpointDataGet
+                0x0000000000003bf4       0x48 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003bf4                USBEndpointDataGet
+ .text.USBDevEndpointDataAck
+                0x0000000000003c3c       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003c3c                USBDevEndpointDataAck
+ .text.USBEndpointDataPut
+                0x0000000000003c5a       0x32 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003c5a                USBEndpointDataPut
+ .text.USBEndpointDataSend
+                0x0000000000003c8c       0x2e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003c8c                USBEndpointDataSend
+ .text.USBFIFOAddrGet
+                0x0000000000003cba        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003cba                USBFIFOAddrGet
+ .text.USBEndpointDMAChannel
+                0x0000000000003cc2       0x1e /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003cc2                USBEndpointDMAChannel
+ .text.USBDevMode
+                0x0000000000003ce0        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003ce0                USBDevMode
+ .text.USBOTGMode
+                0x0000000000003ce8        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003ce8                USBOTGMode
+ .text.USBEndpointPacketCountSet
+                0x0000000000003cf0       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003cf0                USBEndpointPacketCountSet
+ .text.USBControllerVersion
+                0x0000000000003d02        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d02                USBControllerVersion
+ .text.USBClockEnable
+                0x0000000000003d0c        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d0c                USBClockEnable
+ .text.USBDMAChannelIntEnable
+                0x0000000000003d16       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d16                USBDMAChannelIntEnable
+ .text.USBDMAChannelIntDisable
+                0x0000000000003d26       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d26                USBDMAChannelIntDisable
+ .text.USBDMAChannelIntStatus
+                0x0000000000003d36        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d36                USBDMAChannelIntStatus
+ .text.USBDMAChannelEnable
+                0x0000000000003d3c       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d3c                USBDMAChannelEnable
+ .text.USBDMAChannelDisable
+                0x0000000000003d4c       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d4c                USBDMAChannelDisable
+ .text.USBDMAChannelConfigSet
+                0x0000000000003d5c       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d5c                USBDMAChannelConfigSet
+ .text.USBDMAChannelStatus
+                0x0000000000003d6e        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d6e                USBDMAChannelStatus
+ .text.USBDMAChannelAddressSet
+                0x0000000000003d7c        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d7c                USBDMAChannelAddressSet
+ .text.USBDMAChannelCountSet
+                0x0000000000003d86        0xa /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d86                USBDMAChannelCountSet
+ .text.USBULPIEnable
+                0x0000000000003d90        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d90                USBULPIEnable
+ .text.USBULPIDisable
+                0x0000000000003d9e        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003d9e                USBULPIDisable
+ .text.USBULPIRegRead
+                0x0000000000003dac       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003dac                USBULPIRegRead
+ .text.USBULPIRegWrite
+                0x0000000000003dcc       0x20 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003dcc                USBULPIRegWrite
+ .text.USBDevLPMConfig
+                0x0000000000003dec        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003dec                USBDevLPMConfig
+ .text.USBDevLPMEnable
+                0x0000000000003df4        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003df4                USBDevLPMEnable
+ .text.USBDevLPMDisable
+                0x0000000000003e02        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003e02                USBDevLPMDisable
+ .text.USBLPMIntStatus
+                0x0000000000003e10        0x6 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003e10                USBLPMIntStatus
+ .text.USBLPMIntEnable
+                0x0000000000003e16        0xe /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+                0x0000000000003e16                USBLPMIntEnable
+ .text.CPUcpsid
+                0x0000000000003e24        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+                0x0000000000003e24                CPUcpsid
+ .text.CPUcpsie
+                0x0000000000003e2c        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+                0x0000000000003e2c                CPUcpsie
+ .text          0x0000000000003e34      0x134 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+                0x0000000000003e34                memcpy
+ .text.realloc  0x0000000000003f68       0x10 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+                0x0000000000003f68                realloc
+ .text._realloc_r
+                0x0000000000003f78      0x34c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+                0x0000000000003f78                _realloc_r
+ *fill*         0x00000000000042c4       0x3c 
+ .text          0x0000000000004300       0xdc /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
+                0x0000000000004300                strlen
+ .text._malloc_trim_r
+                0x00000000000043dc       0xa0 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+                0x00000000000043dc                _malloc_trim_r
+ .text._free_r  0x000000000000447c      0x1cc /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+                0x000000000000447c                _free_r
+ .text._malloc_r
+                0x0000000000004648      0x560 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000000004648                _malloc_r
+ .text.memmove  0x0000000000004ba8       0xc8 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+                0x0000000000004ba8                memmove
+ .text.__malloc_lock
+                0x0000000000004c70        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+                0x0000000000004c70                __malloc_lock
+ .text.__malloc_unlock
+                0x0000000000004c74        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+                0x0000000000004c74                __malloc_unlock
+ .text._sbrk_r  0x0000000000004c78       0x24 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+                0x0000000000004c78                _sbrk_r
+ .text._sbrk    0x0000000000004c9c       0x1c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+                0x0000000000004c9c                _sbrk
+ *(.glue_7t)
+ .glue_7t       0x0000000000004cb8        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x0000000000004cb8        0x0 linker stubs
+ *(.rodata .rodata* .gnu.linkonce.r.*)
+ .rodata._ZTVN8std_msgs4TimeE
+                0x0000000000004cb8       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004cb8                vtable for std_msgs::Time
+ .rodata._ZTVN14rosserial_msgs9TopicInfoE
+                0x0000000000004cd0       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004cd0                vtable for rosserial_msgs::TopicInfo
+ .rodata._ZTVN14rosserial_msgs3LogE
+                0x0000000000004ce8       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004ce8                vtable for rosserial_msgs::Log
+ .rodata._ZTVN14rosserial_msgs20RequestParamResponseE
+                0x0000000000004d00       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004d00                vtable for rosserial_msgs::RequestParamResponse
+ .rodata._ZTVN8std_msgs9ColorRGBAE
+                0x0000000000004d18       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004d18                vtable for std_msgs::ColorRGBA
+ .rodata._ZTVN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EEE
+                0x0000000000004d30       0x14 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004d30                vtable for ros::NodeHandle_<TivaCHardware, 25, 25, 512, 512>
+ .rodata._ZTVN3ros10SubscriberIN8std_msgs9ColorRGBAEvEE
+                0x0000000000004d44       0x18 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000000004d44                vtable for ros::Subscriber<std_msgs::ColorRGBA, void>
+ .rodata._GLOBAL__sub_I_current_color.str1.1
+                0x0000000000004d5c        0x4 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgs20RequestParamResponse6getMD5Ev.str1.1
+                0x0000000000004d60       0x21 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgs3Log6getMD5Ev.str1.1
+                0x0000000000004d81       0x21 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgs3Log7getTypeEv.str1.1
+                0x0000000000004da2       0x13 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgs9TopicInfo6getMD5Ev.str1.1
+                0x0000000000004db5       0x21 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgs9TopicInfo7getTypeEv.str1.1
+                0x0000000000004dd6       0x19 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN14rosserial_msgsL12REQUESTPARAME
+                0x0000000000004def       0x1c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE15negotiateTopicsEv.str1.1
+                0x0000000000004e0b       0x19 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                                          0x1 (size before relaxing)
+ .rodata._ZN3ros11NodeHandle_I13TivaCHardwareLi25ELi25ELi512ELi512EE7publishEiPKNS_3MsgE.str1.1
+                0x0000000000004e0b       0x39 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN8std_msgs4Time6getMD5Ev.str1.1
+                0x0000000000004e44       0x21 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN8std_msgs4Time7getTypeEv.str1.1
+                0x0000000000004e65        0xe CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN8std_msgs9ColorRGBA6getMD5Ev.str1.1
+                0x0000000000004e73       0x21 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .rodata._ZN8std_msgs9ColorRGBA7getTypeEv.str1.1
+                0x0000000000004e94       0x13 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ *fill*         0x0000000000004ea7        0x1 
+ .rodata.g_ppui8StringDescriptors
+                0x0000000000004ea8       0x18 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004ea8                g_ppui8StringDescriptors
+ .rodata.g_pui8ConfigString
+                0x0000000000004ec0       0x36 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004ec0                g_pui8ConfigString
+ .rodata.g_pui8ControlInterfaceString
+                0x0000000000004ef6       0x2c CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004ef6                g_pui8ControlInterfaceString
+ .rodata.g_pui8LangDescriptor
+                0x0000000000004f22        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004f22                g_pui8LangDescriptor
+ .rodata.g_pui8ManufacturerString
+                0x0000000000004f26       0x24 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004f26                g_pui8ManufacturerString
+ .rodata.g_pui8ProductString
+                0x0000000000004f4a       0x22 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004f4a                g_pui8ProductString
+ .rodata.g_pui8SerialNumberString
+                0x0000000000004f6c       0x12 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000000004f6c                g_pui8SerialNumberString
+ *fill*         0x0000000000004f7e        0x2 
+ .rodata.g_pCDCCompSerConfigDescriptors
+                0x0000000000004f80        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004f80                g_pCDCCompSerConfigDescriptors
+ .rodata.g_pCDCCompSerConfigDescriptorsHS
+                0x0000000000004f84        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004f84                g_pCDCCompSerConfigDescriptorsHS
+ .rodata.g_ppCDCSerConfigDescriptors
+                0x0000000000004f88        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004f88                g_ppCDCSerConfigDescriptors
+ .rodata.g_ppCDCSerConfigDescriptorsHS
+                0x0000000000004f8c        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004f8c                g_ppCDCSerConfigDescriptorsHS
+ .rodata.g_pui8CDCSerCommInterface
+                0x0000000000004f90       0x23 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004f90                g_pui8CDCSerCommInterface
+ .rodata.g_pui8CDCSerDataInterface
+                0x0000000000004fb3       0x17 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004fb3                g_pui8CDCSerDataInterface
+ .rodata.g_pui8CDCSerDataInterfaceHS
+                0x0000000000004fca       0x17 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004fca                g_pui8CDCSerDataInterfaceHS
+ *fill*         0x0000000000004fe1        0x3 
+ .rodata.g_sCDCCompSerConfigHeader
+                0x0000000000004fe4        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004fe4                g_sCDCCompSerConfigHeader
+ .rodata.g_sCDCCompSerConfigHeaderHS
+                0x0000000000004fec        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004fec                g_sCDCCompSerConfigHeaderHS
+ .rodata.g_sCDCHandlers
+                0x0000000000004ff4       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000004ff4                g_sCDCHandlers
+ .rodata.g_sCDCSerCommInterfaceSection
+                0x0000000000005024        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000005024                g_sCDCSerCommInterfaceSection
+ .rodata.g_sCDCSerConfigHeader
+                0x000000000000502c        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x000000000000502c                g_sCDCSerConfigHeader
+ .rodata.g_sCDCSerConfigHeaderHS
+                0x0000000000005034        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000005034                g_sCDCSerConfigHeaderHS
+ .rodata.g_sCDCSerConfigSection
+                0x000000000000503c        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x000000000000503c                g_sCDCSerConfigSection
+ .rodata.g_sCDCSerDataInterfaceSection
+                0x0000000000005044        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000005044                g_sCDCSerDataInterfaceSection
+ .rodata.g_sCDCSerDataInterfaceSectionHS
+                0x000000000000504c        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x000000000000504c                g_sCDCSerDataInterfaceSectionHS
+ .rodata.g_sIADSerConfigSection
+                0x0000000000005054        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000000005054                g_sIADSerConfigSection
+ .rodata.g_psUSBDStdRequests
+                0x000000000000505c       0x34 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .rodata.g_pui32Dii16Regs
+                0x0000000000005090       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .rodata.g_pui32EnRegs
+                0x00000000000050a4       0x14 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x00000000000050b8                . = ALIGN (0x4)
+ *(.init)
+                0x00000000000050b8                . = ALIGN (0x4)
+                0x00000000000050b8                __preinit_array_start = .
+ *(SORT(.preinit_array*))
+ *(.preinit_array)
+                0x00000000000050b8                __preinit_array_end = .
+                0x00000000000050b8                . = ALIGN (0x4)
+                0x00000000000050b8                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00000000000050b8        0x4 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x00000000000050bc                __init_array_end = .
+                0x00000000000050bc                . = ALIGN (0x4)
+ *(.fini)
+                0x00000000000050bc                . = ALIGN (0x4)
+                0x00000000000050bc                __fini_array_start = .
+ *(.fini_array)
+ *(SORT(.fini_array.*))
+                0x00000000000050bc                __fini_array_end = .
+                0x00000000000050bc                . = ALIGN (0x4)
+                0x00000000000050bc                _etext = .
+
+.vfp11_veneer   0x00000000000050bc        0x0
+ .vfp11_veneer  0x00000000000050bc        0x0 linker stubs
+
+.v4_bx          0x00000000000050bc        0x0
+ .v4_bx         0x00000000000050bc        0x0 linker stubs
+
+.iplt           0x00000000000050bc        0x0
+ .iplt          0x00000000000050bc        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+
+.rel.dyn        0x00000000000050bc        0x0
+ .rel.iplt      0x00000000000050bc        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+
+.data           0x0000000020000000      0xbf8 load address 0x00000000000050bc
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _data = .
+ *(vtable)
+ vtable         0x0000000020000000      0x26c /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ *(.data .data* .gnu.linkonce.d.*)
+ .data.current_color
+                0x000000002000026c        0xc CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x000000002000026c                current_color
+ .data.current_intensity
+                0x0000000020000278        0x4 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000020000278                current_intensity
+ .data.g_fIntensity
+                0x000000002000027c        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .data.g_sCDCDevice
+                0x0000000020000280       0x60 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000020000280                g_sCDCDevice
+ .data.g_sRxBuffer
+                0x00000000200002e0       0x38 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x00000000200002e0                g_sRxBuffer
+ .data.g_sTxBuffer
+                0x0000000020000318       0x38 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000020000318                g_sTxBuffer
+ .data.g_psCDCCompSerSections
+                0x0000000020000350       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000020000350                g_psCDCCompSerSections
+ .data.g_psCDCCompSerSectionsHS
+                0x0000000020000360       0x10 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000020000360                g_psCDCCompSerSectionsHS
+ .data.g_psCDCSerSections
+                0x0000000020000370        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000020000370                g_psCDCSerSections
+ .data.g_psCDCSerSectionsHS
+                0x000000002000037c        0xc /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x000000002000037c                g_psCDCSerSectionsHS
+ .data.g_pui8CDCSerDescriptor
+                0x0000000020000388        0x9 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000020000388                g_pui8CDCSerDescriptor
+ .data.g_pui8CDCSerDeviceDescriptor
+                0x0000000020000391       0x12 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x0000000020000391                g_pui8CDCSerDeviceDescriptor
+ .data.g_pui8IADSerDescriptor
+                0x00000000200003a3        0x8 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+                0x00000000200003a3                g_pui8IADSerDescriptor
+ *fill*         0x00000000200003ab        0x1 
+ .data.g_ui16MaxPacketSize
+                0x00000000200003ac        0x2 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ *fill*         0x00000000200003ae        0x2 
+ .data.g_ui32PLLDiv
+                0x00000000200003b0        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .data.g_iUSBMode
+                0x00000000200003b4        0x1 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+                0x00000000200003b4                g_iUSBMode
+ *fill*         0x00000000200003b5        0x3 
+ .data._impure_ptr
+                0x00000000200003b8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x00000000200003b8                _impure_ptr
+ *fill*         0x00000000200003bc        0x4 
+ .data.impure_data
+                0x00000000200003c0      0x428 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .data.__malloc_av_
+                0x00000000200007e8      0x408 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x00000000200007e8                __malloc_av_
+ .data.__malloc_sbrk_base
+                0x0000000020000bf0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020000bf0                __malloc_sbrk_base
+ .data.__malloc_trim_threshold
+                0x0000000020000bf4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x0000000020000bf4                __malloc_trim_threshold
+                0x0000000020000bf8                _edata = .
+
+.igot.plt       0x0000000020000bf8        0x0 load address 0x0000000000005cb4
+ .igot.plt      0x0000000020000bf8        0x0 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+
+.bss            0x0000000020000bf8      0x990 load address 0x0000000000005cb4
+                0x0000000020000bf8                . = ALIGN (0x4)
+                0x0000000020000bf8                _bss = .
+                0x0000000020000bf8                __bss_start__ = _bss
+ *(.bss*)
+ .bss.nh        0x0000000020000bf8      0x52c CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000020000bf8                nh
+ .bss.rgb_sub   0x0000000020001124       0x28 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                0x0000000020001124                rgb_sub
+ .bss.g_ui32Colors
+                0x000000002000114c        0xc CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .bss.g_ui32milliseconds
+                0x0000000020001158        0x4 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+                0x0000000020001158                g_ui32milliseconds
+ .bss.g_bUSBConfigured
+                0x000000002000115c        0x1 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .bss.g_pui8DataBufferIn
+                0x000000002000115d       0x40 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ *fill*         0x000000002000119d        0x3 
+ .bss.g_ui32ULPISupport
+                0x00000000200011a0        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .bss.ui32SOFDivide.6417
+                0x00000000200011a4        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .bss.g_psUSBDMAInst
+                0x00000000200011a8      0x110 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .bss.g_pfnUSBModeCallback
+                0x00000000200012b8        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .bss.g_bUSBTimerInitialized
+                0x00000000200012bc        0x1 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x00000000200012bc                g_bUSBTimerInitialized
+ *fill*         0x00000000200012bd        0x3 
+ .bss.g_ui32CurrentUSBTick
+                0x00000000200012c0        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x00000000200012c0                g_ui32CurrentUSBTick
+ .bss.g_ui32USBSOFCount
+                0x00000000200012c4        0x4 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x00000000200012c4                g_ui32USBSOFCount
+ .bss.__malloc_current_mallinfo
+                0x00000000200012c8       0x28 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x00000000200012c8                __malloc_current_mallinfo
+ .bss.__malloc_max_sbrked_mem
+                0x00000000200012f0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x00000000200012f0                __malloc_max_sbrked_mem
+ .bss.__malloc_max_total_mem
+                0x00000000200012f4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x00000000200012f4                __malloc_max_total_mem
+ .bss.__malloc_top_pad
+                0x00000000200012f8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x00000000200012f8                __malloc_top_pad
+ .bss.heap_end.5239
+                0x00000000200012fc        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+ *(COMMON)
+ COMMON         0x0000000020001300      0x200 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+                0x0000000020001300                g_pui8USBRxBuffer
+                0x0000000020001400                g_pui8USBTxBuffer
+ COMMON         0x0000000020001500       0x54 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+                0x0000000020001500                g_psDCDInst
+                0x0000000020001550                g_ppsDevInfo
+ COMMON         0x0000000020001554       0x30 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+                0x0000000020001554                g_pvTickInstance
+                0x000000002000156c                g_pfnTickHandlers
+ COMMON         0x0000000020001584        0x4 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+                0x0000000020001584                errno
+                0x0000000020001588                . = ALIGN (0x4)
+                0x0000000020001588                _ebss = .
+                0x0000000020001588                __bss_end__ = _ebss
+                0x0000000020001588                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                [!provide]                        PROVIDE (__exidx_end, .)
+                0x0000000020001588                . = ALIGN (0x4)
+                0x0000000020001588                _end = .
+                0x0000000020001588                PROVIDE (end, _end)
+                0x0000000020008000                PROVIDE (_estack, (ORIGIN (SRAM) + LENGTH (SRAM)))
+OUTPUT(/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/devel/share/rosserial_tivac_tutorials/rgb_led.axf elf32-littlearm)
+
+.comment        0x0000000000000000       0x6e
+ .comment       0x0000000000000000       0x6e CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+                                         0x6f (size before relaxing)
+ .comment       0x000000000000006e       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .comment       0x000000000000006e       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .comment       0x000000000000006e       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .comment       0x000000000000006e       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .comment       0x000000000000006e       0x6f CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .comment       0x000000000000006e       0x6f /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+
+.ARM.attributes
+                0x0000000000000000       0x37
+ .ARM.attributes
+                0x0000000000000000       0x39 CMakeFiles/rgb_led.axf.dir/rgb_led.cpp.obj
+ .ARM.attributes
+                0x0000000000000039       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/TivaWare/examples/boards/ek-tm4c123gxl/drivers/rgb.c.obj
+ .ARM.attributes
+                0x0000000000000072       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/startup_gcc.c.obj
+ .ARM.attributes
+                0x00000000000000ab       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/time.cpp.obj
+ .ARM.attributes
+                0x00000000000000e4       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/tivac_hardware.cpp.obj
+ .ARM.attributes
+                0x000000000000011d       0x39 CMakeFiles/rgb_led.axf.dir/home/wesley/Sources/TUhandControl/TivaC/catkin_rosserial_tut/build/rosserial_tivac_tutorials/ros_lib/usb_serial_structs.c.obj
+ .ARM.attributes
+                0x0000000000000156       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbbuffer.o)
+ .ARM.attributes
+                0x000000000000018f       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdc.o)
+ .ARM.attributes
+                0x00000000000001c8       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdenum.o)
+ .ARM.attributes
+                0x0000000000000201       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdhandler.o)
+ .ARM.attributes
+                0x000000000000023a       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdma.o)
+ .ARM.attributes
+                0x0000000000000273       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbmode.o)
+ .ARM.attributes
+                0x00000000000002ac       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbringbuf.o)
+ .ARM.attributes
+                0x00000000000002e5       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbtick.o)
+ .ARM.attributes
+                0x000000000000031e       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbulpi.o)
+ .ARM.attributes
+                0x0000000000000357       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdcdesc.o)
+ .ARM.attributes
+                0x0000000000000390       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdconfig.o)
+ .ARM.attributes
+                0x00000000000003c9       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/usblib/gcc/libusb.a(usbdesc.o)
+ .ARM.attributes
+                0x0000000000000402       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(interrupt.o)
+ .ARM.attributes
+                0x000000000000043b       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(sysctl.o)
+ .ARM.attributes
+                0x0000000000000474       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(systick.o)
+ .ARM.attributes
+                0x00000000000004ad       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(udma.o)
+ .ARM.attributes
+                0x00000000000004e6       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(usb.o)
+ .ARM.attributes
+                0x000000000000051f       0x39 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/gcc/libdriver.a(cpu.o)
+ .ARM.attributes
+                0x0000000000000558       0x20 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x0000000000000578       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .ARM.attributes
+                0x00000000000005ac       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .ARM.attributes
+                0x00000000000005e0       0x20 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x0000000000000600       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x0000000000000634       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000668       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x000000000000069c       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000000000006d0       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x0000000000000704       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x0000000000000738       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x000000000000076c       0x34 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)
+
+.debug_frame    0x0000000000000000      0x258
+ .debug_frame   0x0000000000000000       0x20 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .debug_frame   0x0000000000000020       0x68 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .debug_frame   0x0000000000000088       0x74 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .debug_frame   0x00000000000000fc       0x58 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000000154       0x30 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .debug_frame   0x0000000000000184       0x30 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000001b4       0x2c /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000001e0       0x58 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .debug_frame   0x0000000000000238       0x20 /usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libnosys.a(sbrk.o)

@@ -1,2 +1,2 @@
-adc_joystick_msg:ros_tivac
+adc_joystick_msg:ros_tivac:stepper_msg
 -DCATKIN_DEVEL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install -G Unix Makefiles

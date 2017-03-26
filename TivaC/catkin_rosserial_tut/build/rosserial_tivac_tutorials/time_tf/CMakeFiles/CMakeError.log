@@ -1,0 +1,12 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/arm-none-eabi-gcc 
+Build flags: -mthumb;-mcpu=cortex-m4;-mfpu=fpv4-sp-d16;-mfloat-abi=hard;-std=gnu99;-Os;-ffunction-sections;-fdata-sections;-MD;-Wall;-pedantic;-fsingle-precision-constant
+Id flags: 
+
+The output was:
+1
+/usr/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o): In function `exit':
+exit.c:(.text.exit+0x16): undefined reference to `_exit'
+collect2: error: ld returned 1 exit status
+
+
