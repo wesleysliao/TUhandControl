@@ -3,10 +3,13 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_ssi.h"
 #include "inc/hw_types.h"
+#include "inc/hw_ints.h"
 #include "driverlib/ssi.h"
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/timer.h"
 
 //Control registers
 #define  WR   0x0
@@ -27,39 +30,37 @@ uint8_t CR1_reg = 0;
 uint8_t CR2_reg = 0;
 uint8_t CR3_reg = 0;
 
-// Bit-wise reverses a number.
-uint8_t Reverse8(uint8_t ui8Number)
-{
-    uint8_t ui8Index;
-    uint8_t ui8ReversedNumber = 0;
-    for(ui8Index=0; ui8Index<8; ui8Index++)
-    {
-        ui8ReversedNumber = ui8ReversedNumber << 1;
-        ui8ReversedNumber |= ((1 << ui8Index) & ui8Number) >> ui8Index;
-    }
-    return ui8ReversedNumber;
-}
+
+#define GPIO_JOYSTICK_CLICK_PORT        GPIO_PORTA_BASE
+#define GPIO_JOYSTICK_CLICK_PIN         GPIO_PIN_5
+
+#define GPIO_JOYSTICK_X_AXIS_PORT       GPIO_PORTE_BASE
+#define GPIO_JOYSTICK_X_AXIS_PIN        GPIO_PIN_2
+#define ADC_CH_JOYSTICK_X_AXIS          ADC_CTL_CH1
+
+#define GPIO_JOYSTICK_Y_AXIS_PORT       GPIO_PORTE_BASE
+#define GPIO_JOYSTICK_Y_AXIS_PIN        GPIO_PIN_1
+#define ADC_CH_JOYSTICK_Y_AXIS          ADC_CTL_CH2
 
 
-uint16_t Reverse16(uint16_t ui16Number)
-{
-    uint16_t ui16Index;
-    uint16_t ui16ReversedNumber = 0;
-    for(ui16Index=0; ui16Index<16; ui16Index++)
-    {
-        ui16ReversedNumber = ui16ReversedNumber << 1;
-        ui16ReversedNumber |= ((1 << ui16Index) & ui16Number) >> ui16Index;
-    }
-    return ui16ReversedNumber;
-}
+#define TIMER_STEPPER_1_BASE            TIMER0_BASE
+#define TIMER_STEPPER_1_TIMER           TIMER_A
 
-#define GPIO_SPI_CS_STEPPER_1_PORT GPIO_PORTA_BASE
-#define GPIO_SPI_CS_STEPPER_1_PIN  GPIO_PIN_4
+#define TIMER_STEPPER_PIN_RESET_BASE    TIMER0_BASE
+#define TIMER_STEPPER_PIN_RESET_TIMER   TIMER_A
+
+#define GPIO_STEPPER_1_CS_PORT          GPIO_PORTA_BASE
+#define GPIO_STEPPER_1_CS_PIN           GPIO_PIN_4
+#define GPIO_STEPPER_1_STEP_PORT        GPIO_PORTB_BASE
+#define GPIO_STEPPER_1_STEP_PIN         GPIO_PIN_3
+
+#define GPIO_STEPPER_CLRALL_PORT        GPIO_PORTE_BASE
+#define GPIO_STEPPER_CLRALL_PIN         GPIO_PIN_0
 
 uint32_t SPIReadByte(uint8_t address);
 
 void SPIWriteByte(uint8_t address, uint8_t data){
-    GPIOPinWrite(GPIO_SPI_CS_STEPPER_1_PORT, GPIO_SPI_CS_STEPPER_1_PIN, 0); //Pull CS LOW
+    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 0); //Pull CS LOW
 
     uint32_t ui32Data = 0b1000000000000000 | (address << 8) | data;
 
@@ -69,16 +70,11 @@ void SPIWriteByte(uint8_t address, uint8_t data){
     {
     }
 
-    GPIOPinWrite(GPIO_SPI_CS_STEPPER_1_PORT, GPIO_SPI_CS_STEPPER_1_PIN, 255); //Pull CS HIGH
-
-    SysCtlDelay(50);
-
-
-    SPIReadByte(address);
+    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
 }
 
 uint32_t SPIReadByte(uint8_t address){
-    GPIOPinWrite(GPIO_SPI_CS_STEPPER_1_PORT, GPIO_SPI_CS_STEPPER_1_PIN, 0); //Pull CS LOW
+    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 0); //Pull CS LOW
 
     uint32_t readRequest = (address << 8);
     uint32_t dataIn =0;
@@ -91,7 +87,7 @@ uint32_t SPIReadByte(uint8_t address){
 
     while(SSIDataGetNonBlocking(SSI2_BASE, &dataIn) != 0);
 
-    GPIOPinWrite(GPIO_SPI_CS_STEPPER_1_PORT, GPIO_SPI_CS_STEPPER_1_PIN, 255); //Pull CS HIGH
+    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
 
     return dataIn;
 }
@@ -203,6 +199,105 @@ void SetStepperStepMode(uint8_t stepmode){
     SPIWriteByte(CR3, CR3_reg);
 }
 
+void ScheduleStepPinReset(){
+
+    TimerEnable(TIMER0_BASE, TIMER_A); //Enable reset
+}
+
+
+uint32_t Stepper1_position      = 0;
+int32_t Stepper1_speed          = 1;
+uint32_t Stepper1_min_speed     = 1;
+uint32_t Stepper1_max_speed     = 96000;
+uint32_t Stepper1_accel         = 20;
+int32_t Stepper1_target_speed   = 24000;
+
+
+#define STEPPER_ACCEL_INTERVAL 2
+
+bool SameSign(int x, int y)
+{
+    return (x >= 0) ^ (y < 0);
+}
+
+void AccelSteppers(void){
+    TimerIntClear(TIMER0_BASE, TIMER_TIMB_TIMEOUT);
+
+    if(Stepper1_speed != Stepper1_target_speed){
+
+        if(Stepper1_speed < Stepper1_target_speed)
+        {
+            if( (Stepper1_target_speed-Stepper1_speed) < (Stepper1_accel/STEPPER_ACCEL_INTERVAL))
+            {
+                if(!SameSign(Stepper1_speed, Stepper1_target_speed))
+                {
+                    SetStepperDirection(true);
+                }
+                Stepper1_speed = Stepper1_target_speed;
+            }
+            else
+            {
+                if(!SameSign(Stepper1_speed, Stepper1_speed+(Stepper1_accel/STEPPER_ACCEL_INTERVAL)))
+                {
+                    SetStepperDirection(true);
+                }
+                Stepper1_speed += Stepper1_accel/STEPPER_ACCEL_INTERVAL;
+            }
+        }
+        else{
+            if( (Stepper1_speed-Stepper1_target_speed) < (Stepper1_accel/STEPPER_ACCEL_INTERVAL))
+            {
+                if(!SameSign(Stepper1_speed, Stepper1_target_speed))
+                {
+                    SetStepperDirection(false);
+                }
+                Stepper1_speed = Stepper1_target_speed;
+            }
+            else
+            {
+                if(!SameSign(Stepper1_speed, Stepper1_speed+(Stepper1_accel/STEPPER_ACCEL_INTERVAL)))
+                {
+                    SetStepperDirection(false);
+                }
+                Stepper1_speed -= Stepper1_accel/STEPPER_ACCEL_INTERVAL;
+            }
+        }
+
+        TimerLoadSet(TIMER1_BASE, TIMER_A, (SysCtlClockGet() / abs(Stepper1_speed)) -1);
+    }
+}
+
+void Stepper1StepPinSet(void)
+{
+    // Clear the timer interrupt
+    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 255);
+
+    Stepper1_position++;
+
+    ScheduleStepPinReset();
+}
+
+void StepPinReset(void)
+{
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+    GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 0);
+}
+
+void SW1_SW2_pressed(void){
+    if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
+
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
+    }
+    else if(GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_4) {
+
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
+
+        Stepper1_target_speed = -24000;
+    }
+}
+
+
 int main(void)
 {
     // TivaC system clock configuration. Set to 80MHz.
@@ -214,14 +309,20 @@ int main(void)
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTE_BASE,GPIO_PIN_0);
-    GPIOPadConfigSet(GPIO_PORTE_BASE,GPIO_PIN_0,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);
+    GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);             // Configure PF4 for falling edge trigger
+    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_2);
-    GPIOPadConfigSet(GPIO_PORTF_BASE,GPIO_PIN_2,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    GPIOPinTypeGPIOOutput(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN);
+    GPIOPadConfigSet(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE,GPIO_PIN_4);
-    GPIOPadConfigSet(GPIO_PORTA_BASE,GPIO_PIN_4,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN);
+    GPIOPadConfigSet(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
+    GPIOPadConfigSet(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
     GPIOPinConfigure(GPIO_PB4_SSI2CLK);
     GPIOPinConfigure(GPIO_PB7_SSI2TX);
@@ -231,27 +332,58 @@ int main(void)
     SSIConfigSetExpClk(SSI2_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 100000, 16);
     SSIEnable(SSI2_BASE);
 
-    GPIOPinWrite(GPIO_SPI_CS_STEPPER_1_PORT, GPIO_SPI_CS_STEPPER_1_PIN, 255); //Pull CS HIGH
+    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
 
-    GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_0, 255); //Pull CLR HIGH
+    GPIOPinWrite(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN, 255); //Pull CLR HIGH
     SysCtlDelay(1000);
-    GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_0, 0); //Pull CLR LOW
+    GPIOPinWrite(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN, 0); //Pull CLR LOW
 
     uint32_t buf;
     while(SSIDataGetNonBlocking(SSI2_BASE, &buf) != 0); //clear spi fifo buffer
 
-
     ClearStepperRegisters();
-    SetStepperCurrent(2800);
-    SetStepperStepMode(STEPMODE_MICRO_8);
+    SetStepperCurrent(280);
+    SetStepperStepMode(STEPMODE_MICRO_16);
     StepperEnable();
 
 
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+
+    TimerDisable(TIMER0_BASE, TIMER_A|TIMER_B);
+
+    TimerConfigure(TIMER0_BASE, TIMER_CFG_SPLIT_PAIR| TIMER_CFG_A_ONE_SHOT | TIMER_CFG_B_PERIODIC);
+    TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC);
+
+    //Stepper1_speed = 3200;
+    TimerLoadSet(TIMER1_BASE, TIMER_A, (SysCtlClockGet() / Stepper1_speed) -1);
+    TimerUpdateMode(TIMER1_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
+
+    uint32_t StepPinResetDelay_us = 2; //microseconds
+    TimerLoadSet(TIMER0_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
+
+    TimerLoadSet(TIMER0_BASE, TIMER_B, (SysCtlClockGet() / STEPPER_ACCEL_INTERVAL)-1);
+
+    TimerIntRegister(TIMER1_BASE, TIMER_A, Stepper1StepPinSet);
+    TimerIntRegister(TIMER0_BASE, TIMER_A, StepPinReset);
+    TimerIntRegister(TIMER0_BASE, TIMER_B, AccelSteppers);
+
+    IntEnable(INT_TIMER0A);
+    TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+
+    IntEnable(INT_TIMER0B);
+    TimerIntEnable(TIMER0_BASE, TIMER_TIMB_TIMEOUT);
+
+    IntEnable(INT_TIMER1A);
+    TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+
+    IntMasterEnable();
+
+    TimerEnable(TIMER0_BASE, TIMER_A|TIMER_B);
+    TimerEnable(TIMER1_BASE, TIMER_A);
+
     while(1)
     {
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 255);
-        SysCtlDelay(10000);
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
         SysCtlDelay(10000);
 
         uint32_t sr0_stat = SPIReadByte(SR0);
@@ -266,9 +398,13 @@ int main(void)
             uint32_t sr4_stat = SPIReadByte(SR4);
             //error detected
             SysCtlDelay(1);
+            while(1);
 
             StepperEnable();
         }
 
     }
 }
+
+
+
