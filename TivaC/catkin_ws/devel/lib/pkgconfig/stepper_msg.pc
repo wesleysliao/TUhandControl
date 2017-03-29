@@ -1,8 +1,0 @@
-prefix=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel
-
-Name: stepper_msg
-Description: Description of stepper_msg
-Version: 0.0.0
-Cflags: -I/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel/include
-Libs: -L/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/devel/lib 
-Requires: message_runtime

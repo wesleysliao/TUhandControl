@@ -1,7 +1,0 @@
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/edit_cache.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/rebuild_cache.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/flash.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/build_driverlib.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/chatter.axf.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/dump.dir
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/chatter/CMakeFiles/size.dir

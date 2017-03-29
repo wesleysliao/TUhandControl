@@ -1,8 +1,0 @@
-prefix=/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install
-
-Name: ros_tivac
-Description: Description of ros_tivac
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/install/lib 
-Requires: 
