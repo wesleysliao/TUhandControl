@@ -21,6 +21,7 @@ class Stepper_Status {
       this.position_steps = null;
       this.speed_steps_per_second = null;
       this.direction_forward = null;
+      this.enabled = null;
     }
     else {
       if (initObj.hasOwnProperty('position_steps')) {
@@ -41,17 +42,25 @@ class Stepper_Status {
       else {
         this.direction_forward = false;
       }
+      if (initObj.hasOwnProperty('enabled')) {
+        this.enabled = initObj.enabled
+      }
+      else {
+        this.enabled = false;
+      }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type Stepper_Status
     // Serialize message field [position_steps]
-    bufferOffset = _serializer.uint32(obj.position_steps, buffer, bufferOffset);
+    bufferOffset = _serializer.int64(obj.position_steps, buffer, bufferOffset);
     // Serialize message field [speed_steps_per_second]
-    bufferOffset = _serializer.uint32(obj.speed_steps_per_second, buffer, bufferOffset);
+    bufferOffset = _serializer.int32(obj.speed_steps_per_second, buffer, bufferOffset);
     // Serialize message field [direction_forward]
     bufferOffset = _serializer.bool(obj.direction_forward, buffer, bufferOffset);
+    // Serialize message field [enabled]
+    bufferOffset = _serializer.bool(obj.enabled, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -60,16 +69,18 @@ class Stepper_Status {
     let len;
     let data = new Stepper_Status(null);
     // Deserialize message field [position_steps]
-    data.position_steps = _deserializer.uint32(buffer, bufferOffset);
+    data.position_steps = _deserializer.int64(buffer, bufferOffset);
     // Deserialize message field [speed_steps_per_second]
-    data.speed_steps_per_second = _deserializer.uint32(buffer, bufferOffset);
+    data.speed_steps_per_second = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [direction_forward]
     data.direction_forward = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [enabled]
+    data.enabled = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 9;
+    return 14;
   }
 
   static datatype() {
@@ -79,15 +90,16 @@ class Stepper_Status {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '3a08b832803b195f0f005fead32aedac';
+    return 'b8e41235ddba5043cc88e78b8401e13b';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    uint32 position_steps
-    uint32 speed_steps_per_second
+    int64 position_steps
+    int32 speed_steps_per_second
     bool direction_forward
+    bool enabled
     `;
   }
 
@@ -116,6 +128,13 @@ class Stepper_Status {
     }
     else {
       resolved.direction_forward = false
+    }
+
+    if (msg.enabled !== undefined) {
+      resolved.enabled = msg.enabled;
+    }
+    else {
+      resolved.enabled = false
     }
 
     return resolved;

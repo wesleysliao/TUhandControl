@@ -7,14 +7,15 @@ import struct
 
 
 class Stepper_Status(genpy.Message):
-  _md5sum = "3a08b832803b195f0f005fead32aedac"
+  _md5sum = "b8e41235ddba5043cc88e78b8401e13b"
   _type = "stepper_msg/Stepper_Status"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """uint32 position_steps
-uint32 speed_steps_per_second
-bool direction_forward"""
-  __slots__ = ['position_steps','speed_steps_per_second','direction_forward']
-  _slot_types = ['uint32','uint32','bool']
+  _full_text = """int64 position_steps
+int32 speed_steps_per_second
+bool direction_forward
+bool enabled"""
+  __slots__ = ['position_steps','speed_steps_per_second','direction_forward','enabled']
+  _slot_types = ['int64','int32','bool','bool']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +25,7 @@ bool direction_forward"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       position_steps,speed_steps_per_second,direction_forward
+       position_steps,speed_steps_per_second,direction_forward,enabled
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -39,10 +40,13 @@ bool direction_forward"""
         self.speed_steps_per_second = 0
       if self.direction_forward is None:
         self.direction_forward = False
+      if self.enabled is None:
+        self.enabled = False
     else:
       self.position_steps = 0
       self.speed_steps_per_second = 0
       self.direction_forward = False
+      self.enabled = False
 
   def _get_types(self):
     """
@@ -57,7 +61,7 @@ bool direction_forward"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2IB().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward))
+      buff.write(_get_struct_qi2B().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -70,9 +74,10 @@ bool direction_forward"""
       end = 0
       _x = self
       start = end
-      end += 9
-      (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward,) = _get_struct_2IB().unpack(str[start:end])
+      end += 14
+      (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled,) = _get_struct_qi2B().unpack(str[start:end])
       self.direction_forward = bool(self.direction_forward)
+      self.enabled = bool(self.enabled)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -86,7 +91,7 @@ bool direction_forward"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2IB().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward))
+      buff.write(_get_struct_qi2B().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -100,9 +105,10 @@ bool direction_forward"""
       end = 0
       _x = self
       start = end
-      end += 9
-      (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward,) = _get_struct_2IB().unpack(str[start:end])
+      end += 14
+      (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled,) = _get_struct_qi2B().unpack(str[start:end])
       self.direction_forward = bool(self.direction_forward)
+      self.enabled = bool(self.enabled)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -111,9 +117,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2IB = None
-def _get_struct_2IB():
-    global _struct_2IB
-    if _struct_2IB is None:
-        _struct_2IB = struct.Struct("<2IB")
-    return _struct_2IB
+_struct_qi2B = None
+def _get_struct_qi2B():
+    global _struct_qi2B
+    if _struct_qi2B is None:
+        _struct_qi2B = struct.Struct("<qi2B")
+    return _struct_qi2B

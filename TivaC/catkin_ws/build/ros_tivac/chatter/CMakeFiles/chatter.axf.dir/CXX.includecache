@@ -18,9 +18,13 @@
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom_map.h
 
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/ssi.h
+
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/sysctl.h
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/systick.h
+
+/home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/timer.h
 
 /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/uart.h
 
@@ -170,16 +174,6 @@ stdlib.h
 ros/msg.h
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/ros/msg.h
 
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ColorRGBA.h
-stdint.h
--
-string.h
--
-stdlib.h
--
-ros/msg.h
-/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ros/msg.h
-
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
 stdint.h
 -
@@ -297,6 +291,8 @@ stdbool.h
 -
 stdint.h
 -
+algorithm
+-
 queue
 -
 driverlib/interrupt.h
@@ -307,6 +303,14 @@ driverlib/gpio.h
 -
 driverlib/adc.h
 -
+inc/hw_ints.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/inc/hw_ints.h
+driverlib/ssi.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/driverlib/ssi.h
+driverlib/pin_map.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/driverlib/pin_map.h
+driverlib/timer.h
+/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/driverlib/timer.h
 include/tivacpin.h
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/include/tivacpin.h
 ros.h
@@ -317,8 +321,6 @@ stepper_msg/Stepper_Target.h
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/stepper_msg/Stepper_Target.h
 stepper_msg/Stepper_Status.h
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/stepper_msg/Stepper_Status.h
-std_msgs/ColorRGBA.h
--
 
 /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/ros_tivac/chatter/include/tivacpin.h
 

@@ -1,3 +1,4 @@
-uint32 position_steps
-uint32 speed_steps_per_second
+int64 position_steps
+int32 speed_steps_per_second
 bool direction_forward
+bool enabled

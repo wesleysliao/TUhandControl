@@ -26,25 +26,30 @@ struct Stepper_Status_
   Stepper_Status_()
     : position_steps(0)
     , speed_steps_per_second(0)
-    , direction_forward(false)  {
+    , direction_forward(false)
+    , enabled(false)  {
     }
   Stepper_Status_(const ContainerAllocator& _alloc)
     : position_steps(0)
     , speed_steps_per_second(0)
-    , direction_forward(false)  {
+    , direction_forward(false)
+    , enabled(false)  {
   (void)_alloc;
     }
 
 
 
-   typedef uint32_t _position_steps_type;
+   typedef int64_t _position_steps_type;
   _position_steps_type position_steps;
 
-   typedef uint32_t _speed_steps_per_second_type;
+   typedef int32_t _speed_steps_per_second_type;
   _speed_steps_per_second_type speed_steps_per_second;
 
    typedef uint8_t _direction_forward_type;
   _direction_forward_type direction_forward;
+
+   typedef uint8_t _enabled_type;
+  _enabled_type enabled;
 
 
 
@@ -123,12 +128,12 @@ struct MD5Sum< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "3a08b832803b195f0f005fead32aedac";
+    return "b8e41235ddba5043cc88e78b8401e13b";
   }
 
   static const char* value(const ::stepper_msg::Stepper_Status_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x3a08b832803b195fULL;
-  static const uint64_t static_value2 = 0x0f005fead32aedacULL;
+  static const uint64_t static_value1 = 0xb8e41235ddba5043ULL;
+  static const uint64_t static_value2 = 0xcc88e78b8401e13bULL;
 };
 
 template<class ContainerAllocator>
@@ -147,9 +152,10 @@ struct Definition< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint32 position_steps\n\
-uint32 speed_steps_per_second\n\
+    return "int64 position_steps\n\
+int32 speed_steps_per_second\n\
 bool direction_forward\n\
+bool enabled\n\
 ";
   }
 
@@ -171,6 +177,7 @@ namespace serialization
       stream.next(m.position_steps);
       stream.next(m.speed_steps_per_second);
       stream.next(m.direction_forward);
+      stream.next(m.enabled);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -190,11 +197,13 @@ struct Printer< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::stepper_msg::Stepper_Status_<ContainerAllocator>& v)
   {
     s << indent << "position_steps: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.position_steps);
+    Printer<int64_t>::stream(s, indent + "  ", v.position_steps);
     s << indent << "speed_steps_per_second: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.speed_steps_per_second);
+    Printer<int32_t>::stream(s, indent + "  ", v.speed_steps_per_second);
     s << indent << "direction_forward: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.direction_forward);
+    s << indent << "enabled: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.enabled);
   }
 };
 

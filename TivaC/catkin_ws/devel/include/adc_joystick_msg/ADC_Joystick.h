@@ -26,12 +26,16 @@ struct ADC_Joystick_
   ADC_Joystick_()
     : select(false)
     , x_axis_raw(0)
-    , y_axis_raw(0)  {
+    , x_axis_zero(0)
+    , y_axis_raw(0)
+    , y_axis_zero(0)  {
     }
   ADC_Joystick_(const ContainerAllocator& _alloc)
     : select(false)
     , x_axis_raw(0)
-    , y_axis_raw(0)  {
+    , x_axis_zero(0)
+    , y_axis_raw(0)
+    , y_axis_zero(0)  {
   (void)_alloc;
     }
 
@@ -40,11 +44,17 @@ struct ADC_Joystick_
    typedef uint8_t _select_type;
   _select_type select;
 
-   typedef uint16_t _x_axis_raw_type;
+   typedef int16_t _x_axis_raw_type;
   _x_axis_raw_type x_axis_raw;
 
-   typedef uint16_t _y_axis_raw_type;
+   typedef int16_t _x_axis_zero_type;
+  _x_axis_zero_type x_axis_zero;
+
+   typedef int16_t _y_axis_raw_type;
   _y_axis_raw_type y_axis_raw;
+
+   typedef int16_t _y_axis_zero_type;
+  _y_axis_zero_type y_axis_zero;
 
 
 
@@ -123,12 +133,12 @@ struct MD5Sum< ::adc_joystick_msg::ADC_Joystick_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "832227e0bdded7eb16fd560e3102fbf2";
+    return "10957cbdb8481676f0a00f626dbd9899";
   }
 
   static const char* value(const ::adc_joystick_msg::ADC_Joystick_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x832227e0bdded7ebULL;
-  static const uint64_t static_value2 = 0x16fd560e3102fbf2ULL;
+  static const uint64_t static_value1 = 0x10957cbdb8481676ULL;
+  static const uint64_t static_value2 = 0xf0a00f626dbd9899ULL;
 };
 
 template<class ContainerAllocator>
@@ -148,8 +158,11 @@ struct Definition< ::adc_joystick_msg::ADC_Joystick_<ContainerAllocator> >
   static const char* value()
   {
     return "bool select\n\
-uint16 x_axis_raw\n\
-uint16 y_axis_raw\n\
+int16 x_axis_raw\n\
+int16 x_axis_zero\n\
+int16 y_axis_raw\n\
+int16 y_axis_zero\n\
+\n\
 ";
   }
 
@@ -170,7 +183,9 @@ namespace serialization
     {
       stream.next(m.select);
       stream.next(m.x_axis_raw);
+      stream.next(m.x_axis_zero);
       stream.next(m.y_axis_raw);
+      stream.next(m.y_axis_zero);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -192,9 +207,13 @@ struct Printer< ::adc_joystick_msg::ADC_Joystick_<ContainerAllocator> >
     s << indent << "select: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.select);
     s << indent << "x_axis_raw: ";
-    Printer<uint16_t>::stream(s, indent + "  ", v.x_axis_raw);
+    Printer<int16_t>::stream(s, indent + "  ", v.x_axis_raw);
+    s << indent << "x_axis_zero: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.x_axis_zero);
     s << indent << "y_axis_raw: ";
-    Printer<uint16_t>::stream(s, indent + "  ", v.y_axis_raw);
+    Printer<int16_t>::stream(s, indent + "  ", v.y_axis_raw);
+    s << indent << "y_axis_zero: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.y_axis_zero);
   }
 };
 

@@ -166,7 +166,7 @@ namespace serialization
       stream.next(m.top_speed_steps_per_second);
     }
 
-    ROS_DECLARE_ALLINONE_SERIALIZER;
+    ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct Stepper_Target_
 
 } // namespace serialization

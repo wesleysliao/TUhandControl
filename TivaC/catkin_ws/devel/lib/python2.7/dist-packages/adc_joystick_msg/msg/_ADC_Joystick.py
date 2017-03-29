@@ -7,14 +7,18 @@ import struct
 
 
 class ADC_Joystick(genpy.Message):
-  _md5sum = "832227e0bdded7eb16fd560e3102fbf2"
+  _md5sum = "10957cbdb8481676f0a00f626dbd9899"
   _type = "adc_joystick_msg/ADC_Joystick"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """bool select
-uint16 x_axis_raw
-uint16 y_axis_raw"""
-  __slots__ = ['select','x_axis_raw','y_axis_raw']
-  _slot_types = ['bool','uint16','uint16']
+int16 x_axis_raw
+int16 x_axis_zero
+int16 y_axis_raw
+int16 y_axis_zero
+
+"""
+  __slots__ = ['select','x_axis_raw','x_axis_zero','y_axis_raw','y_axis_zero']
+  _slot_types = ['bool','int16','int16','int16','int16']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +28,7 @@ uint16 y_axis_raw"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       select,x_axis_raw,y_axis_raw
+       select,x_axis_raw,x_axis_zero,y_axis_raw,y_axis_zero
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -37,12 +41,18 @@ uint16 y_axis_raw"""
         self.select = False
       if self.x_axis_raw is None:
         self.x_axis_raw = 0
+      if self.x_axis_zero is None:
+        self.x_axis_zero = 0
       if self.y_axis_raw is None:
         self.y_axis_raw = 0
+      if self.y_axis_zero is None:
+        self.y_axis_zero = 0
     else:
       self.select = False
       self.x_axis_raw = 0
+      self.x_axis_zero = 0
       self.y_axis_raw = 0
+      self.y_axis_zero = 0
 
   def _get_types(self):
     """
@@ -57,7 +67,7 @@ uint16 y_axis_raw"""
     """
     try:
       _x = self
-      buff.write(_get_struct_B2H().pack(_x.select, _x.x_axis_raw, _x.y_axis_raw))
+      buff.write(_get_struct_B4h().pack(_x.select, _x.x_axis_raw, _x.x_axis_zero, _x.y_axis_raw, _x.y_axis_zero))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -70,8 +80,8 @@ uint16 y_axis_raw"""
       end = 0
       _x = self
       start = end
-      end += 5
-      (_x.select, _x.x_axis_raw, _x.y_axis_raw,) = _get_struct_B2H().unpack(str[start:end])
+      end += 9
+      (_x.select, _x.x_axis_raw, _x.x_axis_zero, _x.y_axis_raw, _x.y_axis_zero,) = _get_struct_B4h().unpack(str[start:end])
       self.select = bool(self.select)
       return self
     except struct.error as e:
@@ -86,7 +96,7 @@ uint16 y_axis_raw"""
     """
     try:
       _x = self
-      buff.write(_get_struct_B2H().pack(_x.select, _x.x_axis_raw, _x.y_axis_raw))
+      buff.write(_get_struct_B4h().pack(_x.select, _x.x_axis_raw, _x.x_axis_zero, _x.y_axis_raw, _x.y_axis_zero))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -100,8 +110,8 @@ uint16 y_axis_raw"""
       end = 0
       _x = self
       start = end
-      end += 5
-      (_x.select, _x.x_axis_raw, _x.y_axis_raw,) = _get_struct_B2H().unpack(str[start:end])
+      end += 9
+      (_x.select, _x.x_axis_raw, _x.x_axis_zero, _x.y_axis_raw, _x.y_axis_zero,) = _get_struct_B4h().unpack(str[start:end])
       self.select = bool(self.select)
       return self
     except struct.error as e:
@@ -111,9 +121,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_B2H = None
-def _get_struct_B2H():
-    global _struct_B2H
-    if _struct_B2H is None:
-        _struct_B2H = struct.Struct("<B2H")
-    return _struct_B2H
+_struct_B4h = None
+def _get_struct_B4h():
+    global _struct_B4h
+    if _struct_B4h is None:
+        _struct_B4h = struct.Struct("<B4h")
+    return _struct_B4h

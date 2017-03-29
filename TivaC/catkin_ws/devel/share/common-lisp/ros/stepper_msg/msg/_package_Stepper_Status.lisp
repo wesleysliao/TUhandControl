@@ -5,4 +5,6 @@
           SPEED_STEPS_PER_SECOND
           DIRECTION_FORWARD-VAL
           DIRECTION_FORWARD
+          ENABLED-VAL
+          ENABLED
 ))

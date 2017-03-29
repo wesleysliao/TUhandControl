@@ -18,8 +18,10 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom_map.h
+ /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/ssi.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/sysctl.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/systick.h
+ /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/timer.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/uart.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/usb.h
  /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_ints.h
@@ -45,7 +47,6 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
- /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ColorRGBA.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Status.h
  /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Target.h

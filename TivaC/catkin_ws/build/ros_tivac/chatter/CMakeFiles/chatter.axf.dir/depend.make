@@ -17,8 +17,10 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/T
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/pin_map.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/rom_map.h
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/ssi.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/sysctl.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/systick.h
+CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/timer.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/uart.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/driverlib/usb.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/TivaWare/inc/hw_ints.h
@@ -44,7 +46,6 @@ CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/T
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/Log.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/RequestParam.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/rosserial_msgs/TopicInfo.h
-CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/ColorRGBA.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/std_msgs/Time.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Status.h
 CMakeFiles/chatter.axf.dir/chatter.cpp.obj: /home/wesley/Sources/TUhandControl/TivaC/catkin_ws/build/ros_tivac/ros_lib/stepper_msg/Stepper_Target.h
