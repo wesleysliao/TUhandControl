@@ -7,15 +7,16 @@ import struct
 
 
 class Stepper_Status(genpy.Message):
-  _md5sum = "b8e41235ddba5043cc88e78b8401e13b"
+  _md5sum = "8b977b7753d25b4757850d088d3939b1"
   _type = "stepper_msg/Stepper_Status"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int64 position_steps
 int32 speed_steps_per_second
 bool direction_forward
-bool enabled"""
-  __slots__ = ['position_steps','speed_steps_per_second','direction_forward','enabled']
-  _slot_types = ['int64','int32','bool','bool']
+bool enabled
+string errors"""
+  __slots__ = ['position_steps','speed_steps_per_second','direction_forward','enabled','errors']
+  _slot_types = ['int64','int32','bool','bool','string']
 
   def __init__(self, *args, **kwds):
     """
@@ -25,7 +26,7 @@ bool enabled"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       position_steps,speed_steps_per_second,direction_forward,enabled
+       position_steps,speed_steps_per_second,direction_forward,enabled,errors
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -42,11 +43,14 @@ bool enabled"""
         self.direction_forward = False
       if self.enabled is None:
         self.enabled = False
+      if self.errors is None:
+        self.errors = ''
     else:
       self.position_steps = 0
       self.speed_steps_per_second = 0
       self.direction_forward = False
       self.enabled = False
+      self.errors = ''
 
   def _get_types(self):
     """
@@ -62,6 +66,12 @@ bool enabled"""
     try:
       _x = self
       buff.write(_get_struct_qi2B().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled))
+      _x = self.errors
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -78,6 +88,15 @@ bool enabled"""
       (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled,) = _get_struct_qi2B().unpack(str[start:end])
       self.direction_forward = bool(self.direction_forward)
       self.enabled = bool(self.enabled)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.errors = str[start:end].decode('utf-8')
+      else:
+        self.errors = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -92,6 +111,12 @@ bool enabled"""
     try:
       _x = self
       buff.write(_get_struct_qi2B().pack(_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled))
+      _x = self.errors
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -109,6 +134,15 @@ bool enabled"""
       (_x.position_steps, _x.speed_steps_per_second, _x.direction_forward, _x.enabled,) = _get_struct_qi2B().unpack(str[start:end])
       self.direction_forward = bool(self.direction_forward)
       self.enabled = bool(self.enabled)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.errors = str[start:end].decode('utf-8')
+      else:
+        self.errors = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill

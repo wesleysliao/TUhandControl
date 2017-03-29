@@ -27,13 +27,15 @@ struct Stepper_Status_
     : position_steps(0)
     , speed_steps_per_second(0)
     , direction_forward(false)
-    , enabled(false)  {
+    , enabled(false)
+    , errors()  {
     }
   Stepper_Status_(const ContainerAllocator& _alloc)
     : position_steps(0)
     , speed_steps_per_second(0)
     , direction_forward(false)
-    , enabled(false)  {
+    , enabled(false)
+    , errors(_alloc)  {
   (void)_alloc;
     }
 
@@ -50,6 +52,9 @@ struct Stepper_Status_
 
    typedef uint8_t _enabled_type;
   _enabled_type enabled;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _errors_type;
+  _errors_type errors;
 
 
 
@@ -84,7 +89,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
 // {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'stepper_msg': ['/home/wesley/Sources/TUhandControl/TivaC/catkin_ws/src/stepper_msg/msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -94,12 +99,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::stepper_msg::Stepper_Status_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -128,12 +133,12 @@ struct MD5Sum< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "b8e41235ddba5043cc88e78b8401e13b";
+    return "8b977b7753d25b4757850d088d3939b1";
   }
 
   static const char* value(const ::stepper_msg::Stepper_Status_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xb8e41235ddba5043ULL;
-  static const uint64_t static_value2 = 0xcc88e78b8401e13bULL;
+  static const uint64_t static_value1 = 0x8b977b7753d25b47ULL;
+  static const uint64_t static_value2 = 0x57850d088d3939b1ULL;
 };
 
 template<class ContainerAllocator>
@@ -156,6 +161,7 @@ struct Definition< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
 int32 speed_steps_per_second\n\
 bool direction_forward\n\
 bool enabled\n\
+string errors\n\
 ";
   }
 
@@ -178,6 +184,7 @@ namespace serialization
       stream.next(m.speed_steps_per_second);
       stream.next(m.direction_forward);
       stream.next(m.enabled);
+      stream.next(m.errors);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -204,6 +211,8 @@ struct Printer< ::stepper_msg::Stepper_Status_<ContainerAllocator> >
     Printer<uint8_t>::stream(s, indent + "  ", v.direction_forward);
     s << indent << "enabled: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.enabled);
+    s << indent << "errors: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.errors);
   }
 };
 

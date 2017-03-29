@@ -26,7 +26,12 @@
     :reader enabled
     :initarg :enabled
     :type cl:boolean
-    :initform cl:nil))
+    :initform cl:nil)
+   (errors
+    :reader errors
+    :initarg :errors
+    :type cl:string
+    :initform ""))
 )
 
 (cl:defclass Stepper_Status (<Stepper_Status>)
@@ -56,6 +61,11 @@
 (cl:defmethod enabled-val ((m <Stepper_Status>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader stepper_msg-msg:enabled-val is deprecated.  Use stepper_msg-msg:enabled instead.")
   (enabled m))
+
+(cl:ensure-generic-function 'errors-val :lambda-list '(m))
+(cl:defmethod errors-val ((m <Stepper_Status>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader stepper_msg-msg:errors-val is deprecated.  Use stepper_msg-msg:errors instead.")
+  (errors m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Stepper_Status>) ostream)
   "Serializes a message object of type '<Stepper_Status>"
   (cl:let* ((signed (cl:slot-value msg 'position_steps)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
@@ -76,6 +86,12 @@
     )
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'direction_forward) 1 0)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'enabled) 1 0)) ostream)
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'errors))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'errors))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <Stepper_Status>) istream)
   "Deserializes a message object of type '<Stepper_Status>"
@@ -97,6 +113,14 @@
       (cl:setf (cl:slot-value msg 'speed_steps_per_second) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
     (cl:setf (cl:slot-value msg 'direction_forward) (cl:not (cl:zerop (cl:read-byte istream))))
     (cl:setf (cl:slot-value msg 'enabled) (cl:not (cl:zerop (cl:read-byte istream))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'errors) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'errors) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Stepper_Status>)))
@@ -107,22 +131,23 @@
   "stepper_msg/Stepper_Status")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Stepper_Status>)))
   "Returns md5sum for a message object of type '<Stepper_Status>"
-  "b8e41235ddba5043cc88e78b8401e13b")
+  "8b977b7753d25b4757850d088d3939b1")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Stepper_Status)))
   "Returns md5sum for a message object of type 'Stepper_Status"
-  "b8e41235ddba5043cc88e78b8401e13b")
+  "8b977b7753d25b4757850d088d3939b1")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Stepper_Status>)))
   "Returns full string definition for message of type '<Stepper_Status>"
-  (cl:format cl:nil "int64 position_steps~%int32 speed_steps_per_second~%bool direction_forward~%bool enabled~%~%"))
+  (cl:format cl:nil "int64 position_steps~%int32 speed_steps_per_second~%bool direction_forward~%bool enabled~%string errors~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Stepper_Status)))
   "Returns full string definition for message of type 'Stepper_Status"
-  (cl:format cl:nil "int64 position_steps~%int32 speed_steps_per_second~%bool direction_forward~%bool enabled~%~%"))
+  (cl:format cl:nil "int64 position_steps~%int32 speed_steps_per_second~%bool direction_forward~%bool enabled~%string errors~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Stepper_Status>))
   (cl:+ 0
      8
      4
      1
      1
+     4 (cl:length (cl:slot-value msg 'errors))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <Stepper_Status>))
   "Converts a ROS message object to a list"
@@ -131,4 +156,5 @@
     (cl:cons ':speed_steps_per_second (speed_steps_per_second msg))
     (cl:cons ':direction_forward (direction_forward msg))
     (cl:cons ':enabled (enabled msg))
+    (cl:cons ':errors (errors msg))
 ))

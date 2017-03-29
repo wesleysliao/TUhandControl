@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <algorithm>
 #include <queue>
+#include <string>
 
 // TivaC specific includes
 extern "C"
@@ -197,7 +198,15 @@ void ReadADC(void){
       js_msg.x_axis_raw = adc_values[0];
       js_msg.y_axis_raw = adc_values[2];
 
+    //   if(abs((js_msg.x_axis_raw-js_msg.x_axis_zero)<100))
+    //     js_msg.x_axis_raw = js_msg.x_axis_zero;
+
+    // if(abs((js_msg.y_axis_raw-js_msg.y_axis_zero)<100))
+    //     js_msg.y_axis_raw = js_msg.y_axis_zero;
+
       adc_joystick.publish(&js_msg);
+
+
 
       Stepper1_target_speed = (Stepper1_max_speed*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
   }
@@ -420,6 +429,36 @@ void StepPinReset(void)
     GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 0);
 }
 
+void StepperError(void){
+    if (GPIOIntStatus(GPIO_PORTB_BASE, false) & GPIO_PIN_2) {
+
+        GPIOIntClear(GPIO_PORTB_BASE, GPIO_PIN_2);  // Clear interrupt flag
+        
+        StepperDisable();
+
+        uint32_t sr0_stat = SPIReadByte(SR0);
+        uint32_t sr1_stat = SPIReadByte(SR1);
+        uint32_t sr2_stat = SPIReadByte(SR2);
+
+        std::string errormsg;
+
+        if(sr0_stat & 0b01000000)
+            errormsg.append("Temp Warning");
+        if(sr2_stat & 0b00000100)
+            errormsg.append("Temp Shutdown");
+        if(sr0_stat & 0b00010000)
+            errormsg.append("Watchdog ");
+        if(sr0_stat & 0b00001100)
+            errormsg.append("Open coil ");
+        if((sr1_stat & 0b01111000 ) || (sr2_stat & 0b01111000 ))
+            errormsg.append("Overcurrent ");
+
+        stepper_status_msg.errors = errormsg.c_str();
+
+        stepper_status.publish(&stepper_status_msg);
+    }
+}
+
 void SW1_SW2_pressed(void){
     if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
 
@@ -451,6 +490,8 @@ int main(void)
     // TivaC system clock configuration. Set to 80MHz.
     MAP_SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN);
 
+    IntMasterDisable();
+
     enableSysPeripherals();
 
     setupJoystick();
@@ -460,6 +501,13 @@ int main(void)
     GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
     GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);         // Configure PF4 for falling edge trigger
     GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
+
+
+    GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, GPIO_PIN_2);
+    GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_2, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_PORTB_BASE, StepperError);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_PORTB_BASE, GPIO_PIN_2, GPIO_FALLING_EDGE);         // Configure PF4 for falling edge trigger
+    GPIOIntEnable(GPIO_PORTB_BASE, GPIO_PIN_2);     // Enable interrupt for PF4
 
     GPIOPinTypeGPIOOutput(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_CLRALL_PORT, GPIO_STEPPER_CLRALL_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
@@ -475,7 +523,7 @@ int main(void)
     GPIOPinConfigure(GPIO_PB6_SSI2RX);
     GPIOPinTypeSSI(GPIO_PORTB_BASE,GPIO_PIN_4|GPIO_PIN_6|GPIO_PIN_7);
 
-    SSIConfigSetExpClk(SSI2_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 100000, 16);
+    SSIConfigSetExpClk(SSI2_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 800000, 16);
     SSIEnable(SSI2_BASE);
 
     GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
@@ -494,7 +542,7 @@ int main(void)
     nh.advertise(stepper_status);
 
     ClearStepperRegisters();
-    SetStepperCurrent(280);
+    SetStepperCurrent(2800);
     SetStepperStepMode(STEPMODE_MICRO_16);
     SetStepperDirection(true);
 
@@ -503,7 +551,7 @@ int main(void)
     stepper_status_msg.speed_steps_per_second = 1;
     stepper_status_msg.enabled = false;
     Stepper1_min_speed     = 1;
-    Stepper1_max_speed     = 8000;
+    Stepper1_max_speed     = 24000;
     Stepper1_accel         = 10;
     Stepper1_target_speed   = 2000;
 
@@ -538,23 +586,18 @@ int main(void)
     IntEnable(INT_TIMER1A);
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
-    IntMasterEnable();
-
     TimerEnable(TIMER0_BASE, TIMER_A);
     TimerEnable(TIMER1_BASE, TIMER_A);
 
+    IntPrioritySet(INT_TIMER0A, 0b00100000); //Motor reset
+    IntPrioritySet(INT_TIMER0B, 0b01000000); //Motor update
+    IntPrioritySet(INT_TIMER1A, 0b00000000); //Motor set
 
+
+    IntMasterEnable();
 
     while(1)
     {
-        // uint32_t sr0_stat = SPIReadByte(SR0);
-        // uint32_t sr1_stat = SPIReadByte(SR1);
-        // uint32_t sr2_stat = SPIReadByte(SR2);
-
-        // if(((sr0_stat | sr1_stat | sr2_stat ) & 0b1111111) > 0){
-        //     StepperDisable();
-        // }
-
         ADCProcessorTrigger(ADC0_BASE, 1);
 
         nh.spinOnce();

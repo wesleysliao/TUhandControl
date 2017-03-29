@@ -22,6 +22,7 @@ class Stepper_Status {
       this.speed_steps_per_second = null;
       this.direction_forward = null;
       this.enabled = null;
+      this.errors = null;
     }
     else {
       if (initObj.hasOwnProperty('position_steps')) {
@@ -48,6 +49,12 @@ class Stepper_Status {
       else {
         this.enabled = false;
       }
+      if (initObj.hasOwnProperty('errors')) {
+        this.errors = initObj.errors
+      }
+      else {
+        this.errors = '';
+      }
     }
   }
 
@@ -61,6 +68,8 @@ class Stepper_Status {
     bufferOffset = _serializer.bool(obj.direction_forward, buffer, bufferOffset);
     // Serialize message field [enabled]
     bufferOffset = _serializer.bool(obj.enabled, buffer, bufferOffset);
+    // Serialize message field [errors]
+    bufferOffset = _serializer.string(obj.errors, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -76,11 +85,15 @@ class Stepper_Status {
     data.direction_forward = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [enabled]
     data.enabled = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [errors]
+    data.errors = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 14;
+    let length = 0;
+    length += object.errors.length;
+    return length + 18;
   }
 
   static datatype() {
@@ -90,7 +103,7 @@ class Stepper_Status {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'b8e41235ddba5043cc88e78b8401e13b';
+    return '8b977b7753d25b4757850d088d3939b1';
   }
 
   static messageDefinition() {
@@ -100,6 +113,7 @@ class Stepper_Status {
     int32 speed_steps_per_second
     bool direction_forward
     bool enabled
+    string errors
     `;
   }
 
@@ -135,6 +149,13 @@ class Stepper_Status {
     }
     else {
       resolved.enabled = false
+    }
+
+    if (msg.errors !== undefined) {
+      resolved.errors = msg.errors;
+    }
+    else {
+      resolved.errors = ''
     }
 
     return resolved;

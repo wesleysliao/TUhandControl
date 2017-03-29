@@ -14,7 +14,7 @@
 
 (defclass stepper_msg::Stepper_Status
   :super ros::object
-  :slots (_position_steps _speed_steps_per_second _direction_forward _enabled ))
+  :slots (_position_steps _speed_steps_per_second _direction_forward _enabled _errors ))
 
 (defmethod stepper_msg::Stepper_Status
   (:init
@@ -23,12 +23,14 @@
     ((:speed_steps_per_second __speed_steps_per_second) 0)
     ((:direction_forward __direction_forward) nil)
     ((:enabled __enabled) nil)
+    ((:errors __errors) "")
     )
    (send-super :init)
    (setq _position_steps (round __position_steps))
    (setq _speed_steps_per_second (round __speed_steps_per_second))
    (setq _direction_forward __direction_forward)
    (setq _enabled __enabled)
+   (setq _errors (string __errors))
    self)
   (:position_steps
    (&optional __position_steps)
@@ -42,6 +44,9 @@
   (:enabled
    (&optional __enabled)
    (if __enabled (setq _enabled __enabled)) _enabled)
+  (:errors
+   (&optional __errors)
+   (if __errors (setq _errors __errors)) _errors)
   (:serialization-length
    ()
    (+
@@ -53,6 +58,8 @@
     1
     ;; bool _enabled
     1
+    ;; string _errors
+    4 (length _errors)
     ))
   (:serialize
    (&optional strm)
@@ -76,6 +83,8 @@
        (if _direction_forward (write-byte -1 s) (write-byte 0 s))
      ;; bool _enabled
        (if _enabled (write-byte -1 s) (write-byte 0 s))
+     ;; string _errors
+       (write-long (length _errors) s) (princ _errors s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -98,21 +107,24 @@
      (setq _direction_forward (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;; bool _enabled
      (setq _enabled (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; string _errors
+     (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _errors (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;;
    self)
   )
 
-(setf (get stepper_msg::Stepper_Status :md5sum-) "b8e41235ddba5043cc88e78b8401e13b")
+(setf (get stepper_msg::Stepper_Status :md5sum-) "8b977b7753d25b4757850d088d3939b1")
 (setf (get stepper_msg::Stepper_Status :datatype-) "stepper_msg/Stepper_Status")
 (setf (get stepper_msg::Stepper_Status :definition-)
       "int64 position_steps
 int32 speed_steps_per_second
 bool direction_forward
 bool enabled
+string errors
 ")
 
 
 
-(provide :stepper_msg/Stepper_Status "b8e41235ddba5043cc88e78b8401e13b")
+(provide :stepper_msg/Stepper_Status "8b977b7753d25b4757850d088d3939b1")
 
 

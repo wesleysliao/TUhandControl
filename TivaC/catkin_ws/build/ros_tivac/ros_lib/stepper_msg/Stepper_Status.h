@@ -20,12 +20,15 @@ namespace stepper_msg
       _direction_forward_type direction_forward;
       typedef bool _enabled_type;
       _enabled_type enabled;
+      typedef const char* _errors_type;
+      _errors_type errors;
 
     Stepper_Status():
       position_steps(0),
       speed_steps_per_second(0),
       direction_forward(0),
-      enabled(0)
+      enabled(0),
+      errors("")
     {
     }
 
@@ -70,6 +73,11 @@ namespace stepper_msg
       u_enabled.real = this->enabled;
       *(outbuffer + offset + 0) = (u_enabled.base >> (8 * 0)) & 0xFF;
       offset += sizeof(this->enabled);
+      uint32_t length_errors = strlen(this->errors);
+      varToArr(outbuffer + offset, length_errors);
+      offset += 4;
+      memcpy(outbuffer + offset, this->errors, length_errors);
+      offset += length_errors;
       return offset;
     }
 
@@ -118,11 +126,20 @@ namespace stepper_msg
       u_enabled.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
       this->enabled = u_enabled.real;
       offset += sizeof(this->enabled);
+      uint32_t length_errors;
+      arrToVar(length_errors, (inbuffer + offset));
+      offset += 4;
+      for(unsigned int k= offset; k< offset+length_errors; ++k){
+          inbuffer[k-1]=inbuffer[k];
+      }
+      inbuffer[offset+length_errors-1]=0;
+      this->errors = (char *)(inbuffer + offset-1);
+      offset += length_errors;
      return offset;
     }
 
     const char * getType(){ return "stepper_msg/Stepper_Status"; };
-    const char * getMD5(){ return "b8e41235ddba5043cc88e78b8401e13b"; };
+    const char * getMD5(){ return "8b977b7753d25b4757850d088d3939b1"; };
 
   };
 

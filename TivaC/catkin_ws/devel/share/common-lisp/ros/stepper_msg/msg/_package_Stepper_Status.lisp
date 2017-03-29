@@ -7,4 +7,6 @@
           DIRECTION_FORWARD
           ENABLED-VAL
           ENABLED
+          ERRORS-VAL
+          ERRORS
 ))
