@@ -14,7 +14,7 @@
    <string>QRosApp</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../../my_qt_gui_publisher/resources/images.qrc">
     <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
   </property>
   <property name="locale">
@@ -54,7 +54,208 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="0">
-            <widget class="QListView" name="view_logging"/>
+            <widget class="QStackedWidget" name="stackedWidget">
+             <widget class="QWidget" name="page_3">
+              <widget class="QPushButton" name="pushButton">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>10</y>
+                 <width>261</width>
+                 <height>211</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Pose Select</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="geometry">
+                <rect>
+                 <x>270</x>
+                 <y>10</y>
+                 <width>281</width>
+                 <height>211</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Actuator/Motor Select</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>260</y>
+                 <width>261</width>
+                 <height>221</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Home Motors</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_4">
+               <property name="geometry">
+                <rect>
+                 <x>270</x>
+                 <y>260</y>
+                 <width>281</width>
+                 <height>221</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Joystick/Motor Info</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_4">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>140</y>
+                 <width>191</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Current Pose: </string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_5">
+               <property name="geometry">
+                <rect>
+                 <x>280</x>
+                 <y>140</y>
+                 <width>251</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Current Actuator:</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="page_2">
+              <widget class="QPushButton" name="pushButton_5">
+               <property name="geometry">
+                <rect>
+                 <x>90</x>
+                 <y>10</y>
+                 <width>321</width>
+                 <height>191</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Saved Pose 1</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_6">
+               <property name="geometry">
+                <rect>
+                 <x>90</x>
+                 <y>270</y>
+                 <width>321</width>
+                 <height>191</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Saved Pose 2</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="page_4">
+              <widget class="QPushButton" name="pushButton_7">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>261</width>
+                 <height>171</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Tendon Actuator 1</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_8">
+               <property name="geometry">
+                <rect>
+                 <x>280</x>
+                 <y>0</y>
+                 <width>261</width>
+                 <height>171</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Tendon Actuator 2</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_9">
+               <property name="geometry">
+                <rect>
+                 <x>130</x>
+                 <y>180</y>
+                 <width>261</width>
+                 <height>171</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Wrist Actuator</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_10">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>380</y>
+                 <width>221</width>
+                 <height>151</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Save to Pose 1</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_11">
+               <property name="geometry">
+                <rect>
+                 <x>280</x>
+                 <y>380</y>
+                 <width>221</width>
+                 <height>151</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Save to Pose 2</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="page">
+              <widget class="QListView" name="view_logging">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>50</y>
+                 <width>511</width>
+                 <height>471</height>
+                </rect>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_12">
+               <property name="geometry">
+                <rect>
+                 <x>180</x>
+                 <y>0</y>
+                 <width>121</width>
+                 <height>51</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Return</string>
+               </property>
+              </widget>
+             </widget>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -71,7 +272,7 @@
      <x>0</x>
      <y>0</y>
      <width>944</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -98,7 +299,7 @@
    <property name="minimumSize">
     <size>
      <width>325</width>
-     <height>368</height>
+     <height>395</height>
     </size>
    </property>
    <property name="allowedAreas">
@@ -314,7 +515,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../../my_qt_gui_publisher/resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

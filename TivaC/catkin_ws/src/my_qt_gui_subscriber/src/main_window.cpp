@@ -167,5 +167,112 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	QMainWindow::closeEvent(event);
 }
 
+void MainWindow::on_pushButton_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(1);
+
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(2);
+
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(3);
+
+}
+
+
+void MainWindow::on_pushButton_5_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label_4->setText("Current Pose: Pose 1");
+
+}
+
+
+void MainWindow::on_pushButton_6_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label_4->setText("Current Pose: Pose 2");
+
+}
+
+
+void MainWindow::on_pushButton_7_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label_5->setText("Current Actuator: Tendon Actuator 1");
+
+}
+
+
+void MainWindow::on_pushButton_8_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label_5->setText("Current Actuator: Tendon Actuator 2");
+
+}
+
+
+void MainWindow::on_pushButton_9_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label_5->setText("Current Actuator: Wrist Actuator");
+
+}
+
+
+void MainWindow::on_pushButton_10_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+}
+
+
+void MainWindow::on_pushButton_11_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+
+}
+
+
+void MainWindow::on_pushButton_12_clicked()
+
+{
+
+    ui.stackedWidget->setCurrentIndex(0);
+}
+
 }  // namespace my_qt_gui_subscriber
 
