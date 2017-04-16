@@ -111,9 +111,11 @@ void StepperGetParamsFromROS(Stepper &stepper);
 
 Stepper Tendon1Stepper;
 Stepper Tendon2Stepper;
+Stepper WristStepper;
 
-ros::Publisher tendon1_status("tendon1_status", &Tendon1Stepper.status);
-ros::Publisher tendon2_status("tendon2_status", &Tendon2Stepper.status);
+ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
+ros::Publisher tendon2_status("TUhand/Tendon2Stepper/status", &Tendon2Stepper.status);
+ros::Publisher wrist_status("TUhand/WristStepper/status", &WristStepper.status);
 
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
@@ -128,17 +130,6 @@ void JoystickClicked(void) {
         GPIOIntTypeSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN,
             GPIO_RISING_EDGE);          // Configure PA5 for rising edge trigger
         GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);  // Clear interrupt flag
-
-        if(Tendon2Stepper.status.enabled)
-        {
-            StepperDisable(Tendon1Stepper);
-            StepperDisable(Tendon2Stepper);
-        }
-        else
-        {
-            StepperEnable(Tendon1Stepper);
-            StepperEnable(Tendon2Stepper);
-        }
     }
 }
 
@@ -159,22 +150,18 @@ void SW1_SW2_pressed(void){
     if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
+
+        StepperEnable(Tendon1Stepper);
+        StepperEnable(Tendon2Stepper);
+        StepperEnable(WristStepper);
     }
     else if(GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_4) {
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
 
-
-        // ADCProcessorTrigger(ADC0_BASE, 1);
-
-        // while(ADCBusy(ADC0_BASE));
-         
-        // uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
-
-        // ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
-
-        // js_msg.x_axis_zero = adc_values[0];
-        // js_msg.y_axis_zero = adc_values[2];
+        StepperDisable(Tendon1Stepper);
+        StepperDisable(Tendon2Stepper);
+        StepperDisable(WristStepper);
 
     }
 }
@@ -237,6 +224,9 @@ void ReadADC(void){
 
       Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
       Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
+
+      WristStepper.target_speed = (WristStepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+
   }
 }
 
@@ -247,9 +237,11 @@ void PeriodicUpdate(void){
 
     StepperUpdate(Tendon1Stepper);
     StepperUpdate(Tendon2Stepper);
+    StepperUpdate(WristStepper);
 
     tendon1_status.publish(&Tendon1Stepper.status);
     tendon2_status.publish(&Tendon2Stepper.status);
+    wrist_status.publish(&WristStepper.status);
 
     nh.spinOnce();
 
@@ -264,6 +256,11 @@ void Tendon1StepperStepHandler(void)
 void Tendon2StepperStepHandler(void)
 {
   StepperStepPinSet(Tendon2Stepper);
+}
+
+void WristStepperStepHandler(void)
+{
+  StepperStepPinSet(WristStepper);
 }
 
 int main(void)
@@ -286,6 +283,7 @@ int main(void)
     nh.advertise(adc_joystick);
     nh.advertise(tendon1_status);
     nh.advertise(tendon2_status);
+    nh.advertise(wrist_status);
 
     while(!nh.connected()) {nh.spinOnce();}
 
@@ -295,7 +293,7 @@ int main(void)
     Tendon1Stepper.ChipSelectPin.PORT = GPIO_STEPPER_1_CS_PORT;
     Tendon1Stepper.StepPin.PIN = GPIO_STEPPER_1_STEP_PIN;
     Tendon1Stepper.StepPin.PORT = GPIO_STEPPER_1_STEP_PORT;
-    Tendon1Stepper.TIMER_BASE = TIMER3_BASE;
+    Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
@@ -311,7 +309,7 @@ int main(void)
     Tendon2Stepper.ChipSelectPin.PORT = GPIO_STEPPER_2_CS_PORT;
     Tendon2Stepper.StepPin.PIN = GPIO_STEPPER_2_STEP_PIN;
     Tendon2Stepper.StepPin.PORT = GPIO_STEPPER_2_STEP_PORT;
-    Tendon2Stepper.TIMER_BASE = TIMER2_BASE;
+    Tendon2Stepper.TIMER_BASE = TIMER3_BASE;
     Tendon2Stepper.status.position_steps = 0;
     Tendon2Stepper.status.speed_steps_per_second = 1;
     Tendon2Stepper.status.enabled = false;
@@ -320,6 +318,22 @@ int main(void)
     StepperInitGPIO(Tendon2Stepper);
     StepperInitSPI(Tendon2Stepper);    
     StepperInitTimer(Tendon2StepperStepHandler, Tendon2Stepper);
+
+
+    WristStepper.name = std::string("WristStepper");
+    WristStepper.ChipSelectPin.PIN = GPIO_STEPPER_3_CS_PIN;
+    WristStepper.ChipSelectPin.PORT = GPIO_STEPPER_3_CS_PORT;
+    WristStepper.StepPin.PIN = GPIO_STEPPER_3_STEP_PIN;
+    WristStepper.StepPin.PORT = GPIO_STEPPER_3_STEP_PORT;
+    WristStepper.TIMER_BASE = TIMER4_BASE;
+    WristStepper.status.position_steps = 0;
+    WristStepper.status.speed_steps_per_second = 1;
+    WristStepper.status.enabled = false;
+    WristStepper.target_speed   = 2000;
+    StepperGetParamsFromROS(WristStepper);
+    StepperInitGPIO(WristStepper);
+    StepperInitSPI(WristStepper);    
+    StepperInitTimer(WristStepperStepHandler, WristStepper);
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);
@@ -344,9 +358,9 @@ int main(void)
 
 
     IntPrioritySet(INT_TIMER1A, 0b00100000); //Motor reset
-    IntPrioritySet(INT_TIMER0A, 0b01000000); //Motor update
+    IntPrioritySet(INT_TIMER0A, 0b01000000); //update
 
-    IntPrioritySet(INT_TIMER2A, 0b00000000);
+    IntPrioritySet(INT_TIMER2A, 0b00000000); //motor set
     IntPrioritySet(INT_TIMER3A, 0b00000000);
     IntPrioritySet(INT_TIMER4A, 0b00000000);
     IntPrioritySet(INT_TIMER5A, 0b00000000);
@@ -356,6 +370,10 @@ int main(void)
     TimerEnable(TIMER1_BASE, TIMER_A);
 
     IntMasterEnable();
+
+    StepperDisable(Tendon1Stepper);
+    StepperDisable(Tendon2Stepper);
+    StepperEnable(WristStepper);
 
     while(1)
     {
@@ -390,6 +408,9 @@ void enableSysPeripherals(void)
   
   HWREG(GPIO_PORTD_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY; //Unlock pin D7 for use
   HWREG(GPIO_PORTD_BASE+GPIO_O_CR) |= GPIO_PIN_7;
+
+  HWREG(GPIO_PORTF_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY; //unlock pin F0 for use
+  HWREG(GPIO_PORTF_BASE+GPIO_O_CR) |= GPIO_PIN_0;
 }
 
 void setupJoystick(void)
