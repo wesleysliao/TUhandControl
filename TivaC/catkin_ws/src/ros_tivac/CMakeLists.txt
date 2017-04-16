@@ -208,12 +208,12 @@ rosserial_generate_ros_lib(
   SCRIPT make_libraries_tiva
 )
 
-# Chatter tutorial
+# TUhand tutorial
 rosserial_configure_client(
-  DIRECTORY chatter
+  DIRECTORY TUhand
   TOOLCHAIN_FILE ${ROSSERIAL_TIVAC_TOOLCHAIN}
 )
-rosserial_add_client_target(chatter chatter.axf ALL)
-rosserial_add_client_target(chatter flash)
-rosserial_add_client_target(chatter size)
-rosserial_add_client_target(chatter dump)
+rosserial_add_client_target(TUhand TUhand.axf ALL)
+rosserial_add_client_target(TUhand flash)
+rosserial_add_client_target(TUhand size)
+rosserial_add_client_target(TUhand dump)

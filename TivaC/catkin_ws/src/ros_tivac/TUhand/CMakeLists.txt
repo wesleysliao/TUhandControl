@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(chatter)
+project(TUhand)
 
 # Include rosserial libraries for TivaC
 include_directories(${ROS_LIB_DIR})
@@ -13,6 +13,6 @@ add_definitions(-DRX_BUFFER_SIZE=512)
 
 # Generate target for TivaC
 generate_tivac_firmware(
-  SRCS chatter.cpp
+  SRCS TUhand.cpp
   BOARD tm4c123gxl
 )
