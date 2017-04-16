@@ -354,6 +354,19 @@ void StepperError(void){
     }
 }
 
+
+void GetParamsFromROS(void){
+  int buf;
+
+  nh.getParam("/TUhand/Tendon1Stepper/acceleration", &buf, 1);
+  Tendon1Stepper.max_speed_steps_per_second = 24000;
+  Tendon1Stepper.travel_limit_steps = 160000;
+  Tendon1Stepper.acceleration = buf;
+  Tendon1Stepper.microstep_mode = STEPMODE_MICRO_16;
+  Tendon1Stepper.phase_current_ma = 2800;
+}
+
+
 void SW1_SW2_pressed(void){
     if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
 
@@ -363,16 +376,19 @@ void SW1_SW2_pressed(void){
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
 
-        ADCProcessorTrigger(ADC0_BASE, 1);
+        GetParamsFromROS();
 
-        while(ADCBusy(ADC0_BASE));
+
+        // ADCProcessorTrigger(ADC0_BASE, 1);
+
+        // while(ADCBusy(ADC0_BASE));
          
-        uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
+        // uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
 
-        ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
+        // ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
 
-        js_msg.x_axis_zero = adc_values[0];
-        js_msg.y_axis_zero = adc_values[2];
+        // js_msg.x_axis_zero = adc_values[0];
+        // js_msg.y_axis_zero = adc_values[2];
 
     }
 }
@@ -431,11 +447,9 @@ int main(void)
     nh.advertise(adc_joystick);
     nh.advertise(stepper_status);
 
-    Tendon1Stepper.max_speed_steps_per_second = 24000;
-    Tendon1Stepper.travel_limit_steps = 160000;
-    Tendon1Stepper.acceleration = 40;
-    Tendon1Stepper.microstep_mode = STEPMODE_MICRO_16;
-    Tendon1Stepper.phase_current_ma = 2800;
+    while(!nh.connected()) {nh.spinOnce();}
+
+    GetParamsFromROS();
 
     ClearStepperRegisters(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
     SetStepperCurrent(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.phase_current_ma);
