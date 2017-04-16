@@ -82,6 +82,14 @@ ros::NodeHandle nh;
 #define GPIO_STEPPER_ALL_ERR_PIN         GPIO_PIN_0
 
 
+struct StepperConfig {
+  int32_t max_speed_steps_per_second;
+  int32_t travel_limit_steps;
+  int32_t acceleration;
+  int32_t microstep_mode;
+  int32_t phase_current_ma;
+};
+
 bool SameSign(int x, int y)
 {
     return (x >= 0) ^ (y < 0);
@@ -112,10 +120,8 @@ void StepperDisable(void);
 
 //globals
 
-int32_t Stepper1_min_speed     = 1;
-int32_t Stepper1_max_speed     = 96000;
-int32_t Stepper1_accel         = 4;
-int32_t Stepper1_target_speed   = 24000;
+StepperConfig Tendon1Stepper;
+int32_t Stepper1_target_speed;
 
 
 stepper_msg::Stepper_Status stepper_status_msg;
@@ -221,7 +227,7 @@ void ReadADC(void){
 
 
 
-      Stepper1_target_speed = (Stepper1_max_speed*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      Stepper1_target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
   }
 }
 
@@ -255,17 +261,17 @@ void PeriodicUpdate(void){
 
           if(stepper_status_msg.speed_steps_per_second < Stepper1_target_speed)
           {
-            if(stepper_status_msg.speed_steps_per_second - Stepper1_target_speed < Stepper1_accel)
+            if(Stepper1_target_speed - stepper_status_msg.speed_steps_per_second  < Tendon1Stepper.acceleration)
               stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
             else
-              stepper_status_msg.speed_steps_per_second += Stepper1_accel;
+              stepper_status_msg.speed_steps_per_second += Tendon1Stepper.acceleration;
 
           }
           else{
-            if(Stepper1_target_speed - stepper_status_msg.speed_steps_per_second < Stepper1_accel)
+            if(stepper_status_msg.speed_steps_per_second - Stepper1_target_speed < Tendon1Stepper.acceleration)
               stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
             else
-              stepper_status_msg.speed_steps_per_second -= Stepper1_accel;
+              stepper_status_msg.speed_steps_per_second -= Tendon1Stepper.acceleration;
           }
 
           if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second)){
@@ -425,18 +431,21 @@ int main(void)
     nh.advertise(adc_joystick);
     nh.advertise(stepper_status);
 
+    Tendon1Stepper.max_speed_steps_per_second = 24000;
+    Tendon1Stepper.travel_limit_steps = 160000;
+    Tendon1Stepper.acceleration = 40;
+    Tendon1Stepper.microstep_mode = STEPMODE_MICRO_16;
+    Tendon1Stepper.phase_current_ma = 2800;
+
     ClearStepperRegisters(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
-    SetStepperCurrent(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,2800);
-    SetStepperStepMode(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,STEPMODE_MICRO_16);
+    SetStepperCurrent(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.phase_current_ma);
+    SetStepperStepMode(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.microstep_mode);
     SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,true);
 
 
     stepper_status_msg.position_steps = 0;
     stepper_status_msg.speed_steps_per_second = 1;
     stepper_status_msg.enabled = false;
-    Stepper1_min_speed     = 1;
-    Stepper1_max_speed     = 24000;
-    Stepper1_accel         = 1000;
     Stepper1_target_speed   = 2000;
 
 
