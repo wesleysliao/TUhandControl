@@ -94,6 +94,12 @@ ros::NodeHandle nh;
 // type declarations
 //
 
+struct TivaC_Pin
+{
+  uint32_t PORT;
+  uint8_t  PIN;
+};
+
 struct Stepper {
   std::string name;
 
@@ -107,10 +113,8 @@ struct Stepper {
   int target_speed;
 
   uint32_t TIMER_BASE;
-  uint32_t CS_PORT;
-  uint8_t  CS_PIN;
-  uint32_t STEP_PORT;
-  uint8_t  STEP_PIN;
+  TivaC_Pin ChipSelectPin;
+  TivaC_Pin StepPin;
 };
 
 //
@@ -132,6 +136,7 @@ void StepperInitGPIO(Stepper &stepper);
 void StepperInitSPI(Stepper &stepper);
 void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper);
 void StepperGetParamsFromROS(Stepper &stepper);
+
 
 bool SameSign(int x, int y)
 {
@@ -212,12 +217,12 @@ void SW1_SW2_pressed(void){
 //
 
 void StepperEnable(Stepper &stepper){
-    SPIStepperEnable(stepper.CS_PORT, stepper.CS_PIN);
+    SPIStepperEnable(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
 
     stepper.status.enabled = true;
 }
 void StepperDisable(Stepper &stepper){
-    SPIStepperDisable(stepper.CS_PORT, stepper.CS_PIN);
+    SPIStepperDisable(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
 
     stepper.status.enabled = false;
     stepper.status.speed_steps_per_second = 0;
@@ -249,10 +254,10 @@ void StepperUpdate(Stepper &stepper)
 
       if(!SameSign(original_speed, stepper.status.speed_steps_per_second) || original_speed == 0){
           if(stepper.status.speed_steps_per_second>=0){
-              SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
+              SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
               stepper.status.direction_forward = true;
           }else{
-              SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, false);
+              SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
               stepper.status.direction_forward = false;
           }
       }
@@ -265,9 +270,11 @@ void StepperUpdate(Stepper &stepper)
 
 }
 
+std::queue<TivaC_Pin> resetQueue;
 
-void ScheduleStepPinReset(){
+void ScheduleStepPinReset(TivaC_Pin StepPin){
 
+    resetQueue.push(StepPin);
     TimerEnable(TIMER1_BASE, TIMER_A); //Enable reset
 }
 
@@ -304,13 +311,18 @@ void Stepper1StepPinSet(void)
     GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 255);
 
 
-    ScheduleStepPinReset();
+    ScheduleStepPinReset(Tendon1Stepper.StepPin);
 }
 
 void StepPinReset(void)
 {
     TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-    GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 0);
+
+    if(resetQueue.size()){
+      TivaC_Pin resetPin = resetQueue.front();
+      resetQueue.pop();
+      GPIOPinWrite(resetPin.PORT, resetPin.PIN, 0);
+    }
 }
 
 void StepperError(void){
@@ -408,10 +420,10 @@ int main(void)
 
 
     Tendon1Stepper.name = std::string("Tendon1Stepper");
-    Tendon1Stepper.CS_PIN = GPIO_STEPPER_1_CS_PIN;
-    Tendon1Stepper.CS_PORT = GPIO_STEPPER_1_CS_PORT;
-    Tendon1Stepper.STEP_PIN = GPIO_STEPPER_1_STEP_PIN;
-    Tendon1Stepper.STEP_PORT = GPIO_STEPPER_1_STEP_PORT;
+    Tendon1Stepper.ChipSelectPin.PIN = GPIO_STEPPER_1_CS_PIN;
+    Tendon1Stepper.ChipSelectPin.PORT = GPIO_STEPPER_1_CS_PORT;
+    Tendon1Stepper.StepPin.PIN = GPIO_STEPPER_1_STEP_PIN;
+    Tendon1Stepper.StepPin.PORT = GPIO_STEPPER_1_STEP_PORT;
     Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
@@ -552,22 +564,22 @@ void setupSharedStepperPins(void)
 
 void StepperInitGPIO(Stepper &stepper)
 {
-    GPIOPinTypeGPIOOutput(stepper.STEP_PORT, stepper.STEP_PIN);
-    GPIOPadConfigSet(stepper.STEP_PORT, stepper.STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    GPIOPinTypeGPIOOutput(stepper.StepPin.PORT, stepper.StepPin.PIN);
+    GPIOPadConfigSet(stepper.StepPin.PORT, stepper.StepPin.PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
-    GPIOPinTypeGPIOOutput(stepper.CS_PORT, stepper.CS_PIN);
-    GPIOPadConfigSet(stepper.CS_PORT, stepper.CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    GPIOPinTypeGPIOOutput(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
+    GPIOPadConfigSet(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
-    GPIOPinWrite(stepper.CS_PORT, stepper.CS_PIN, 255); //Pull CS HIGH
+    GPIOPinWrite(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, 255); //Pull CS HIGH
 }
 
 void StepperInitSPI(Stepper &stepper){
   // !! stepper GPIO must be initialized first!
 
-    ClearStepperRegisters(stepper.CS_PORT, stepper.CS_PIN);
-    SetStepperCurrent(stepper.CS_PORT, stepper.CS_PIN, stepper.phase_current_ma);
-    SetStepperStepMode(stepper.CS_PORT, stepper.CS_PIN, stepper.microstep_mode);
-    SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
+    ClearStepperRegisters(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
+    SetStepperCurrent(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, stepper.phase_current_ma);
+    SetStepperStepMode(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, stepper.microstep_mode);
+    SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
 }
 
 void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper){
