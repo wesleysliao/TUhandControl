@@ -51,7 +51,7 @@ extern "C"
 #define  SR3  0x7
 #define  SR4  0xA
 
-void SetupSPIStepper(void){
+void SetupStepperSPIMaster(void){
 	ROM_GPIOPinConfigure(GPIO_PB4_SSI2CLK);
     ROM_GPIOPinConfigure(GPIO_PB7_SSI2TX);
     ROM_GPIOPinConfigure(GPIO_PB6_SSI2RX);

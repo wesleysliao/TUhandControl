@@ -92,11 +92,14 @@ ros::NodeHandle nh;
 //
 
 struct Stepper {
+  std::string name;
+
   int max_speed_steps_per_second;
   int travel_limit_steps;
   int acceleration;
   int microstep_mode;
   int phase_current_ma;
+
   stepper_msg::Stepper_Status status;
   int target_speed;
 
@@ -181,8 +184,6 @@ void SW1_SW2_pressed(void){
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
 
-        GetParamsFromROS();
-
 
         // ADCProcessorTrigger(ADC0_BASE, 1);
 
@@ -213,6 +214,49 @@ void StepperDisable(Stepper &stepper){
 
     stepper.status.enabled = false;
     stepper.status.speed_steps_per_second = 0;
+}
+
+void StepperInitSPI(Stepper &stepper){
+    ClearStepperRegisters(stepper.CS_PORT, stepper.CS_PIN);
+    SetStepperCurrent(stepper.CS_PORT, stepper.CS_PIN, stepper.phase_current_ma);
+    SetStepperStepMode(stepper.CS_PORT, stepper.CS_PIN, stepper.microstep_mode);
+    SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
+}
+
+void StepperGetParamsFromROS(Stepper &stepper){
+  std::string paramname = std::string("/TUhand/");
+  paramname.append(stepper.name);
+
+  int prefix = paramname.length();
+
+  paramname.append("/max_speed_steps_per_second");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.max_speed_steps_per_second, 1))
+    stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/travel_limit_steps");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.travel_limit_steps, 1))
+    stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/acceleration");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.acceleration, 1))
+    stepper.acceleration = DEFAULT_STEPPER_ACCEL;
+  
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/microstep_mode");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.microstep_mode, 1))
+    stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/phase_current_ma");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.phase_current_ma, 1))
+    stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
 }
 
 void ScheduleStepPinReset(){
@@ -385,10 +429,14 @@ int main(void)
     setupJoystick();
     setupSharedStepperPins();
 
-
+    Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.CS_PIN = GPIO_STEPPER_1_CS_PIN;
     Tendon1Stepper.CS_PORT = GPIO_STEPPER_1_CS_PORT;
     Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
+    Tendon1Stepper.status.position_steps = 0;
+    Tendon1Stepper.status.speed_steps_per_second = 1;
+    Tendon1Stepper.status.enabled = false;
+    Tendon1Stepper.target_speed   = 2000;
 
     GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
@@ -400,9 +448,7 @@ int main(void)
 
     GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
 
-    GPIOPinWrite(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN, 255); //Pull CLR HIGH
-    SysCtlDelay(1000);
-    GPIOPinWrite(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN, 0); //Pull CLR LOW
+
 
 
 
@@ -413,20 +459,8 @@ int main(void)
 
     while(!nh.connected()) {nh.spinOnce();}
 
-    GetParamsFromROS();
-
-    ClearStepperRegisters(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
-    SetStepperCurrent(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.phase_current_ma);
-    SetStepperStepMode(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.microstep_mode);
-    SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
-
-
-    Tendon1Stepper.status.position_steps = 0;
-    Tendon1Stepper.status.speed_steps_per_second = 1;
-    Tendon1Stepper.status.enabled = false;
-    Tendon1Stepper.target_speed   = 2000;
-
-
+    StepperGetParamsFromROS(Tendon1Stepper);
+    StepperInitSPI(Tendon1Stepper);
 
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
@@ -559,18 +593,10 @@ void setupSharedStepperPins(void)
     GPIOPinTypeGPIOOutput(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
-    SetupSPIStepper();
+    SetupStepperSPIMaster();
+
+    GPIOPinWrite(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN, 255); //Pull CLR HIGH to reset all motor drivers
+    SysCtlDelay(1000);
+    GPIOPinWrite(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN, 0); //Pull CLR LOW
 }
 
-void GetParamsFromROS(void){
-  if(!nh.getParam("/TUhand/Tendon1Stepper/max_speed_steps_per_second", &Tendon1Stepper.max_speed_steps_per_second, 1))
-    Tendon1Stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/travel_limit_steps", &Tendon1Stepper.travel_limit_steps, 1))
-    Tendon1Stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/acceleration", &Tendon1Stepper.acceleration, 1))
-    Tendon1Stepper.acceleration = DEFAULT_STEPPER_ACCEL;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/microstep_mode", &Tendon1Stepper.microstep_mode, 1))
-    Tendon1Stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/phase_current_ma", &Tendon1Stepper.phase_current_ma, 1))
-    Tendon1Stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
-}
