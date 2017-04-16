@@ -165,8 +165,8 @@ void setupJoystick(void)
   ADCIntEnable(ADC0_BASE, 1);
 
 
-  js_msg.x_axis_zero = 2048;
-  js_msg.y_axis_zero = 2048;
+  js_msg.x_axis_zero = 2070;
+  js_msg.y_axis_zero = 2066;
 }
 
 void JoystickClicked(void) {
@@ -229,14 +229,12 @@ void StepperEnable(void){
     SPIStepperEnable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
 
     stepper_status_msg.enabled = true;
-    TimerEnable(TIMER0_BASE, TIMER_B);
 }
 void StepperDisable(void){
     SPIStepperDisable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
 
     stepper_status_msg.enabled = false;
     stepper_status_msg.speed_steps_per_second = 0;
-    TimerDisable(TIMER0_BASE, TIMER_B);
 }
 
 void ScheduleStepPinReset(){
@@ -248,35 +246,44 @@ void ScheduleStepPinReset(){
 
 #define STEPPER_ACCEL_INTERVAL 2
 
-void UpdateSteppers(void){
+void PeriodicUpdate(void){
 
     TimerIntClear(TIMER0_BASE, TIMER_TIMB_TIMEOUT);
 
-    if(stepper_status_msg.speed_steps_per_second != Stepper1_target_speed)
-    {
-        int original_speed = stepper_status_msg.speed_steps_per_second;
+    if(stepper_status_msg.enabled){
 
-        if(stepper_status_msg.speed_steps_per_second < Stepper1_target_speed)
-        {
-            stepper_status_msg.speed_steps_per_second += Stepper1_accel;
+      if(stepper_status_msg.speed_steps_per_second != Stepper1_target_speed)
+      {
+          int original_speed = stepper_status_msg.speed_steps_per_second;
 
-        }
-        else{
-            stepper_status_msg.speed_steps_per_second -= Stepper1_accel;
-        }
+          if(stepper_status_msg.speed_steps_per_second < Stepper1_target_speed)
+          {
+              stepper_status_msg.speed_steps_per_second += Stepper1_accel;
 
-        if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second)){
-            if(stepper_status_msg.speed_steps_per_second>=0){
-                SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
-            }else{
-                SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
-            }
-        }
+          }
+          else{
+              stepper_status_msg.speed_steps_per_second -= Stepper1_accel;
+          }
 
-        TimerLoadSet(TIMER1_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper_status_msg.speed_steps_per_second)) -1, SysCtlClockGet()/STEPPER_ACCEL_INTERVAL));
+          if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second)){
+              if(stepper_status_msg.speed_steps_per_second>=0){
+                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
+                  stepper_status_msg.direction_forward = true;
+              }else{
+                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
+                  stepper_status_msg.direction_forward = false;
+              }
+          }
+
+          TimerLoadSet(TIMER1_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper_status_msg.speed_steps_per_second)) -1, SysCtlClockGet()/STEPPER_ACCEL_INTERVAL));
+      }
+
+      stepper_status.publish(&stepper_status_msg);
     }
+    
 
-    stepper_status.publish(&stepper_status_msg);
+    ADCProcessorTrigger(ADC0_BASE, 1);
+    nh.spinOnce();
 }
 
 void Stepper1StepPinSet(void)
@@ -441,7 +448,7 @@ int main(void)
 
     TimerIntRegister(TIMER1_BASE, TIMER_A, Stepper1StepPinSet);
     TimerIntRegister(TIMER0_BASE, TIMER_A, StepPinReset);
-    TimerIntRegister(TIMER0_BASE, TIMER_B, UpdateSteppers);
+    TimerIntRegister(TIMER0_BASE, TIMER_B, PeriodicUpdate);
 
     IntEnable(INT_TIMER0A);
     TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
@@ -453,6 +460,7 @@ int main(void)
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
     TimerEnable(TIMER0_BASE, TIMER_A);
+    TimerEnable(TIMER0_BASE, TIMER_B);
     TimerEnable(TIMER1_BASE, TIMER_A);
 
     IntPrioritySet(INT_TIMER0A, 0b00100000); //Motor reset
@@ -464,9 +472,5 @@ int main(void)
 
     while(1)
     {
-        ADCProcessorTrigger(ADC0_BASE, 1);
-
-        nh.spinOnce();
-        nh.getHardware()->delay(50);
     }
 }
