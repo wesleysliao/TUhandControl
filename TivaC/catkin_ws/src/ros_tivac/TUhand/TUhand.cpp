@@ -87,6 +87,10 @@ ros::NodeHandle nh;
 #define DEFAULT_STEPPER_STEPMODE        2
 #define DEFAULT_STEPPER_PH_CURRENT      800
 
+//
+// type declarations
+//
+
 struct Stepper {
   int max_speed_steps_per_second;
   int travel_limit_steps;
@@ -97,29 +101,33 @@ struct Stepper {
   int target_speed;
 
   uint32_t TIMER_BASE;
+  uint32_t CS_PORT;
+  uint8_t  CS_PIN;
+  uint32_t STEP_PORT;
+  uint8_t  STEP_PIN;
 };
+
+//
+// function declarations
+//
+
+void StepperEnable(Stepper &stepper);
+void StepperDisable(Stepper &stepper);
+void JoystickClicked(void);
+void JoystickReleased(void);
+void ReadADC(void);
+
+void enableSysPeripherals(void);
+void setupSharedStepperPins(void);
+void setupJoystick(void);
+void GetParamsFromROS(void);
+
 
 bool SameSign(int x, int y)
 {
     return (x >= 0) ^ (y < 0);
 }
 
-
-void enableSysPeripherals(void)
-{
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
-  
-  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
-  {
-  }
-}
 
 
 //globals
@@ -132,52 +140,7 @@ adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
 
 
-void StepperEnable(void);
-void StepperDisable(void);
 
-//Handlers
-void JoystickClicked(void);
-void JoystickReleased(void);
-void ReadADC(void);
-
-//methods
-void setupJoystick(void)
-{
-  //Setup Joystick click
-  GPIOPinTypeGPIOInput(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);
-  GPIOPadConfigSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
-
-  //Joystick click Interrupt setup
-  GPIOIntDisable(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);        // Disable interrupt for PA5 (in case it was enabled)
-  GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);      // Clear pending interrupts for PA5
-  GPIOIntRegister(GPIO_JOYSTICK_CLICK_PORT, JoystickClicked);     // Register our handler function for port A
-  GPIOIntTypeSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN, GPIO_FALLING_EDGE);             // Configure PF4 for falling edge trigger
-  GPIOIntEnable(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);     // Enable interrupt for PF4
-
-
-  //Setup joystic axis pins
-  GPIOPinTypeADC(GPIO_JOYSTICK_X_AXIS_PORT, GPIO_JOYSTICK_X_AXIS_PIN);
-  GPIOPinTypeADC(GPIO_JOYSTICK_Y_AXIS_PORT, GPIO_JOYSTICK_Y_AXIS_PIN);  
-
-  ADCSequenceDisable( ADC0_BASE, 0 );
-  ADCSequenceDisable( ADC0_BASE, 1 );
-  ADCSequenceDisable( ADC0_BASE, 2 );
-  ADCSequenceDisable( ADC0_BASE, 3 );
-
-  ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_PROCESSOR, 0);
-  ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CH_JOYSTICK_X_AXIS);
-  ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CH_JOYSTICK_X_AXIS);
-  ADCSequenceStepConfigure(ADC0_BASE, 1, 2, ADC_CH_JOYSTICK_Y_AXIS);
-  ADCSequenceStepConfigure(ADC0_BASE,1,3, ADC_CTL_END | ADC_CH_JOYSTICK_Y_AXIS | ADC_CTL_IE);
-  ADCSequenceEnable(ADC0_BASE, 1);
-
-  ADCIntRegister(ADC0_BASE, 1, ReadADC);
-  ADCIntEnable(ADC0_BASE, 1);
-
-
-  js_msg.x_axis_zero = 2070;
-  js_msg.y_axis_zero = 2066;
-}
 
 void JoystickClicked(void) {
     if (GPIOIntStatus(GPIO_JOYSTICK_CLICK_PORT, false) & GPIO_JOYSTICK_CLICK_PIN) {
@@ -190,9 +153,9 @@ void JoystickClicked(void) {
         GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);  // Clear interrupt flag
 
         if(Tendon1Stepper.status.enabled)
-            StepperDisable();
+            StepperDisable(Tendon1Stepper);
         else
-            StepperEnable();
+            StepperEnable(Tendon1Stepper);
     }
 }
 
@@ -208,93 +171,48 @@ void JoystickReleased(void) {
     }
 }
 
-void ReadADC(void){
 
-  ADCIntClear(ADC0_BASE,1);
+void SW1_SW2_pressed(void){
+    if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
 
-  uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
-
-  ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
-
-  if( abs(adc_values[0] - js_msg.x_axis_raw) > 100 || abs(adc_values[2] - js_msg.y_axis_raw) > 100)
-  {
-      js_msg.x_axis_raw = adc_values[0];
-      js_msg.y_axis_raw = adc_values[2];
-
-    //   if(abs((js_msg.x_axis_raw-js_msg.x_axis_zero)<100))
-    //     js_msg.x_axis_raw = js_msg.x_axis_zero;
-
-    // if(abs((js_msg.y_axis_raw-js_msg.y_axis_zero)<100))
-    //     js_msg.y_axis_raw = js_msg.y_axis_zero;
-
-      adc_joystick.publish(&js_msg);
-
-
-
-      Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
-  }
-}
-
-void StepperEnable(void){
-    SPIStepperEnable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
-
-    Tendon1Stepper.status.enabled = true;
-}
-void StepperDisable(void){
-    SPIStepperDisable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
-
-    Tendon1Stepper.status.enabled = false;
-    Tendon1Stepper.status.speed_steps_per_second = 0;
-}
-
-
-#define PERIODIC_UPDATE_RATE_HZ 32
-
-void PeriodicUpdate(void){
-
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-
-    if(Tendon1Stepper.status.enabled){
-
-      if(Tendon1Stepper.status.speed_steps_per_second != Tendon1Stepper.target_speed)
-      {
-          int original_speed = Tendon1Stepper.status.speed_steps_per_second;
-
-          if(Tendon1Stepper.status.speed_steps_per_second < Tendon1Stepper.target_speed)
-          {
-            if(Tendon1Stepper.target_speed - Tendon1Stepper.status.speed_steps_per_second  < Tendon1Stepper.acceleration)
-              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
-            else
-              Tendon1Stepper.status.speed_steps_per_second += Tendon1Stepper.acceleration;
-
-          }
-          else{
-            if(Tendon1Stepper.status.speed_steps_per_second - Tendon1Stepper.target_speed < Tendon1Stepper.acceleration)
-              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
-            else
-              Tendon1Stepper.status.speed_steps_per_second -= Tendon1Stepper.acceleration;
-          }
-
-          if(!SameSign(original_speed, Tendon1Stepper.status.speed_steps_per_second) || original_speed == 0){
-              if(Tendon1Stepper.status.speed_steps_per_second>=0){
-                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
-                  Tendon1Stepper.status.direction_forward = true;
-              }else{
-                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
-                  Tendon1Stepper.status.direction_forward = false;
-              }
-          }
-
-          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(Tendon1Stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
-      }
-
-      stepper_status.publish(&Tendon1Stepper.status);
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
     }
+    else if(GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_4) {
+
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
+
+        GetParamsFromROS();
 
 
-    nh.spinOnce();
+        // ADCProcessorTrigger(ADC0_BASE, 1);
 
-    ADCProcessorTrigger(ADC0_BASE, 1);
+        // while(ADCBusy(ADC0_BASE));
+         
+        // uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
+
+        // ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
+
+        // js_msg.x_axis_zero = adc_values[0];
+        // js_msg.y_axis_zero = adc_values[2];
+
+    }
+}
+
+
+//
+// Stepper control functions
+//
+
+void StepperEnable(Stepper &stepper){
+    SPIStepperEnable(stepper.CS_PORT, stepper.CS_PIN);
+
+    stepper.status.enabled = true;
+}
+void StepperDisable(Stepper &stepper){
+    SPIStepperDisable(stepper.CS_PORT, stepper.CS_PIN);
+
+    stepper.status.enabled = false;
+    stepper.status.speed_steps_per_second = 0;
 }
 
 void ScheduleStepPinReset(){
@@ -375,44 +293,81 @@ void StepperError(void){
 }
 
 
-void GetParamsFromROS(void){
-  if(!nh.getParam("/TUhand/Tendon1Stepper/max_speed_steps_per_second", &Tendon1Stepper.max_speed_steps_per_second, 1))
-    Tendon1Stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/travel_limit_steps", &Tendon1Stepper.travel_limit_steps, 1))
-    Tendon1Stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/acceleration", &Tendon1Stepper.acceleration, 1))
-    Tendon1Stepper.acceleration = DEFAULT_STEPPER_ACCEL;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/microstep_mode", &Tendon1Stepper.microstep_mode, 1))
-    Tendon1Stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
-  if(!nh.getParam("/TUhand/Tendon1Stepper/phase_current_ma", &Tendon1Stepper.phase_current_ma, 1))
-    Tendon1Stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
+
+void ReadADC(void){
+
+  ADCIntClear(ADC0_BASE,1);
+
+  uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
+
+  ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
+
+  if( abs(adc_values[0] - js_msg.x_axis_raw) > 100 || abs(adc_values[2] - js_msg.y_axis_raw) > 100)
+  {
+      js_msg.x_axis_raw = adc_values[0];
+      js_msg.y_axis_raw = adc_values[2];
+
+    //   if(abs((js_msg.x_axis_raw-js_msg.x_axis_zero)<100))
+    //     js_msg.x_axis_raw = js_msg.x_axis_zero;
+
+    // if(abs((js_msg.y_axis_raw-js_msg.y_axis_zero)<100))
+    //     js_msg.y_axis_raw = js_msg.y_axis_zero;
+
+      adc_joystick.publish(&js_msg);
+
+
+
+      Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+  }
 }
 
+#define PERIODIC_UPDATE_RATE_HZ 32
 
-void SW1_SW2_pressed(void){
-    if (GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_0) {
+void PeriodicUpdate(void){
 
-        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+
+    if(Tendon1Stepper.status.enabled){
+
+      if(Tendon1Stepper.status.speed_steps_per_second != Tendon1Stepper.target_speed)
+      {
+          int original_speed = Tendon1Stepper.status.speed_steps_per_second;
+
+          if(Tendon1Stepper.status.speed_steps_per_second < Tendon1Stepper.target_speed)
+          {
+            if(Tendon1Stepper.target_speed - Tendon1Stepper.status.speed_steps_per_second  < Tendon1Stepper.acceleration)
+              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
+            else
+              Tendon1Stepper.status.speed_steps_per_second += Tendon1Stepper.acceleration;
+
+          }
+          else{
+            if(Tendon1Stepper.status.speed_steps_per_second - Tendon1Stepper.target_speed < Tendon1Stepper.acceleration)
+              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
+            else
+              Tendon1Stepper.status.speed_steps_per_second -= Tendon1Stepper.acceleration;
+          }
+
+          if(!SameSign(original_speed, Tendon1Stepper.status.speed_steps_per_second) || original_speed == 0){
+              if(Tendon1Stepper.status.speed_steps_per_second>=0){
+                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
+                  Tendon1Stepper.status.direction_forward = true;
+              }else{
+                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
+                  Tendon1Stepper.status.direction_forward = false;
+              }
+          }
+
+          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(Tendon1Stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
+      }
+
+      stepper_status.publish(&Tendon1Stepper.status);
     }
-    else if(GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_4) {
-
-        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
-
-        GetParamsFromROS();
 
 
-        // ADCProcessorTrigger(ADC0_BASE, 1);
+    nh.spinOnce();
 
-        // while(ADCBusy(ADC0_BASE));
-         
-        // uint32_t adc_values[8] = {0,0,0,0,0,0,0,0};
-
-        // ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
-
-        // js_msg.x_axis_zero = adc_values[0];
-        // js_msg.y_axis_zero = adc_values[2];
-
-    }
+    ADCProcessorTrigger(ADC0_BASE, 1);
 }
 
 int main(void)
@@ -427,26 +382,13 @@ int main(void)
 
     enableSysPeripherals();
 
-    HWREG(GPIO_PORTD_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY;
-    HWREG(GPIO_PORTD_BASE+GPIO_O_CR) |= GPIO_PIN_7;
-
     setupJoystick();
-
-    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);
-    GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
-    GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
-    GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);         // Configure PF4 for falling edge trigger
-    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
+    setupSharedStepperPins();
 
 
-    GPIOPinTypeGPIOInput(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);
-    GPIOPadConfigSet(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
-    GPIOIntRegister(GPIO_STEPPER_ALL_ERR_PORT, StepperError);     // Register our handler function for port A
-    GPIOIntTypeSet(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN, GPIO_FALLING_EDGE);         // Configure PF4 for falling edge trigger
-    GPIOIntEnable(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);     // Enable interrupt for PF4
-
-    GPIOPinTypeGPIOOutput(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN);
-    GPIOPadConfigSet(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+    Tendon1Stepper.CS_PIN = GPIO_STEPPER_1_CS_PIN;
+    Tendon1Stepper.CS_PORT = GPIO_STEPPER_1_CS_PORT;
+    Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
 
     GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
@@ -454,7 +396,7 @@ int main(void)
     GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
 
-    SetupSPIStepper();
+    
 
     GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
 
@@ -483,6 +425,8 @@ int main(void)
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
     Tendon1Stepper.target_speed   = 2000;
+
+
 
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
@@ -533,4 +477,100 @@ int main(void)
     while(1)
     {
     }
+}
+
+//
+// Initialization functions
+//
+
+void enableSysPeripherals(void)
+{
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
+  
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
+  {
+  }
+
+  
+  HWREG(GPIO_PORTD_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY; //Unlock pin D7 for use
+  HWREG(GPIO_PORTD_BASE+GPIO_O_CR) |= GPIO_PIN_7;
+}
+
+void setupJoystick(void)
+{
+  //Setup Joystick click
+  GPIOPinTypeGPIOInput(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);
+  GPIOPadConfigSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+
+  //Joystick click Interrupt setup
+  GPIOIntDisable(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);        // Disable interrupt for PA5 (in case it was enabled)
+  GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);      // Clear pending interrupts for PA5
+  GPIOIntRegister(GPIO_JOYSTICK_CLICK_PORT, JoystickClicked);     // Register our handler function for port A
+  GPIOIntTypeSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN, GPIO_FALLING_EDGE);             // Configure PF4 for falling edge trigger
+  GPIOIntEnable(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);     // Enable interrupt for PF4
+
+
+  //Setup joystic axis pins
+  GPIOPinTypeADC(GPIO_JOYSTICK_X_AXIS_PORT, GPIO_JOYSTICK_X_AXIS_PIN);
+  GPIOPinTypeADC(GPIO_JOYSTICK_Y_AXIS_PORT, GPIO_JOYSTICK_Y_AXIS_PIN);  
+
+  ADCSequenceDisable( ADC0_BASE, 0 );
+  ADCSequenceDisable( ADC0_BASE, 1 );
+  ADCSequenceDisable( ADC0_BASE, 2 );
+  ADCSequenceDisable( ADC0_BASE, 3 );
+
+  ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_PROCESSOR, 0);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CH_JOYSTICK_X_AXIS);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CH_JOYSTICK_X_AXIS);
+  ADCSequenceStepConfigure(ADC0_BASE, 1, 2, ADC_CH_JOYSTICK_Y_AXIS);
+  ADCSequenceStepConfigure(ADC0_BASE,1,3, ADC_CTL_END | ADC_CH_JOYSTICK_Y_AXIS | ADC_CTL_IE);
+  ADCSequenceEnable(ADC0_BASE, 1);
+
+  ADCIntRegister(ADC0_BASE, 1, ReadADC);
+  ADCIntEnable(ADC0_BASE, 1);
+
+
+  js_msg.x_axis_zero = 2070;
+  js_msg.y_axis_zero = 2066;
+}
+
+void setupSharedStepperPins(void)
+{
+
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);
+    GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);         // Configure PF4 for falling edge trigger
+    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
+
+    GPIOPinTypeGPIOInput(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);
+    GPIOPadConfigSet(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_STEPPER_ALL_ERR_PORT, StepperError);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN, GPIO_FALLING_EDGE);         // Configure PF4 for falling edge trigger
+    GPIOIntEnable(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);     // Enable interrupt for PF4
+
+    GPIOPinTypeGPIOOutput(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN);
+    GPIOPadConfigSet(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    SetupSPIStepper();
+}
+
+void GetParamsFromROS(void){
+  if(!nh.getParam("/TUhand/Tendon1Stepper/max_speed_steps_per_second", &Tendon1Stepper.max_speed_steps_per_second, 1))
+    Tendon1Stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/travel_limit_steps", &Tendon1Stepper.travel_limit_steps, 1))
+    Tendon1Stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/acceleration", &Tendon1Stepper.acceleration, 1))
+    Tendon1Stepper.acceleration = DEFAULT_STEPPER_ACCEL;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/microstep_mode", &Tendon1Stepper.microstep_mode, 1))
+    Tendon1Stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/phase_current_ma", &Tendon1Stepper.phase_current_ma, 1))
+    Tendon1Stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
 }
