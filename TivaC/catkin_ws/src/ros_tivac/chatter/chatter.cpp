@@ -117,11 +117,6 @@ void enableSysPeripherals(void)
   }
 }
 
-void StepperEnable(void);
-void StepperDisable(void);
-//
-//  Joystick code
-// 
 
 //globals
 
@@ -135,6 +130,10 @@ ros::Publisher stepper_status("stepper_status", &stepper_status_msg);
 
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
+
+
+void StepperEnable(void);
+void StepperDisable(void);
 
 //Handlers
 void JoystickClicked(void);
@@ -279,7 +278,7 @@ void PeriodicUpdate(void){
               stepper_status_msg.speed_steps_per_second -= Tendon1Stepper.acceleration;
           }
 
-          if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second)){
+          if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second) || original_speed == 0){
               if(stepper_status_msg.speed_steps_per_second>=0){
                   SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
                   stepper_status_msg.direction_forward = true;
@@ -294,9 +293,7 @@ void PeriodicUpdate(void){
 
       stepper_status.publish(&stepper_status_msg);
     }
-    
 
-    
 
     nh.spinOnce();
 
@@ -312,12 +309,33 @@ void Stepper1StepPinSet(void)
 {
     // Clear the timer interrupt
     TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
-    GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 255);
 
     if(stepper_status_msg.direction_forward)
+    {
+      if(stepper_status_msg.position_steps < Tendon1Stepper.travel_limit_steps)
+      {
         stepper_status_msg.position_steps++;
+      }
+      else
+      {
+        stepper_status_msg.speed_steps_per_second = 0;
+        return;
+      }
+    }
     else
+    {
+      if(stepper_status_msg.position_steps > 0)
+      {
         stepper_status_msg.position_steps--;
+      }
+      else
+      {
+        stepper_status_msg.speed_steps_per_second = 0;
+        return;
+      }
+    }
+
+    GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 255);
 
 
     ScheduleStepPinReset();
@@ -461,7 +479,7 @@ int main(void)
     ClearStepperRegisters(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
     SetStepperCurrent(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.phase_current_ma);
     SetStepperStepMode(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, Tendon1Stepper.microstep_mode);
-    SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,true);
+    SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
 
 
     stepper_status_msg.position_steps = 0;
