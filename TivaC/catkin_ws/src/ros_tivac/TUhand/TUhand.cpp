@@ -81,11 +81,14 @@ ros::NodeHandle nh;
 #define GPIO_STEPPER_ALL_ERR_PORT       GPIO_PORTE_BASE
 #define GPIO_STEPPER_ALL_ERR_PIN        GPIO_PIN_0
 
+
 #define DEFAULT_STEPPER_MAX_SPEED       2400
 #define DEFAULT_STEPPER_ACCEL           100
 #define DEFAULT_STEPPER_TRAVEL_LIMIT    400
 #define DEFAULT_STEPPER_STEPMODE        2
 #define DEFAULT_STEPPER_PH_CURRENT      800
+
+#define PERIODIC_UPDATE_RATE_HZ 32
 
 //
 // type declarations
@@ -123,8 +126,12 @@ void ReadADC(void);
 void enableSysPeripherals(void);
 void setupSharedStepperPins(void);
 void setupJoystick(void);
-void GetParamsFromROS(void);
 
+
+void StepperInitGPIO(Stepper &stepper);
+void StepperInitSPI(Stepper &stepper);
+void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper);
+void StepperGetParamsFromROS(Stepper &stepper);
 
 bool SameSign(int x, int y)
 {
@@ -216,94 +223,48 @@ void StepperDisable(Stepper &stepper){
     stepper.status.speed_steps_per_second = 0;
 }
 
-void StepperInitGPIO(Stepper &stepper)
+
+void StepperUpdate(Stepper &stepper)
 {
-    GPIOPinTypeGPIOOutput(stepper.STEP_PORT, stepper.STEP_PIN);
-    GPIOPadConfigSet(stepper.STEP_PORT, stepper.STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+  if(stepper.status.enabled){
 
-    GPIOPinTypeGPIOOutput(stepper.CS_PORT, stepper.CS_PIN);
-    GPIOPadConfigSet(stepper.CS_PORT, stepper.CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+  if(stepper.status.speed_steps_per_second != stepper.target_speed)
+  {
+      int original_speed = stepper.status.speed_steps_per_second;
 
-    GPIOPinWrite(stepper.CS_PORT, stepper.CS_PIN, 255); //Pull CS HIGH
+      if(stepper.status.speed_steps_per_second < stepper.target_speed)
+      {
+        if(stepper.target_speed - stepper.status.speed_steps_per_second  < stepper.acceleration)
+          stepper.status.speed_steps_per_second = stepper.target_speed;
+        else
+          stepper.status.speed_steps_per_second += stepper.acceleration;
+
+      }
+      else{
+        if(stepper.status.speed_steps_per_second - stepper.target_speed < stepper.acceleration)
+          stepper.status.speed_steps_per_second = stepper.target_speed;
+        else
+          stepper.status.speed_steps_per_second -= stepper.acceleration;
+      }
+
+      if(!SameSign(original_speed, stepper.status.speed_steps_per_second) || original_speed == 0){
+          if(stepper.status.speed_steps_per_second>=0){
+              SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
+              stepper.status.direction_forward = true;
+          }else{
+              SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, false);
+              stepper.status.direction_forward = false;
+          }
+      }
+
+      TimerLoadSet(stepper.TIMER_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
+  }
+
+  stepper_status.publish(&stepper.status);
+  }
+
 }
 
-void StepperInitSPI(Stepper &stepper){
-    ClearStepperRegisters(stepper.CS_PORT, stepper.CS_PIN);
-    SetStepperCurrent(stepper.CS_PORT, stepper.CS_PIN, stepper.phase_current_ma);
-    SetStepperStepMode(stepper.CS_PORT, stepper.CS_PIN, stepper.microstep_mode);
-    SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
-}
-
-void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper){
-    TimerDisable(stepper.TIMER_BASE, TIMER_A);
-    TimerConfigure(stepper.TIMER_BASE, TIMER_CFG_PERIODIC); //stepper1 set
-
-    //Tendon1Stepper.status.speed_steps_per_second = 3200;
-    TimerLoadSet(stepper.TIMER_BASE, TIMER_A, (SysCtlClockGet() / stepper.status.speed_steps_per_second) -1);
-    TimerUpdateMode(stepper.TIMER_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
-
-    TimerIntRegister(stepper.TIMER_BASE, TIMER_A, pfnHandler);
-
-    switch(stepper.TIMER_BASE){
-      case TIMER0_BASE:
-        IntPrioritySet(INT_TIMER0A, 0b00000000);
-        break;
-      case TIMER1_BASE:
-        IntPrioritySet(INT_TIMER1A, 0b00000000);
-        break;
-      case TIMER2_BASE:
-        IntPrioritySet(INT_TIMER2A, 0b00000000);
-        break;
-      case TIMER3_BASE:
-        IntPrioritySet(INT_TIMER3A, 0b00000000);
-        break;
-      case TIMER4_BASE:
-        IntPrioritySet(INT_TIMER4A, 0b00000000);
-        break;
-      case TIMER5_BASE:
-        IntPrioritySet(INT_TIMER5A, 0b00000000);
-        break;
-    }
-
-    TimerEnable(stepper.TIMER_BASE, TIMER_A);
-}
-
-
-void StepperGetParamsFromROS(Stepper &stepper){
-  std::string paramname = std::string("/TUhand/");
-  paramname.append(stepper.name);
-
-  int prefix = paramname.length();
-
-  paramname.append("/max_speed_steps_per_second");
-
-  if(!nh.getParam(paramname.c_str(), &stepper.max_speed_steps_per_second, 1))
-    stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
-
-  paramname.erase(prefix, std::string::npos);
-  paramname.append("/travel_limit_steps");
-
-  if(!nh.getParam(paramname.c_str(), &stepper.travel_limit_steps, 1))
-    stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
-
-  paramname.erase(prefix, std::string::npos);
-  paramname.append("/acceleration");
-
-  if(!nh.getParam(paramname.c_str(), &stepper.acceleration, 1))
-    stepper.acceleration = DEFAULT_STEPPER_ACCEL;
-  
-  paramname.erase(prefix, std::string::npos);
-  paramname.append("/microstep_mode");
-
-  if(!nh.getParam(paramname.c_str(), &stepper.microstep_mode, 1))
-    stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
-
-  paramname.erase(prefix, std::string::npos);
-  paramname.append("/phase_current_ma");
-
-  if(!nh.getParam(paramname.c_str(), &stepper.phase_current_ma, 1))
-    stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
-}
 
 void ScheduleStepPinReset(){
 
@@ -411,49 +372,12 @@ void ReadADC(void){
   }
 }
 
-#define PERIODIC_UPDATE_RATE_HZ 32
 
 void PeriodicUpdate(void){
 
     TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-    if(Tendon1Stepper.status.enabled){
-
-      if(Tendon1Stepper.status.speed_steps_per_second != Tendon1Stepper.target_speed)
-      {
-          int original_speed = Tendon1Stepper.status.speed_steps_per_second;
-
-          if(Tendon1Stepper.status.speed_steps_per_second < Tendon1Stepper.target_speed)
-          {
-            if(Tendon1Stepper.target_speed - Tendon1Stepper.status.speed_steps_per_second  < Tendon1Stepper.acceleration)
-              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
-            else
-              Tendon1Stepper.status.speed_steps_per_second += Tendon1Stepper.acceleration;
-
-          }
-          else{
-            if(Tendon1Stepper.status.speed_steps_per_second - Tendon1Stepper.target_speed < Tendon1Stepper.acceleration)
-              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
-            else
-              Tendon1Stepper.status.speed_steps_per_second -= Tendon1Stepper.acceleration;
-          }
-
-          if(!SameSign(original_speed, Tendon1Stepper.status.speed_steps_per_second) || original_speed == 0){
-              if(Tendon1Stepper.status.speed_steps_per_second>=0){
-                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
-                  Tendon1Stepper.status.direction_forward = true;
-              }else{
-                  SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
-                  Tendon1Stepper.status.direction_forward = false;
-              }
-          }
-
-          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(Tendon1Stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
-      }
-
-      stepper_status.publish(&Tendon1Stepper.status);
-    }
-
+    StepperUpdate(Tendon1Stepper);
 
     nh.spinOnce();
 
@@ -475,6 +399,14 @@ int main(void)
     setupJoystick();
     setupSharedStepperPins();
 
+    nh.initNode();
+     
+    nh.advertise(adc_joystick);
+    nh.advertise(stepper_status);
+
+    while(!nh.connected()) {nh.spinOnce();}
+
+
     Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.CS_PIN = GPIO_STEPPER_1_CS_PIN;
     Tendon1Stepper.CS_PORT = GPIO_STEPPER_1_CS_PORT;
@@ -485,32 +417,22 @@ int main(void)
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
     Tendon1Stepper.target_speed   = 2000;
-
-    nh.initNode();
-     
-    nh.advertise(adc_joystick);
-    nh.advertise(stepper_status);
-
-    while(!nh.connected()) {nh.spinOnce();}
-
     StepperGetParamsFromROS(Tendon1Stepper);
     StepperInitGPIO(Tendon1Stepper);
-    StepperInitSPI(Tendon1Stepper);
+    StepperInitSPI(Tendon1Stepper);    
+    StepperInitTimer(Stepper1StepPinSet, Tendon1Stepper);
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);
     TimerDisable(TIMER1_BASE, TIMER_A);
 
-
     TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC); //Periodic tasks
     TimerConfigure(TIMER1_BASE, TIMER_CFG_ONE_SHOT); //stepper pin reset
-
 
     TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet() / PERIODIC_UPDATE_RATE_HZ)-1);
 
     uint32_t StepPinResetDelay_us = 2; //microseconds
     TimerLoadSet(TIMER1_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
-
 
     TimerIntRegister(TIMER0_BASE, TIMER_A, PeriodicUpdate);
     TimerIntRegister(TIMER1_BASE, TIMER_A, StepPinReset);
@@ -530,10 +452,6 @@ int main(void)
 
     TimerEnable(TIMER0_BASE, TIMER_A);
     TimerEnable(TIMER1_BASE, TIMER_A);
-
-
-    StepperInitTimer(Stepper1StepPinSet, Tendon1Stepper);
-
 
     IntMasterEnable();
 
@@ -632,3 +550,93 @@ void setupSharedStepperPins(void)
     GPIOPinWrite(GPIO_STEPPER_ALL_CLR_PORT, GPIO_STEPPER_ALL_CLR_PIN, 0); //Pull CLR LOW
 }
 
+void StepperInitGPIO(Stepper &stepper)
+{
+    GPIOPinTypeGPIOOutput(stepper.STEP_PORT, stepper.STEP_PIN);
+    GPIOPadConfigSet(stepper.STEP_PORT, stepper.STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinTypeGPIOOutput(stepper.CS_PORT, stepper.CS_PIN);
+    GPIOPadConfigSet(stepper.CS_PORT, stepper.CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinWrite(stepper.CS_PORT, stepper.CS_PIN, 255); //Pull CS HIGH
+}
+
+void StepperInitSPI(Stepper &stepper){
+  // !! stepper GPIO must be initialized first!
+
+    ClearStepperRegisters(stepper.CS_PORT, stepper.CS_PIN);
+    SetStepperCurrent(stepper.CS_PORT, stepper.CS_PIN, stepper.phase_current_ma);
+    SetStepperStepMode(stepper.CS_PORT, stepper.CS_PIN, stepper.microstep_mode);
+    SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
+}
+
+void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper){
+    TimerDisable(stepper.TIMER_BASE, TIMER_A);
+    TimerConfigure(stepper.TIMER_BASE, TIMER_CFG_PERIODIC); //stepper1 set
+
+    //Tendon1Stepper.status.speed_steps_per_second = 3200;
+    TimerLoadSet(stepper.TIMER_BASE, TIMER_A, (SysCtlClockGet() / stepper.status.speed_steps_per_second) -1);
+    TimerUpdateMode(stepper.TIMER_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
+
+    TimerIntRegister(stepper.TIMER_BASE, TIMER_A, pfnHandler);
+
+    switch(stepper.TIMER_BASE){
+      case TIMER0_BASE:
+        IntPrioritySet(INT_TIMER0A, 0b00000000);
+        break;
+      case TIMER1_BASE:
+        IntPrioritySet(INT_TIMER1A, 0b00000000);
+        break;
+      case TIMER2_BASE:
+        IntPrioritySet(INT_TIMER2A, 0b00000000);
+        break;
+      case TIMER3_BASE:
+        IntPrioritySet(INT_TIMER3A, 0b00000000);
+        break;
+      case TIMER4_BASE:
+        IntPrioritySet(INT_TIMER4A, 0b00000000);
+        break;
+      case TIMER5_BASE:
+        IntPrioritySet(INT_TIMER5A, 0b00000000);
+        break;
+    }
+
+    TimerEnable(stepper.TIMER_BASE, TIMER_A);
+}
+
+
+void StepperGetParamsFromROS(Stepper &stepper){
+  std::string paramname = std::string("/TUhand/");
+  paramname.append(stepper.name);
+
+  int prefix = paramname.length();
+
+  paramname.append("/max_speed_steps_per_second");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.max_speed_steps_per_second, 1))
+    stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/travel_limit_steps");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.travel_limit_steps, 1))
+    stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/acceleration");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.acceleration, 1))
+    stepper.acceleration = DEFAULT_STEPPER_ACCEL;
+  
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/microstep_mode");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.microstep_mode, 1))
+    stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
+
+  paramname.erase(prefix, std::string::npos);
+  paramname.append("/phase_current_ma");
+
+  if(!nh.getParam(paramname.c_str(), &stepper.phase_current_ma, 1))
+    stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
+}
