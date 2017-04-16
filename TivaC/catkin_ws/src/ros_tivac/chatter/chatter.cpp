@@ -237,18 +237,15 @@ void StepperDisable(void){
     stepper_status_msg.speed_steps_per_second = 0;
 }
 
-void ScheduleStepPinReset(){
-
-    TimerEnable(TIMER0_BASE, TIMER_A); //Enable reset
-}
 
 
 
-#define STEPPER_ACCEL_INTERVAL 2
+
+#define PERIODIC_UPDATE_RATE_HZ 32
 
 void PeriodicUpdate(void){
 
-    TimerIntClear(TIMER0_BASE, TIMER_TIMB_TIMEOUT);
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
     if(stepper_status_msg.enabled){
 
@@ -258,10 +255,16 @@ void PeriodicUpdate(void){
 
           if(stepper_status_msg.speed_steps_per_second < Stepper1_target_speed)
           {
+            if(stepper_status_msg.speed_steps_per_second - Stepper1_target_speed < Stepper1_accel)
+              stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
+            else
               stepper_status_msg.speed_steps_per_second += Stepper1_accel;
 
           }
           else{
+            if(Stepper1_target_speed - stepper_status_msg.speed_steps_per_second < Stepper1_accel)
+              stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
+            else
               stepper_status_msg.speed_steps_per_second -= Stepper1_accel;
           }
 
@@ -275,21 +278,29 @@ void PeriodicUpdate(void){
               }
           }
 
-          TimerLoadSet(TIMER1_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper_status_msg.speed_steps_per_second)) -1, SysCtlClockGet()/STEPPER_ACCEL_INTERVAL));
+          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper_status_msg.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
       }
 
       stepper_status.publish(&stepper_status_msg);
     }
     
 
-    ADCProcessorTrigger(ADC0_BASE, 1);
+    
+
     nh.spinOnce();
+
+    ADCProcessorTrigger(ADC0_BASE, 1);
+}
+
+void ScheduleStepPinReset(){
+
+    TimerEnable(TIMER1_BASE, TIMER_A); //Enable reset
 }
 
 void Stepper1StepPinSet(void)
 {
     // Clear the timer interrupt
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
     GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 255);
 
     if(stepper_status_msg.direction_forward)
@@ -303,7 +314,7 @@ void Stepper1StepPinSet(void)
 
 void StepPinReset(void)
 {
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
     GPIOPinWrite(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, 0);
 }
 
@@ -425,48 +436,52 @@ int main(void)
     stepper_status_msg.enabled = false;
     Stepper1_min_speed     = 1;
     Stepper1_max_speed     = 24000;
-    Stepper1_accel         = 10;
+    Stepper1_accel         = 1000;
     Stepper1_target_speed   = 2000;
 
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
 
-    TimerDisable(TIMER0_BASE, TIMER_A|TIMER_B);
+    TimerDisable(TIMER0_BASE, TIMER_A);
+    TimerDisable(TIMER1_BASE, TIMER_A);
+    TimerDisable(TIMER2_BASE, TIMER_A);
 
-    TimerConfigure(TIMER0_BASE, TIMER_CFG_SPLIT_PAIR| TIMER_CFG_A_ONE_SHOT | TIMER_CFG_B_PERIODIC);
-    TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC);
+    TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC); //Periodic tasks
+    TimerConfigure(TIMER1_BASE, TIMER_CFG_ONE_SHOT); //stepper pin reset
+    TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC); //stepper1 set
 
-    //stepper_status_msg.speed_steps_per_second = 3200;
-    TimerLoadSet(TIMER1_BASE, TIMER_A, (SysCtlClockGet() / stepper_status_msg.speed_steps_per_second) -1);
-    TimerUpdateMode(TIMER1_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
+    TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet() / PERIODIC_UPDATE_RATE_HZ)-1);
 
     uint32_t StepPinResetDelay_us = 2; //microseconds
-    TimerLoadSet(TIMER0_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
+    TimerLoadSet(TIMER1_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
 
-    TimerLoadSet(TIMER0_BASE, TIMER_B, (SysCtlClockGet() / STEPPER_ACCEL_INTERVAL)-1);
+    //stepper_status_msg.speed_steps_per_second = 3200;
+    TimerLoadSet(TIMER2_BASE, TIMER_A, (SysCtlClockGet() / stepper_status_msg.speed_steps_per_second) -1);
+    TimerUpdateMode(TIMER2_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
 
-    TimerIntRegister(TIMER1_BASE, TIMER_A, Stepper1StepPinSet);
-    TimerIntRegister(TIMER0_BASE, TIMER_A, StepPinReset);
-    TimerIntRegister(TIMER0_BASE, TIMER_B, PeriodicUpdate);
-
+    TimerIntRegister(TIMER0_BASE, TIMER_A, PeriodicUpdate);
+    TimerIntRegister(TIMER1_BASE, TIMER_A, StepPinReset);
+    TimerIntRegister(TIMER2_BASE, TIMER_A, Stepper1StepPinSet);
+    
+    
     IntEnable(INT_TIMER0A);
     TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-
-    IntEnable(INT_TIMER0B);
-    TimerIntEnable(TIMER0_BASE, TIMER_TIMB_TIMEOUT);
 
     IntEnable(INT_TIMER1A);
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
+    IntEnable(INT_TIMER2A);
+    TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
+
+    IntPrioritySet(INT_TIMER1A, 0b00100000); //Motor reset
+    IntPrioritySet(INT_TIMER0A, 0b01000000); //Motor update
+    IntPrioritySet(INT_TIMER2A, 0b00000000); //Motor set
+
     TimerEnable(TIMER0_BASE, TIMER_A);
-    TimerEnable(TIMER0_BASE, TIMER_B);
     TimerEnable(TIMER1_BASE, TIMER_A);
-
-    IntPrioritySet(INT_TIMER0A, 0b00100000); //Motor reset
-    IntPrioritySet(INT_TIMER0B, 0b01000000); //Motor update
-    IntPrioritySet(INT_TIMER1A, 0b00000000); //Motor set
-
+    TimerEnable(TIMER2_BASE, TIMER_A);
 
     IntMasterEnable();
 
