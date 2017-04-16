@@ -61,12 +61,16 @@ void StepperEnable(Stepper &stepper){
     SPIStepperEnable(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
 
     stepper.status.enabled = true;
+
+    TimerEnable(stepper.TIMER_BASE, TIMER_A);
 }
 void StepperDisable(Stepper &stepper){
     SPIStepperDisable(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
 
     stepper.status.enabled = false;
     stepper.status.speed_steps_per_second = 0;
+
+    TimerDisable(stepper.TIMER_BASE, TIMER_A);
 }
 
 
@@ -74,37 +78,37 @@ void StepperUpdate(Stepper &stepper)
 {
   if(stepper.status.enabled){
 
-  if(stepper.status.speed_steps_per_second != stepper.target_speed)
-  {
-      int original_speed = stepper.status.speed_steps_per_second;
+    if(stepper.status.speed_steps_per_second != stepper.target_speed)
+    {
+        int original_speed = stepper.status.speed_steps_per_second;
 
-      if(stepper.status.speed_steps_per_second < stepper.target_speed)
-      {
-        if(stepper.target_speed - stepper.status.speed_steps_per_second  < stepper.acceleration)
-          stepper.status.speed_steps_per_second = stepper.target_speed;
-        else
-          stepper.status.speed_steps_per_second += stepper.acceleration;
+        if(stepper.status.speed_steps_per_second < stepper.target_speed)
+        {
+          if(stepper.target_speed - stepper.status.speed_steps_per_second  < stepper.acceleration)
+            stepper.status.speed_steps_per_second = stepper.target_speed;
+          else
+            stepper.status.speed_steps_per_second += stepper.acceleration;
 
-      }
-      else{
-        if(stepper.status.speed_steps_per_second - stepper.target_speed < stepper.acceleration)
-          stepper.status.speed_steps_per_second = stepper.target_speed;
-        else
-          stepper.status.speed_steps_per_second -= stepper.acceleration;
-      }
+        }
+        else{
+          if(stepper.status.speed_steps_per_second - stepper.target_speed < stepper.acceleration)
+            stepper.status.speed_steps_per_second = stepper.target_speed;
+          else
+            stepper.status.speed_steps_per_second -= stepper.acceleration;
+        }
 
-      if(!SameSign(original_speed, stepper.status.speed_steps_per_second) || original_speed == 0){
-          if(stepper.status.speed_steps_per_second>=0){
-              SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
-              stepper.status.direction_forward = true;
-          }else{
-              SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
-              stepper.status.direction_forward = false;
-          }
-      }
+        if(!SameSign(original_speed, stepper.status.speed_steps_per_second) || original_speed == 0){
+            if(stepper.status.speed_steps_per_second>=0){
+                SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
+                stepper.status.direction_forward = true;
+            }else{
+                SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
+                stepper.status.direction_forward = false;
+            }
+        }
 
-      TimerLoadSet(stepper.TIMER_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
-  }
+        TimerLoadSet(stepper.TIMER_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
+    }
 
 
   }
@@ -114,7 +118,6 @@ void StepperUpdate(Stepper &stepper)
 std::queue<TivaC_Pin> resetQueue;
 
 void ScheduleStepPinReset(TivaC_Pin StepPin){
-
     resetQueue.push(StepPin);
     TimerEnable(TIMER1_BASE, TIMER_A); //Enable reset
 }
@@ -160,9 +163,12 @@ void StepPinReset(void)
     TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
     if(resetQueue.size()){
-      TivaC_Pin resetPin = resetQueue.front();
+      GPIOPinWrite(resetQueue.front().PORT, resetQueue.front().PIN, 0);
       resetQueue.pop();
-      GPIOPinWrite(resetPin.PORT, resetPin.PIN, 0);
+
+      if(resetQueue.size()){
+        TimerEnable(TIMER1_BASE, TIMER_A); //Enable reset
+      }
     }
 }
 
@@ -196,33 +202,34 @@ void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper){
     TimerDisable(stepper.TIMER_BASE, TIMER_A);
     TimerConfigure(stepper.TIMER_BASE, TIMER_CFG_PERIODIC); //stepper1 set
 
-    //Tendon1Stepper.status.speed_steps_per_second = 3200;
     TimerLoadSet(stepper.TIMER_BASE, TIMER_A, (SysCtlClockGet() / stepper.status.speed_steps_per_second) -1);
     TimerUpdateMode(stepper.TIMER_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
 
     TimerIntRegister(stepper.TIMER_BASE, TIMER_A, pfnHandler);
 
     switch(stepper.TIMER_BASE){
-      case TIMER0_BASE:
-        IntPrioritySet(INT_TIMER0A, 0b00000000);
-        break;
-      case TIMER1_BASE:
-        IntPrioritySet(INT_TIMER1A, 0b00000000);
-        break;
-      case TIMER2_BASE:
-        IntPrioritySet(INT_TIMER2A, 0b00000000);
-        break;
-      case TIMER3_BASE:
-        IntPrioritySet(INT_TIMER3A, 0b00000000);
-        break;
-      case TIMER4_BASE:
-        IntPrioritySet(INT_TIMER4A, 0b00000000);
-        break;
-      case TIMER5_BASE:
-        IntPrioritySet(INT_TIMER5A, 0b00000000);
-        break;
-    }
+     case TIMER0_BASE:
+       IntEnable(INT_TIMER0A);
+       break;
+     case TIMER1_BASE:
+       IntEnable(INT_TIMER1A);
+       break;
+     case TIMER2_BASE:
+       IntEnable(INT_TIMER2A);
+       break;
+     case TIMER3_BASE:
+       IntEnable(INT_TIMER3A);
+       break;
+     case TIMER4_BASE:
+       IntEnable(INT_TIMER4A);
+       break;
+     case TIMER5_BASE:
+       IntEnable(INT_TIMER5A);
+       break;
+     }
+    
+    TimerIntEnable(stepper.TIMER_BASE, TIMER_TIMA_TIMEOUT);
 
-    TimerEnable(stepper.TIMER_BASE, TIMER_A);
+    //TimerEnable(stepper.TIMER_BASE, TIMER_A);
 }
 

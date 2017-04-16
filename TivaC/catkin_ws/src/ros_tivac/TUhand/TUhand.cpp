@@ -88,9 +88,7 @@ ros::NodeHandle nh;
 #define PERIODIC_UPDATE_RATE_HZ 32
 
 
-//#include "include/spi_AMIS_30543_stepper.h"
 #include "include/tuhand_stepper.h"
-
 
 
 //
@@ -109,19 +107,16 @@ void setupJoystick(void);
 void StepperGetParamsFromROS(Stepper &stepper);
 
 
-
-
-
 //globals
 
 Stepper Tendon1Stepper;
-ros::Publisher stepper_status("stepper_status", &Tendon1Stepper.status);
+Stepper Tendon2Stepper;
 
+ros::Publisher tendon1_status("tendon1_status", &Tendon1Stepper.status);
+ros::Publisher tendon2_status("tendon2_status", &Tendon2Stepper.status);
 
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
-
-
 
 
 void JoystickClicked(void) {
@@ -134,10 +129,16 @@ void JoystickClicked(void) {
             GPIO_RISING_EDGE);          // Configure PA5 for rising edge trigger
         GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);  // Clear interrupt flag
 
-        if(Tendon1Stepper.status.enabled)
+        if(Tendon2Stepper.status.enabled)
+        {
             StepperDisable(Tendon1Stepper);
+            StepperDisable(Tendon2Stepper);
+        }
         else
+        {
             StepperEnable(Tendon1Stepper);
+            StepperEnable(Tendon2Stepper);
+        }
     }
 }
 
@@ -205,7 +206,7 @@ void StepperError(void){
 
         // Tendon1Stepper.status.errors = errormsg.c_str();
 
-        // stepper_status.publish(&Tendon1Stepper.status);
+        // tendon1_status.publish(&Tendon1Stepper.status);
     }
 }
 
@@ -235,6 +236,7 @@ void ReadADC(void){
 
 
       Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
   }
 }
 
@@ -244,7 +246,10 @@ void PeriodicUpdate(void){
     TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
     StepperUpdate(Tendon1Stepper);
-    stepper_status.publish(&Tendon1Stepper.status);
+    StepperUpdate(Tendon2Stepper);
+
+    tendon1_status.publish(&Tendon1Stepper.status);
+    tendon2_status.publish(&Tendon2Stepper.status);
 
     nh.spinOnce();
 
@@ -254,6 +259,11 @@ void PeriodicUpdate(void){
 void Tendon1StepperStepHandler(void)
 {
   StepperStepPinSet(Tendon1Stepper);
+}
+
+void Tendon2StepperStepHandler(void)
+{
+  StepperStepPinSet(Tendon2Stepper);
 }
 
 int main(void)
@@ -274,7 +284,8 @@ int main(void)
     nh.initNode();
      
     nh.advertise(adc_joystick);
-    nh.advertise(stepper_status);
+    nh.advertise(tendon1_status);
+    nh.advertise(tendon2_status);
 
     while(!nh.connected()) {nh.spinOnce();}
 
@@ -284,7 +295,7 @@ int main(void)
     Tendon1Stepper.ChipSelectPin.PORT = GPIO_STEPPER_1_CS_PORT;
     Tendon1Stepper.StepPin.PIN = GPIO_STEPPER_1_STEP_PIN;
     Tendon1Stepper.StepPin.PORT = GPIO_STEPPER_1_STEP_PORT;
-    Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
+    Tendon1Stepper.TIMER_BASE = TIMER3_BASE;
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
@@ -293,6 +304,22 @@ int main(void)
     StepperInitGPIO(Tendon1Stepper);
     StepperInitSPI(Tendon1Stepper);    
     StepperInitTimer(Tendon1StepperStepHandler, Tendon1Stepper);
+
+
+    Tendon2Stepper.name = std::string("Tendon2Stepper");
+    Tendon2Stepper.ChipSelectPin.PIN = GPIO_STEPPER_2_CS_PIN;
+    Tendon2Stepper.ChipSelectPin.PORT = GPIO_STEPPER_2_CS_PORT;
+    Tendon2Stepper.StepPin.PIN = GPIO_STEPPER_2_STEP_PIN;
+    Tendon2Stepper.StepPin.PORT = GPIO_STEPPER_2_STEP_PORT;
+    Tendon2Stepper.TIMER_BASE = TIMER2_BASE;
+    Tendon2Stepper.status.position_steps = 0;
+    Tendon2Stepper.status.speed_steps_per_second = 1;
+    Tendon2Stepper.status.enabled = false;
+    Tendon2Stepper.target_speed   = 2000;
+    StepperGetParamsFromROS(Tendon2Stepper);
+    StepperInitGPIO(Tendon2Stepper);
+    StepperInitSPI(Tendon2Stepper);    
+    StepperInitTimer(Tendon2StepperStepHandler, Tendon2Stepper);
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);
@@ -315,11 +342,14 @@ int main(void)
     IntEnable(INT_TIMER1A);
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
-    IntEnable(INT_TIMER2A);
-    TimerIntEnable(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
 
     IntPrioritySet(INT_TIMER1A, 0b00100000); //Motor reset
     IntPrioritySet(INT_TIMER0A, 0b01000000); //Motor update
+
+    IntPrioritySet(INT_TIMER2A, 0b00000000);
+    IntPrioritySet(INT_TIMER3A, 0b00000000);
+    IntPrioritySet(INT_TIMER4A, 0b00000000);
+    IntPrioritySet(INT_TIMER5A, 0b00000000);
 
 
     TimerEnable(TIMER0_BASE, TIMER_A);
@@ -348,6 +378,9 @@ void enableSysPeripherals(void)
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER3);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER4);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER5);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
   
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
