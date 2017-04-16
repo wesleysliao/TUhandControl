@@ -234,6 +234,40 @@ void StepperInitSPI(Stepper &stepper){
     SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
 }
 
+void StepperInitTimer(void (*pfnHandler)(void), Stepper &stepper){
+    TimerDisable(stepper.TIMER_BASE, TIMER_A);
+    TimerConfigure(stepper.TIMER_BASE, TIMER_CFG_PERIODIC); //stepper1 set
+
+    //Tendon1Stepper.status.speed_steps_per_second = 3200;
+    TimerLoadSet(stepper.TIMER_BASE, TIMER_A, (SysCtlClockGet() / stepper.status.speed_steps_per_second) -1);
+    TimerUpdateMode(stepper.TIMER_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
+
+    TimerIntRegister(stepper.TIMER_BASE, TIMER_A, pfnHandler);
+
+    switch(stepper.TIMER_BASE){
+      case TIMER0_BASE:
+        IntPrioritySet(INT_TIMER0A, 0b00000000);
+        break;
+      case TIMER1_BASE:
+        IntPrioritySet(INT_TIMER1A, 0b00000000);
+        break;
+      case TIMER2_BASE:
+        IntPrioritySet(INT_TIMER2A, 0b00000000);
+        break;
+      case TIMER3_BASE:
+        IntPrioritySet(INT_TIMER3A, 0b00000000);
+        break;
+      case TIMER4_BASE:
+        IntPrioritySet(INT_TIMER4A, 0b00000000);
+        break;
+      case TIMER5_BASE:
+        IntPrioritySet(INT_TIMER5A, 0b00000000);
+        break;
+    }
+
+    TimerEnable(stepper.TIMER_BASE, TIMER_A);
+}
+
 
 void StepperGetParamsFromROS(Stepper &stepper){
   std::string paramname = std::string("/TUhand/");
@@ -452,7 +486,6 @@ int main(void)
     Tendon1Stepper.status.enabled = false;
     Tendon1Stepper.target_speed   = 2000;
 
-
     nh.initNode();
      
     nh.advertise(adc_joystick);
@@ -465,31 +498,22 @@ int main(void)
     StepperInitSPI(Tendon1Stepper);
 
 
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
-
     TimerDisable(TIMER0_BASE, TIMER_A);
     TimerDisable(TIMER1_BASE, TIMER_A);
-    TimerDisable(TIMER2_BASE, TIMER_A);
+
 
     TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC); //Periodic tasks
     TimerConfigure(TIMER1_BASE, TIMER_CFG_ONE_SHOT); //stepper pin reset
-    TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC); //stepper1 set
+
 
     TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet() / PERIODIC_UPDATE_RATE_HZ)-1);
 
     uint32_t StepPinResetDelay_us = 2; //microseconds
     TimerLoadSet(TIMER1_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
 
-    //Tendon1Stepper.status.speed_steps_per_second = 3200;
-    TimerLoadSet(TIMER2_BASE, TIMER_A, (SysCtlClockGet() / Tendon1Stepper.status.speed_steps_per_second) -1);
-    TimerUpdateMode(TIMER2_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
 
     TimerIntRegister(TIMER0_BASE, TIMER_A, PeriodicUpdate);
     TimerIntRegister(TIMER1_BASE, TIMER_A, StepPinReset);
-    TimerIntRegister(TIMER2_BASE, TIMER_A, Stepper1StepPinSet);
-    
     
     IntEnable(INT_TIMER0A);
     TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
@@ -502,11 +526,14 @@ int main(void)
 
     IntPrioritySet(INT_TIMER1A, 0b00100000); //Motor reset
     IntPrioritySet(INT_TIMER0A, 0b01000000); //Motor update
-    IntPrioritySet(INT_TIMER2A, 0b00000000); //Motor set
+
 
     TimerEnable(TIMER0_BASE, TIMER_A);
     TimerEnable(TIMER1_BASE, TIMER_A);
-    TimerEnable(TIMER2_BASE, TIMER_A);
+
+
+    StepperInitTimer(Stepper1StepPinSet, Tendon1Stepper);
+
 
     IntMasterEnable();
 
@@ -528,6 +555,9 @@ void enableSysPeripherals(void)
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI2);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
   
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0))
