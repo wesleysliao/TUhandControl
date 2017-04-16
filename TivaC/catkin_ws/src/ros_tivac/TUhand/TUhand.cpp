@@ -216,12 +216,24 @@ void StepperDisable(Stepper &stepper){
     stepper.status.speed_steps_per_second = 0;
 }
 
+void StepperInitGPIO(Stepper &stepper)
+{
+    GPIOPinTypeGPIOOutput(stepper.STEP_PORT, stepper.STEP_PIN);
+    GPIOPadConfigSet(stepper.STEP_PORT, stepper.STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinTypeGPIOOutput(stepper.CS_PORT, stepper.CS_PIN);
+    GPIOPadConfigSet(stepper.CS_PORT, stepper.CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinWrite(stepper.CS_PORT, stepper.CS_PIN, 255); //Pull CS HIGH
+}
+
 void StepperInitSPI(Stepper &stepper){
     ClearStepperRegisters(stepper.CS_PORT, stepper.CS_PIN);
     SetStepperCurrent(stepper.CS_PORT, stepper.CS_PIN, stepper.phase_current_ma);
     SetStepperStepMode(stepper.CS_PORT, stepper.CS_PIN, stepper.microstep_mode);
     SetStepperDirection(stepper.CS_PORT, stepper.CS_PIN, true);
 }
+
 
 void StepperGetParamsFromROS(Stepper &stepper){
   std::string paramname = std::string("/TUhand/");
@@ -432,24 +444,13 @@ int main(void)
     Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.CS_PIN = GPIO_STEPPER_1_CS_PIN;
     Tendon1Stepper.CS_PORT = GPIO_STEPPER_1_CS_PORT;
+    Tendon1Stepper.STEP_PIN = GPIO_STEPPER_1_STEP_PIN;
+    Tendon1Stepper.STEP_PORT = GPIO_STEPPER_1_STEP_PORT;
     Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
     Tendon1Stepper.target_speed   = 2000;
-
-    GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN);
-    GPIOPadConfigSet(GPIO_STEPPER_1_STEP_PORT, GPIO_STEPPER_1_STEP_PIN, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
-
-    GPIOPinTypeGPIOOutput(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
-    GPIOPadConfigSet(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
-
-    
-
-    GPIOPinWrite(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, 255); //Pull CS HIGH
-
-
-
 
 
     nh.initNode();
@@ -460,6 +461,7 @@ int main(void)
     while(!nh.connected()) {nh.spinOnce();}
 
     StepperGetParamsFromROS(Tendon1Stepper);
+    StepperInitGPIO(Tendon1Stepper);
     StepperInitSPI(Tendon1Stepper);
 
 
