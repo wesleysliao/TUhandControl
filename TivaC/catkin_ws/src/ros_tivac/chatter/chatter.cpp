@@ -87,12 +87,16 @@ ros::NodeHandle nh;
 #define DEFAULT_STEPPER_STEPMODE        2
 #define DEFAULT_STEPPER_PH_CURRENT      800
 
-struct StepperConfig {
+struct Stepper {
   int max_speed_steps_per_second;
   int travel_limit_steps;
   int acceleration;
   int microstep_mode;
   int phase_current_ma;
+  stepper_msg::Stepper_Status status;
+  int target_speed;
+
+  uint32_t TIMER_BASE;
 };
 
 bool SameSign(int x, int y)
@@ -120,12 +124,8 @@ void enableSysPeripherals(void)
 
 //globals
 
-StepperConfig Tendon1Stepper;
-int32_t Stepper1_target_speed;
-
-
-stepper_msg::Stepper_Status stepper_status_msg;
-ros::Publisher stepper_status("stepper_status", &stepper_status_msg);
+Stepper Tendon1Stepper;
+ros::Publisher stepper_status("stepper_status", &Tendon1Stepper.status);
 
 
 adc_joystick_msg::ADC_Joystick js_msg;
@@ -189,7 +189,7 @@ void JoystickClicked(void) {
             GPIO_RISING_EDGE);          // Configure PA5 for rising edge trigger
         GPIOIntClear(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN);  // Clear interrupt flag
 
-        if(stepper_status_msg.enabled)
+        if(Tendon1Stepper.status.enabled)
             StepperDisable();
         else
             StepperEnable();
@@ -231,24 +231,21 @@ void ReadADC(void){
 
 
 
-      Stepper1_target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
   }
 }
 
 void StepperEnable(void){
     SPIStepperEnable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
 
-    stepper_status_msg.enabled = true;
+    Tendon1Stepper.status.enabled = true;
 }
 void StepperDisable(void){
     SPIStepperDisable(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN);
 
-    stepper_status_msg.enabled = false;
-    stepper_status_msg.speed_steps_per_second = 0;
+    Tendon1Stepper.status.enabled = false;
+    Tendon1Stepper.status.speed_steps_per_second = 0;
 }
-
-
-
 
 
 #define PERIODIC_UPDATE_RATE_HZ 32
@@ -257,41 +254,41 @@ void PeriodicUpdate(void){
 
     TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-    if(stepper_status_msg.enabled){
+    if(Tendon1Stepper.status.enabled){
 
-      if(stepper_status_msg.speed_steps_per_second != Stepper1_target_speed)
+      if(Tendon1Stepper.status.speed_steps_per_second != Tendon1Stepper.target_speed)
       {
-          int original_speed = stepper_status_msg.speed_steps_per_second;
+          int original_speed = Tendon1Stepper.status.speed_steps_per_second;
 
-          if(stepper_status_msg.speed_steps_per_second < Stepper1_target_speed)
+          if(Tendon1Stepper.status.speed_steps_per_second < Tendon1Stepper.target_speed)
           {
-            if(Stepper1_target_speed - stepper_status_msg.speed_steps_per_second  < Tendon1Stepper.acceleration)
-              stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
+            if(Tendon1Stepper.target_speed - Tendon1Stepper.status.speed_steps_per_second  < Tendon1Stepper.acceleration)
+              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
             else
-              stepper_status_msg.speed_steps_per_second += Tendon1Stepper.acceleration;
+              Tendon1Stepper.status.speed_steps_per_second += Tendon1Stepper.acceleration;
 
           }
           else{
-            if(stepper_status_msg.speed_steps_per_second - Stepper1_target_speed < Tendon1Stepper.acceleration)
-              stepper_status_msg.speed_steps_per_second = Stepper1_target_speed;
+            if(Tendon1Stepper.status.speed_steps_per_second - Tendon1Stepper.target_speed < Tendon1Stepper.acceleration)
+              Tendon1Stepper.status.speed_steps_per_second = Tendon1Stepper.target_speed;
             else
-              stepper_status_msg.speed_steps_per_second -= Tendon1Stepper.acceleration;
+              Tendon1Stepper.status.speed_steps_per_second -= Tendon1Stepper.acceleration;
           }
 
-          if(!SameSign(original_speed, stepper_status_msg.speed_steps_per_second) || original_speed == 0){
-              if(stepper_status_msg.speed_steps_per_second>=0){
+          if(!SameSign(original_speed, Tendon1Stepper.status.speed_steps_per_second) || original_speed == 0){
+              if(Tendon1Stepper.status.speed_steps_per_second>=0){
                   SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
-                  stepper_status_msg.direction_forward = true;
+                  Tendon1Stepper.status.direction_forward = true;
               }else{
                   SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, false);
-                  stepper_status_msg.direction_forward = false;
+                  Tendon1Stepper.status.direction_forward = false;
               }
           }
 
-          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper_status_msg.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
+          TimerLoadSet(TIMER2_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(Tendon1Stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
       }
 
-      stepper_status.publish(&stepper_status_msg);
+      stepper_status.publish(&Tendon1Stepper.status);
     }
 
 
@@ -310,27 +307,27 @@ void Stepper1StepPinSet(void)
     // Clear the timer interrupt
     TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
 
-    if(stepper_status_msg.direction_forward)
+    if(Tendon1Stepper.status.direction_forward)
     {
-      if(stepper_status_msg.position_steps < Tendon1Stepper.travel_limit_steps)
+      if(Tendon1Stepper.status.position_steps < Tendon1Stepper.travel_limit_steps)
       {
-        stepper_status_msg.position_steps++;
+        Tendon1Stepper.status.position_steps++;
       }
       else
       {
-        stepper_status_msg.speed_steps_per_second = 0;
+        Tendon1Stepper.status.speed_steps_per_second = 0;
         return;
       }
     }
     else
     {
-      if(stepper_status_msg.position_steps > 0)
+      if(Tendon1Stepper.status.position_steps > 0)
       {
-        stepper_status_msg.position_steps--;
+        Tendon1Stepper.status.position_steps--;
       }
       else
       {
-        stepper_status_msg.speed_steps_per_second = 0;
+        Tendon1Stepper.status.speed_steps_per_second = 0;
         return;
       }
     }
@@ -371,9 +368,9 @@ void StepperError(void){
         // if((sr1_stat & 0b01111000 ) || (sr2_stat & 0b01111000 ))
         //     errormsg.append("Overcurrent ");
 
-        // stepper_status_msg.errors = errormsg.c_str();
+        // Tendon1Stepper.status.errors = errormsg.c_str();
 
-        // stepper_status.publish(&stepper_status_msg);
+        // stepper_status.publish(&Tendon1Stepper.status);
     }
 }
 
@@ -482,10 +479,10 @@ int main(void)
     SetStepperDirection(GPIO_STEPPER_1_CS_PORT, GPIO_STEPPER_1_CS_PIN, true);
 
 
-    stepper_status_msg.position_steps = 0;
-    stepper_status_msg.speed_steps_per_second = 1;
-    stepper_status_msg.enabled = false;
-    Stepper1_target_speed   = 2000;
+    Tendon1Stepper.status.position_steps = 0;
+    Tendon1Stepper.status.speed_steps_per_second = 1;
+    Tendon1Stepper.status.enabled = false;
+    Tendon1Stepper.target_speed   = 2000;
 
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
@@ -505,8 +502,8 @@ int main(void)
     uint32_t StepPinResetDelay_us = 2; //microseconds
     TimerLoadSet(TIMER1_BASE, TIMER_A, (StepPinResetDelay_us*(SysCtlClockGet()/1000000))-1);
 
-    //stepper_status_msg.speed_steps_per_second = 3200;
-    TimerLoadSet(TIMER2_BASE, TIMER_A, (SysCtlClockGet() / stepper_status_msg.speed_steps_per_second) -1);
+    //Tendon1Stepper.status.speed_steps_per_second = 3200;
+    TimerLoadSet(TIMER2_BASE, TIMER_A, (SysCtlClockGet() / Tendon1Stepper.status.speed_steps_per_second) -1);
     TimerUpdateMode(TIMER2_BASE, TIMER_A, TIMER_UP_LOAD_TIMEOUT);
 
     TimerIntRegister(TIMER0_BASE, TIMER_A, PeriodicUpdate);

@@ -51,12 +51,6 @@ extern "C"
 #define  SR3  0x7
 #define  SR4  0xA
 
-uint8_t WR_reg = 0;
-uint8_t CR0_reg = 0;
-uint8_t CR1_reg = 0;
-uint8_t CR2_reg = 0;
-uint8_t CR3_reg = 0;
-
 void SetupSPIStepper(void){
 	ROM_GPIOPinConfigure(GPIO_PB4_SSI2CLK);
     ROM_GPIOPinConfigure(GPIO_PB7_SSI2TX);
@@ -108,17 +102,11 @@ uint32_t SPIReadByte(uint32_t CSPort, uint8_t CSPins, uint8_t address){
 
 
 void ClearStepperRegisters(uint32_t CSPort, uint8_t CSPins){
-    WR_reg = 0;
-    CR0_reg = 0;
-    CR1_reg = 0;
-    CR2_reg = 0;
-    CR3_reg = 0;
-
-    SPIWriteByte(CSPort, CSPins, WR, WR_reg);
-    SPIWriteByte(CSPort, CSPins, CR0, CR0_reg);
-    SPIWriteByte(CSPort, CSPins, CR1, CR1_reg);
-    SPIWriteByte(CSPort, CSPins, CR2, CR2_reg);
-    SPIWriteByte(CSPort, CSPins, CR3, CR3_reg);
+    SPIWriteByte(CSPort, CSPins, WR, 0);
+    SPIWriteByte(CSPort, CSPins, CR0, 0);
+    SPIWriteByte(CSPort, CSPins, CR1, 0);
+    SPIWriteByte(CSPort, CSPins, CR2, 0);
+    SPIWriteByte(CSPort, CSPins, CR3, 0);
 }
 
 void SetStepperCurrent(uint32_t CSPort, uint8_t CSPins, uint16_t milliamps)
@@ -151,30 +139,31 @@ void SetStepperCurrent(uint32_t CSPort, uint8_t CSPins, uint16_t milliamps)
      else if (milliamps <=  355) { code = 0b00010; }
      else if (milliamps <=  245) { code = 0b00001; }
 
-     CR0_reg = (CR0_reg & 0b11100000) | code;
+     uint8_t CR0_reg = (SPIReadByte(CSPort, CSPins, CR0) & 0b11100000) | code;
      SPIWriteByte(CSPort, CSPins, CR0, CR0_reg);
  }
 
 void SetStepperDirection(uint32_t CSPort, uint8_t CSPins, bool forward){
 
+    uint8_t CR1_reg;
+
     if(forward){
-        CR1_reg = (CR1_reg & 0b01111111);
+        CR1_reg = (SPIReadByte(CSPort, CSPins, CR1) & 0b01111111);
     }
     else{
-        CR1_reg = (CR1_reg | 0b10000000);
+        CR1_reg = (SPIReadByte(CSPort, CSPins, CR1) | 0b10000000);
     }
 
     SPIWriteByte(CSPort, CSPins, CR1, CR1_reg);
 }
 
 void SPIStepperEnable(uint32_t CSPort, uint8_t CSPins){
-    CR2_reg = (CR2_reg | 0b10000000);
+    uint8_t CR2_reg = (SPIReadByte(CSPort, CSPins, CR2) | 0b10000000);
     SPIWriteByte(CSPort, CSPins, CR2, CR2_reg);
 }
 
 void SPIStepperDisable(uint32_t CSPort, uint8_t CSPins){
-    CR2_reg = 0;
-    SPIWriteByte(CSPort, CSPins, CR2, CR2_reg);
+    SPIWriteByte(CSPort, CSPins, CR2, 0);
 }
 
 #define STEPMODE_MICRO_2        2
@@ -207,9 +196,8 @@ void SetStepperStepMode(uint32_t CSPort, uint8_t CSPins, uint8_t stepmode){
     else if (stepmode == STEPMODE_UNCOMP_HALF)    { sm = 0b101; esm = 0b000; }
     else if (stepmode == STEPMODE_UNCOMP_FULL)    { sm = 0b111; esm = 0b000; }
 
-    CR0_reg = (CR0_reg & 0b00011111) | (sm << 5);
-    CR3_reg = esm;
+    uint8_t CR0_reg = (SPIReadByte(CSPort, CSPins, CR0) & 0b00011111) | (sm << 5);
 
     SPIWriteByte(CSPort, CSPins, CR0, CR0_reg);
-    SPIWriteByte(CSPort, CSPins, CR3, CR3_reg);
+    SPIWriteByte(CSPort, CSPins, CR3, esm);
 }
