@@ -25,7 +25,7 @@ extern "C"
 
 //message includes
 #include "adc_joystick_msg/ADC_Joystick.h"
-#include "stepper_msg/Stepper_Target.h"
+#include "stepper_msg/Stepper_Control.h"
 #include "stepper_msg/Stepper_Status.h"
 
 // ROS nodehandle
@@ -107,15 +107,26 @@ void setupJoystick(void);
 void StepperGetParamsFromROS(Stepper &stepper);
 
 
+
+
+
 //globals
 
 Stepper Tendon1Stepper;
 Stepper Tendon2Stepper;
 Stepper WristStepper;
 
+void Tendon1StepperControlHandler(const stepper_msg::Stepper_Control &msg){
+  Tendon1Stepper.status.errors = msg.control_mode;
+}
+
 ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
+ros::Subscriber<stepper_msg::Stepper_Control> tendon1_control("TUhand/Tendon1Stepper/control", &Tendon1StepperControlHandler);
+
 ros::Publisher tendon2_status("TUhand/Tendon2Stepper/status", &Tendon2Stepper.status);
 ros::Publisher wrist_status("TUhand/WristStepper/status", &WristStepper.status);
+
+
 
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
@@ -243,9 +254,9 @@ void PeriodicUpdate(void){
     tendon2_status.publish(&Tendon2Stepper.status);
     wrist_status.publish(&WristStepper.status);
 
-    nh.spinOnce();
-
     ADCProcessorTrigger(ADC0_BASE, 1);
+
+    nh.spinOnce();
 }
 
 void Tendon1StepperStepHandler(void)
@@ -263,6 +274,34 @@ void WristStepperStepHandler(void)
   StepperStepPinSet(WristStepper);
 }
 
+void PortALimitSwitchHandler(void)
+{
+  if (GPIOIntStatus(GPIO_PORTA_BASE, false) & Tendon1Stepper.LimitSwitchPin.PIN)
+  {
+    GPIOIntClear(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN);  // Clear interrupt flag
+    Tendon1Stepper.status.position_steps = 0;
+    Tendon1Stepper.status.limit_switch = true;
+    tendon1_status.publish(&Tendon1Stepper.status);
+
+  }
+  else if(GPIOIntStatus(GPIO_PORTA_BASE, false) & Tendon2Stepper.LimitSwitchPin.PIN)
+  {
+      GPIOIntClear(GPIO_PORTA_BASE, Tendon2Stepper.LimitSwitchPin.PIN);  // Clear interrupt flag
+      Tendon2Stepper.status.position_steps = 0;
+      Tendon2Stepper.status.limit_switch = true;
+      tendon2_status.publish(&Tendon2Stepper.status);
+
+  }
+  else if(GPIOIntStatus(GPIO_PORTA_BASE, false) & WristStepper.LimitSwitchPin.PIN)
+  {
+      GPIOIntClear(GPIO_PORTA_BASE, WristStepper.LimitSwitchPin.PIN);  // Clear interrupt flag
+      WristStepper.status.position_steps = 0;
+      WristStepper.status.limit_switch = true;
+      wrist_status.publish(&WristStepper.status);
+
+  }
+}
+
 int main(void)
 {
     // TivaC application specific code
@@ -275,6 +314,12 @@ int main(void)
 
     enableSysPeripherals();
 
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);
+    GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);         // Configure PF4 for falling edge trigger
+    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
+
     setupJoystick();
     setupSharedStepperPins();
 
@@ -282,6 +327,7 @@ int main(void)
      
     nh.advertise(adc_joystick);
     nh.advertise(tendon1_status);
+    nh.subscribe(tendon1_control);
     nh.advertise(tendon2_status);
     nh.advertise(wrist_status);
 
@@ -293,10 +339,13 @@ int main(void)
     Tendon1Stepper.ChipSelectPin.PORT = GPIO_STEPPER_1_CS_PORT;
     Tendon1Stepper.StepPin.PIN = GPIO_STEPPER_1_STEP_PIN;
     Tendon1Stepper.StepPin.PORT = GPIO_STEPPER_1_STEP_PORT;
+    Tendon1Stepper.LimitSwitchPin.PIN = GPIO_STEPPER_1_LIMIT_SW_PIN;
+    Tendon1Stepper.LimitSwitchPin.PORT = GPIO_STEPPER_1_LIMIT_SW_PORT;
     Tendon1Stepper.TIMER_BASE = TIMER2_BASE;
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
+    Tendon1Stepper.control.control_mode = "X_AXIS";
     Tendon1Stepper.target_speed   = 2000;
     StepperGetParamsFromROS(Tendon1Stepper);
     StepperInitGPIO(Tendon1Stepper);
@@ -309,10 +358,13 @@ int main(void)
     Tendon2Stepper.ChipSelectPin.PORT = GPIO_STEPPER_2_CS_PORT;
     Tendon2Stepper.StepPin.PIN = GPIO_STEPPER_2_STEP_PIN;
     Tendon2Stepper.StepPin.PORT = GPIO_STEPPER_2_STEP_PORT;
+    Tendon2Stepper.LimitSwitchPin.PIN = GPIO_STEPPER_2_LIMIT_SW_PIN;
+    Tendon2Stepper.LimitSwitchPin.PORT = GPIO_STEPPER_2_LIMIT_SW_PORT;
     Tendon2Stepper.TIMER_BASE = TIMER3_BASE;
     Tendon2Stepper.status.position_steps = 0;
     Tendon2Stepper.status.speed_steps_per_second = 1;
     Tendon2Stepper.status.enabled = false;
+    Tendon1Stepper.control.control_mode = "Y_AXIS";
     Tendon2Stepper.target_speed   = 2000;
     StepperGetParamsFromROS(Tendon2Stepper);
     StepperInitGPIO(Tendon2Stepper);
@@ -325,6 +377,8 @@ int main(void)
     WristStepper.ChipSelectPin.PORT = GPIO_STEPPER_3_CS_PORT;
     WristStepper.StepPin.PIN = GPIO_STEPPER_3_STEP_PIN;
     WristStepper.StepPin.PORT = GPIO_STEPPER_3_STEP_PORT;
+    WristStepper.LimitSwitchPin.PIN = GPIO_STEPPER_3_LIMIT_SW_PIN;
+    WristStepper.LimitSwitchPin.PORT = GPIO_STEPPER_3_LIMIT_SW_PORT;
     WristStepper.TIMER_BASE = TIMER4_BASE;
     WristStepper.status.position_steps = 0;
     WristStepper.status.speed_steps_per_second = 1;
@@ -334,6 +388,13 @@ int main(void)
     StepperInitGPIO(WristStepper);
     StepperInitSPI(WristStepper);    
     StepperInitTimer(WristStepperStepHandler, WristStepper);
+
+
+    GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN);
+    GPIOPadConfigSet(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
+    GPIOIntRegister(GPIO_PORTA_BASE, PortALimitSwitchHandler);     // Register our handler function for port A
+    GPIOIntTypeSet(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN, GPIO_RISING_EDGE);         
+    GPIOIntEnable(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN);     
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);
@@ -453,13 +514,6 @@ void setupJoystick(void)
 
 void setupSharedStepperPins(void)
 {
-
-    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);
-    GPIOPadConfigSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
-    GPIOIntRegister(GPIO_PORTF_BASE, SW1_SW2_pressed);     // Register our handler function for port A
-    GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4, GPIO_RISING_EDGE);         // Configure PF4 for falling edge trigger
-    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_4);     // Enable interrupt for PF4
-
     GPIOPinTypeGPIOInput(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);
     GPIOPadConfigSet(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
     GPIOIntRegister(GPIO_STEPPER_ALL_ERR_PORT, StepperError);     // Register our handler function for port A

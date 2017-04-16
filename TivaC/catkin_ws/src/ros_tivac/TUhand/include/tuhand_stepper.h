@@ -19,7 +19,7 @@ extern "C"
 #include <ros.h>
 
 //message includes
-#include "stepper_msg/Stepper_Target.h"
+#include "stepper_msg/Stepper_Control.h"
 #include "stepper_msg/Stepper_Status.h"
 
 
@@ -38,11 +38,13 @@ struct Stepper {
   int phase_current_ma;
 
   stepper_msg::Stepper_Status status;
+  stepper_msg::Stepper_Control control;
   int target_speed;
 
   uint32_t TIMER_BASE;
   TivaC_Pin ChipSelectPin;
   TivaC_Pin StepPin;
+  TivaC_Pin LimitSwitchPin;
 };
 
 
