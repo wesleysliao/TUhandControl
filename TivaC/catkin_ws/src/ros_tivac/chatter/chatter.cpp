@@ -75,19 +75,24 @@ ros::NodeHandle nh;
 #define GPIO_STEPPER_4_LIMIT_SW_PORT    GPIO_PORTB_BASE
 #define GPIO_STEPPER_4_LIMIT_SW_PIN     GPIO_PIN_3
 
-#define GPIO_STEPPER_ALL_CLR_PORT        GPIO_PORTB_BASE
-#define GPIO_STEPPER_ALL_CLR_PIN         GPIO_PIN_2
+#define GPIO_STEPPER_ALL_CLR_PORT       GPIO_PORTB_BASE
+#define GPIO_STEPPER_ALL_CLR_PIN        GPIO_PIN_2
 
-#define GPIO_STEPPER_ALL_ERR_PORT        GPIO_PORTE_BASE
-#define GPIO_STEPPER_ALL_ERR_PIN         GPIO_PIN_0
+#define GPIO_STEPPER_ALL_ERR_PORT       GPIO_PORTE_BASE
+#define GPIO_STEPPER_ALL_ERR_PIN        GPIO_PIN_0
 
+#define DEFAULT_STEPPER_MAX_SPEED       2400
+#define DEFAULT_STEPPER_ACCEL           100
+#define DEFAULT_STEPPER_TRAVEL_LIMIT    400
+#define DEFAULT_STEPPER_STEPMODE        2
+#define DEFAULT_STEPPER_PH_CURRENT      800
 
 struct StepperConfig {
-  int32_t max_speed_steps_per_second;
-  int32_t travel_limit_steps;
-  int32_t acceleration;
-  int32_t microstep_mode;
-  int32_t phase_current_ma;
+  int max_speed_steps_per_second;
+  int travel_limit_steps;
+  int acceleration;
+  int microstep_mode;
+  int phase_current_ma;
 };
 
 bool SameSign(int x, int y)
@@ -356,14 +361,16 @@ void StepperError(void){
 
 
 void GetParamsFromROS(void){
-  int buf;
-
-  nh.getParam("/TUhand/Tendon1Stepper/acceleration", &buf, 1);
-  Tendon1Stepper.max_speed_steps_per_second = 24000;
-  Tendon1Stepper.travel_limit_steps = 160000;
-  Tendon1Stepper.acceleration = buf;
-  Tendon1Stepper.microstep_mode = STEPMODE_MICRO_16;
-  Tendon1Stepper.phase_current_ma = 2800;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/max_speed_steps_per_second", &Tendon1Stepper.max_speed_steps_per_second, 1))
+    Tendon1Stepper.max_speed_steps_per_second = DEFAULT_STEPPER_MAX_SPEED;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/travel_limit_steps", &Tendon1Stepper.travel_limit_steps, 1))
+    Tendon1Stepper.travel_limit_steps = DEFAULT_STEPPER_TRAVEL_LIMIT;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/acceleration", &Tendon1Stepper.acceleration, 1))
+    Tendon1Stepper.acceleration = DEFAULT_STEPPER_ACCEL;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/microstep_mode", &Tendon1Stepper.microstep_mode, 1))
+    Tendon1Stepper.microstep_mode = DEFAULT_STEPPER_STEPMODE;
+  if(!nh.getParam("/TUhand/Tendon1Stepper/phase_current_ma", &Tendon1Stepper.phase_current_ma, 1))
+    Tendon1Stepper.phase_current_ma = DEFAULT_STEPPER_PH_CURRENT;
 }
 
 
