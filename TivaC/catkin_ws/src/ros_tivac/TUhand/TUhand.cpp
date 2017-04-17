@@ -89,6 +89,7 @@ ros::NodeHandle nh;
 #define CONTROL_MODE_HOME     1
 #define CONTROL_MODE_X_AXIS   2
 #define CONTROL_MODE_Y_AXIS   3
+#define CONTROL_MODE_X_POSE   4
 
 #define PERIODIC_UPDATE_RATE_HZ 32
 
@@ -112,9 +113,6 @@ void setupJoystick(void);
 void StepperGetParamsFromROS(Stepper &stepper);
 
 
-
-
-
 //globals
 
 Stepper Tendon1Stepper;
@@ -122,18 +120,15 @@ Stepper Tendon2Stepper;
 Stepper WristStepper;
 
 void Tendon1StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  Tendon1Stepper.control.control_mode = msg.control_mode;
-  StepperControlMode(Tendon1Stepper);
+  StepperControlMode(Tendon1Stepper, msg);
 }
 
 void Tendon2StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  Tendon2Stepper.control.control_mode = msg.control_mode;
-  StepperControlMode(Tendon2Stepper);
+  StepperControlMode(Tendon2Stepper, msg);
 }
 
 void WristStepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  WristStepper.control.control_mode = msg.control_mode;
-  StepperControlMode(WristStepper);
+  StepperControlMode(WristStepper, msg);
 }
 
 ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
@@ -237,10 +232,10 @@ void ReadADC(void){
 
   ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
 
-  int x = ((((int)adc_values[0])-js_msg.x_axis_zero)*1000)/2048;
-  int y = ((((int)adc_values[2])-js_msg.y_axis_zero)*1000)/2048;
+  int x = ((((int)(adc_values[0]+adc_values[1])/2)-js_msg.x_axis_zero)*1000)/2048;
+  int y = ((((int)(adc_values[2]+adc_values[3])/2)-js_msg.y_axis_zero)*1000)/2048;
 
-  if( abs(x - js_msg.x_axis_raw) > 50 || abs(y - js_msg.y_axis_raw) > 50)
+  if( abs(x - js_msg.x_axis_raw) > 0 || abs(y - js_msg.y_axis_raw) > 0)
   {
       js_msg.x_axis_raw = x;
       js_msg.y_axis_raw = y;
@@ -330,7 +325,7 @@ int main(void)
     nh.advertise(wrist_status);
 
     nh.subscribe(tendon1_control);
-    //nh.subscribe(tendon2_control);
+    nh.subscribe(tendon2_control);
     nh.subscribe(wrist_control);
 
     while(!nh.connected()) {nh.spinOnce();}
@@ -506,7 +501,7 @@ void setupJoystick(void)
   ADCIntEnable(ADC0_BASE, 1);
 
 
-  js_msg.x_axis_zero = 2070;
+  js_msg.x_axis_zero = 2085;
   js_msg.y_axis_zero = 2066;
 }
 

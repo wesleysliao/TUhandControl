@@ -40,6 +40,7 @@ struct Stepper {
   stepper_msg::Stepper_Status status;
   stepper_msg::Stepper_Control control;
   int target_speed;
+  bool pose_direction_forward;
 
   uint32_t TIMER_BASE;
   TivaC_Pin ChipSelectPin;
@@ -52,8 +53,6 @@ bool SameSign(int x, int y)
 {
     return (x >= 0) ^ (y < 0);
 }
-
-
 
 //
 // Stepper control functions
@@ -77,9 +76,12 @@ void StepperDisable(Stepper &stepper){
 
 void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
 {
+  if( abs(x_axis_1000) < 25) x_axis_1000 = 0;
+  if( abs(y_axis_1000) < 25) y_axis_1000 = 0;
+
   if(stepper.control.control_mode == CONTROL_MODE_X_AXIS)
   {
-    stepper.status.speed_steps_per_second = (stepper.max_speed_steps_per_second*x_axis_1000)/1000;
+    stepper.target_speed = (stepper.max_speed_steps_per_second*x_axis_1000)/1000;
   }
   else if(stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
   {
@@ -87,12 +89,25 @@ void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
   }
   else if(stepper.control.control_mode == CONTROL_MODE_HOME)
   {
-    stepper.target_speed = -(((int)stepper.max_speed_steps_per_second)/2);
-    //stepper.status.direction_forward = false;
+    stepper.target_speed = -(stepper.max_speed_steps_per_second/2);
   }
   else if(stepper.control.control_mode == CONTROL_MODE_OFF)
   {
     stepper.target_speed = 0;
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE)
+  {
+    int adj_top_speed = (stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
+
+    if(stepper.pose_direction_forward)
+    {
+      stepper.target_speed = (adj_top_speed*x_axis_1000)/1000;
+    }
+    else
+    {
+      stepper.target_speed = -(adj_top_speed*x_axis_1000)/1000;
+    }
+    
   }
 
 }
@@ -105,19 +120,27 @@ void StepperUpdate(Stepper &stepper)
     {
         int original_speed = stepper.status.speed_steps_per_second;
 
+        int accel = stepper.acceleration;
+        if(stepper.control.control_mode==CONTROL_MODE_X_POSE)
+          accel = (stepper.acceleration*stepper.control.top_speed_percent)/100;
+
         if(stepper.status.speed_steps_per_second < stepper.target_speed)
         {
-          if(stepper.target_speed - stepper.status.speed_steps_per_second  < stepper.acceleration)
+          if(stepper.target_speed - stepper.status.speed_steps_per_second  < accel)
             stepper.status.speed_steps_per_second = stepper.target_speed;
           else
-            stepper.status.speed_steps_per_second += stepper.acceleration;
+          {
+            stepper.status.speed_steps_per_second += accel;
+          }
 
         }
         else{
-          if(stepper.status.speed_steps_per_second - stepper.target_speed < stepper.acceleration)
+          if(stepper.status.speed_steps_per_second - stepper.target_speed < accel)
             stepper.status.speed_steps_per_second = stepper.target_speed;
           else
-            stepper.status.speed_steps_per_second -= stepper.acceleration;
+          {
+            stepper.status.speed_steps_per_second -= accel;
+          }
         }
 
         if(stepper.status.speed_steps_per_second>=0 && stepper.status.direction_forward == false){
@@ -136,7 +159,9 @@ void StepperUpdate(Stepper &stepper)
 
 }
 
-void StepperControlMode(Stepper &stepper){
+void StepperControlMode(Stepper &stepper, const stepper_msg::Stepper_Control &msg){
+
+  stepper.control = msg;
 
   if(stepper.control.control_mode == CONTROL_MODE_OFF){
     StepperDisable(stepper);
@@ -144,6 +169,8 @@ void StepperControlMode(Stepper &stepper){
   else if(stepper.control.control_mode == CONTROL_MODE_HOME)
   {
     stepper.status.position_steps = 9223372036854775807;
+    SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
+    stepper.status.direction_forward = false;
     StepperEnable(stepper);
   }
   else if(stepper.control.control_mode == CONTROL_MODE_X_AXIS)
@@ -152,6 +179,11 @@ void StepperControlMode(Stepper &stepper){
   }
   else if(stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
   {
+    StepperEnable(stepper);
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE)
+  {
+    stepper.pose_direction_forward = ((stepper.control.target_position - stepper.status.position_steps) > 0);
     StepperEnable(stepper);
   }
 }
@@ -167,6 +199,18 @@ void StepperStepPinSet(Stepper &stepper)
 {
     // Clear the timer interrupt
     TimerIntClear(stepper.TIMER_BASE, TIMER_TIMA_TIMEOUT);
+
+    if(!stepper.status.speed_steps_per_second){
+      return;
+    }
+
+    if((stepper.control.control_mode == CONTROL_MODE_X_POSE) &&
+       (stepper.control.target_position == stepper.status.position_steps) &&
+       (stepper.status.direction_forward==stepper.pose_direction_forward))
+    {
+      stepper.status.speed_steps_per_second = 0;
+      return;
+    }
 
     if(stepper.status.direction_forward)
     {
