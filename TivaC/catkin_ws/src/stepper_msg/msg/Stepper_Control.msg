@@ -1,3 +1,3 @@
 uint32 target_position
 uint32 top_speed_steps_per_second
-string control_mode
+uint16 control_mode

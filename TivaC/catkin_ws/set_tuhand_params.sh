@@ -1,7 +1,7 @@
 #!/bin/bash
 source devel/setup.bash
 
-rosparam set /TUhand/Tendon1Stepper/max_speed_steps_per_second 2400
+rosparam set /TUhand/Tendon1Stepper/max_speed_steps_per_second 7200
 rosparam set /TUhand/Tendon1Stepper/travel_limit_steps 32000
 rosparam set /TUhand/Tendon1Stepper/acceleration 100
 rosparam set /TUhand/Tendon1Stepper/microstep_mode 16

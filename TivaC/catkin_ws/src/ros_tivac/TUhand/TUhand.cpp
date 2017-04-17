@@ -85,6 +85,11 @@ ros::NodeHandle nh;
 #define DEFAULT_STEPPER_STEPMODE        2
 #define DEFAULT_STEPPER_PH_CURRENT      800
 
+#define CONTROL_MODE_OFF      0
+#define CONTROL_MODE_HOME     1
+#define CONTROL_MODE_X_AXIS   2
+#define CONTROL_MODE_Y_AXIS   3
+
 #define PERIODIC_UPDATE_RATE_HZ 32
 
 
@@ -117,7 +122,25 @@ Stepper Tendon2Stepper;
 Stepper WristStepper;
 
 void Tendon1StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  Tendon1Stepper.status.errors = msg.control_mode;
+
+  if(msg.control_mode == CONTROL_MODE_OFF){
+    StepperDisable(Tendon1Stepper);
+  }
+  else if(msg.control_mode == CONTROL_MODE_HOME)
+  {
+    Tendon1Stepper.status.position_steps = 9223372036854775807;
+    StepperEnable(Tendon1Stepper);
+  }
+  else if(msg.control_mode == CONTROL_MODE_X_AXIS)
+  {
+    StepperEnable(Tendon1Stepper);
+  }
+  else if(msg.control_mode == CONTROL_MODE_Y_AXIS)
+  {
+    StepperEnable(Tendon1Stepper);
+  }
+
+  Tendon1Stepper.control.control_mode = msg.control_mode;
 }
 
 ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
@@ -163,8 +186,8 @@ void SW1_SW2_pressed(void){
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
 
         StepperEnable(Tendon1Stepper);
-        StepperEnable(Tendon2Stepper);
-        StepperEnable(WristStepper);
+        // StepperEnable(Tendon2Stepper);
+        // StepperEnable(WristStepper);
     }
     else if(GPIOIntStatus(GPIO_PORTF_BASE, false) & GPIO_PIN_4) {
 
@@ -218,25 +241,20 @@ void ReadADC(void){
 
   ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
 
-  if( abs(adc_values[0] - js_msg.x_axis_raw) > 100 || abs(adc_values[2] - js_msg.y_axis_raw) > 100)
+  int x = ((((int)adc_values[0])-js_msg.x_axis_zero)*1000)/2048;
+  int y = ((((int)adc_values[2])-js_msg.y_axis_zero)*1000)/2048;
+
+  if( abs(x - js_msg.x_axis_raw) > 50 || abs(y - js_msg.y_axis_raw) > 50)
   {
-      js_msg.x_axis_raw = adc_values[0];
-      js_msg.y_axis_raw = adc_values[2];
-
-    //   if(abs((js_msg.x_axis_raw-js_msg.x_axis_zero)<100))
-    //     js_msg.x_axis_raw = js_msg.x_axis_zero;
-
-    // if(abs((js_msg.y_axis_raw-js_msg.y_axis_zero)<100))
-    //     js_msg.y_axis_raw = js_msg.y_axis_zero;
+      js_msg.x_axis_raw = x;
+      js_msg.y_axis_raw = y;
 
       adc_joystick.publish(&js_msg);
 
+      // Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      // Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
 
-
-      Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
-      Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
-
-      WristStepper.target_speed = (WristStepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      // WristStepper.target_speed = (WristStepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
 
   }
 }
@@ -246,6 +264,8 @@ void PeriodicUpdate(void){
 
     TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
+    StepperControlSpeed(Tendon1Stepper, js_msg.x_axis_raw, 0);
+
     StepperUpdate(Tendon1Stepper);
     StepperUpdate(Tendon2Stepper);
     StepperUpdate(WristStepper);
@@ -254,9 +274,9 @@ void PeriodicUpdate(void){
     tendon2_status.publish(&Tendon2Stepper.status);
     wrist_status.publish(&WristStepper.status);
 
-    ADCProcessorTrigger(ADC0_BASE, 1);
-
     nh.spinOnce();
+
+    ADCProcessorTrigger(ADC0_BASE, 1);
 }
 
 void Tendon1StepperStepHandler(void)
@@ -297,16 +317,8 @@ int main(void)
     setupSharedStepperPins();
 
     nh.initNode();
-     
-    nh.advertise(adc_joystick);
-    nh.advertise(tendon1_status);
-    nh.advertise(tendon2_status);
-    nh.advertise(wrist_status);
 
     while(!nh.connected()) {nh.spinOnce();}
-
-    nh.subscribe(tendon1_control);
-    nh.spinOnce();
 
     Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.ChipSelectPin.PIN = GPIO_STEPPER_1_CS_PIN;
@@ -319,7 +331,7 @@ int main(void)
     Tendon1Stepper.status.position_steps = 0;
     Tendon1Stepper.status.speed_steps_per_second = 1;
     Tendon1Stepper.status.enabled = false;
-    Tendon1Stepper.control.control_mode = "X_AXIS";
+    Tendon1Stepper.control.control_mode = 0;
     Tendon1Stepper.target_speed   = 2000;
     StepperGetParamsFromROS(Tendon1Stepper);
     StepperInitGPIO(Tendon1Stepper);
@@ -338,7 +350,7 @@ int main(void)
     Tendon2Stepper.status.position_steps = 0;
     Tendon2Stepper.status.speed_steps_per_second = 1;
     Tendon2Stepper.status.enabled = false;
-    Tendon1Stepper.control.control_mode = "Y_AXIS";
+    Tendon2Stepper.control.control_mode = 0;
     Tendon2Stepper.target_speed   = 2000;
     StepperGetParamsFromROS(Tendon2Stepper);
     StepperInitGPIO(Tendon2Stepper);
@@ -357,12 +369,20 @@ int main(void)
     WristStepper.status.position_steps = 0;
     WristStepper.status.speed_steps_per_second = 1;
     WristStepper.status.enabled = false;
+    WristStepper.control.control_mode = 0;
     WristStepper.target_speed   = 2000;
     StepperGetParamsFromROS(WristStepper);
     StepperInitGPIO(WristStepper);
     StepperInitSPI(WristStepper);    
     StepperInitTimer(WristStepperStepHandler, WristStepper);
 
+
+    nh.advertise(adc_joystick);
+    nh.advertise(tendon1_status);
+    nh.advertise(tendon2_status);
+    nh.advertise(wrist_status);
+
+    nh.subscribe(tendon1_control);
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);
@@ -401,7 +421,7 @@ int main(void)
 
     IntMasterEnable();
 
-    StepperEnable(Tendon1Stepper);
+    StepperDisable(Tendon1Stepper);
     StepperDisable(Tendon2Stepper);
     StepperDisable(WristStepper);
 

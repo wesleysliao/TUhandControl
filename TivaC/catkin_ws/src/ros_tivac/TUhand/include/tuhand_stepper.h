@@ -75,6 +75,27 @@ void StepperDisable(Stepper &stepper){
     TimerDisable(stepper.TIMER_BASE, TIMER_A);
 }
 
+void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
+{
+  if(stepper.control.control_mode == CONTROL_MODE_X_AXIS)
+  {
+    stepper.status.speed_steps_per_second = (stepper.max_speed_steps_per_second*x_axis_1000)/1000;
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
+  {
+    stepper.target_speed = (stepper.max_speed_steps_per_second*y_axis_1000)/1000;
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_HOME)
+  {
+    stepper.target_speed = -(stepper.max_speed_steps_per_second/4);
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_OFF)
+  {
+    stepper.target_speed = 0;
+  }
+
+}
+
 void StepperUpdate(Stepper &stepper)
 {
   if(stepper.status.enabled){
@@ -98,14 +119,12 @@ void StepperUpdate(Stepper &stepper)
             stepper.status.speed_steps_per_second -= stepper.acceleration;
         }
 
-        if(!SameSign(original_speed, stepper.status.speed_steps_per_second) || original_speed == 0){
-            if(stepper.status.speed_steps_per_second>=0){
-                SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
-                stepper.status.direction_forward = true;
-            }else{
-                SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
-                stepper.status.direction_forward = false;
-            }
+        if(stepper.status.speed_steps_per_second>=0 && stepper.status.direction_forward == false){
+            SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, true);
+            stepper.status.direction_forward = true;
+        }else if (stepper.status.speed_steps_per_second<0 && stepper.status.direction_forward == true){
+            SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
+            stepper.status.direction_forward = false;
         }
 
         TimerLoadSet(stepper.TIMER_BASE, TIMER_A, std::min((SysCtlClockGet() / abs(stepper.status.speed_steps_per_second)) -1, SysCtlClockGet()/PERIODIC_UPDATE_RATE_HZ));
