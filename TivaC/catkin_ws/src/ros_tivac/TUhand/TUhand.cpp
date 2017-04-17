@@ -274,33 +274,6 @@ void WristStepperStepHandler(void)
   StepperStepPinSet(WristStepper);
 }
 
-void PortALimitSwitchHandler(void)
-{
-  if (GPIOIntStatus(GPIO_PORTA_BASE, false) & Tendon1Stepper.LimitSwitchPin.PIN)
-  {
-    GPIOIntClear(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN);  // Clear interrupt flag
-    Tendon1Stepper.status.position_steps = 0;
-    Tendon1Stepper.status.limit_switch = true;
-    tendon1_status.publish(&Tendon1Stepper.status);
-
-  }
-  else if(GPIOIntStatus(GPIO_PORTA_BASE, false) & Tendon2Stepper.LimitSwitchPin.PIN)
-  {
-      GPIOIntClear(GPIO_PORTA_BASE, Tendon2Stepper.LimitSwitchPin.PIN);  // Clear interrupt flag
-      Tendon2Stepper.status.position_steps = 0;
-      Tendon2Stepper.status.limit_switch = true;
-      tendon2_status.publish(&Tendon2Stepper.status);
-
-  }
-  else if(GPIOIntStatus(GPIO_PORTA_BASE, false) & WristStepper.LimitSwitchPin.PIN)
-  {
-      GPIOIntClear(GPIO_PORTA_BASE, WristStepper.LimitSwitchPin.PIN);  // Clear interrupt flag
-      WristStepper.status.position_steps = 0;
-      WristStepper.status.limit_switch = true;
-      wrist_status.publish(&WristStepper.status);
-
-  }
-}
 
 int main(void)
 {
@@ -327,12 +300,13 @@ int main(void)
      
     nh.advertise(adc_joystick);
     nh.advertise(tendon1_status);
-    nh.subscribe(tendon1_control);
     nh.advertise(tendon2_status);
     nh.advertise(wrist_status);
 
     while(!nh.connected()) {nh.spinOnce();}
 
+    nh.subscribe(tendon1_control);
+    nh.spinOnce();
 
     Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.ChipSelectPin.PIN = GPIO_STEPPER_1_CS_PIN;
@@ -390,12 +364,6 @@ int main(void)
     StepperInitTimer(WristStepperStepHandler, WristStepper);
 
 
-    GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN);
-    GPIOPadConfigSet(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
-    GPIOIntRegister(GPIO_PORTA_BASE, PortALimitSwitchHandler);     // Register our handler function for port A
-    GPIOIntTypeSet(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN, GPIO_RISING_EDGE);         
-    GPIOIntEnable(GPIO_PORTA_BASE, Tendon1Stepper.LimitSwitchPin.PIN | Tendon2Stepper.LimitSwitchPin.PIN | WristStepper.LimitSwitchPin.PIN);     
-
 
     TimerDisable(TIMER0_BASE, TIMER_A);
     TimerDisable(TIMER1_BASE, TIMER_A);
@@ -418,8 +386,9 @@ int main(void)
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
 
-    IntPrioritySet(INT_TIMER1A, 0b00100000); //Motor reset
-    IntPrioritySet(INT_TIMER0A, 0b01000000); //update
+
+    IntPrioritySet(INT_TIMER1A, 0b01000000); //Motor reset
+    IntPrioritySet(INT_TIMER0A, 0b00100000); //update
 
     IntPrioritySet(INT_TIMER2A, 0b00000000); //motor set
     IntPrioritySet(INT_TIMER3A, 0b00000000);
@@ -432,9 +401,9 @@ int main(void)
 
     IntMasterEnable();
 
-    StepperDisable(Tendon1Stepper);
+    StepperEnable(Tendon1Stepper);
     StepperDisable(Tendon2Stepper);
-    StepperEnable(WristStepper);
+    StepperDisable(WristStepper);
 
     while(1)
     {
@@ -466,6 +435,8 @@ void enableSysPeripherals(void)
   {
   }
 
+  HWREG(GPIO_PORTC_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY;  //unlock pins C 0-3 for use
+  HWREG(GPIO_PORTC_BASE+GPIO_O_CR) |= (GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
   
   HWREG(GPIO_PORTD_BASE+GPIO_O_LOCK) = GPIO_LOCK_KEY; //Unlock pin D7 for use
   HWREG(GPIO_PORTD_BASE+GPIO_O_CR) |= GPIO_PIN_7;

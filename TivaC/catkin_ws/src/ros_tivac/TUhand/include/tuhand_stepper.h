@@ -75,7 +75,6 @@ void StepperDisable(Stepper &stepper){
     TimerDisable(stepper.TIMER_BASE, TIMER_A);
 }
 
-
 void StepperUpdate(Stepper &stepper)
 {
   if(stepper.status.enabled){
@@ -143,12 +142,21 @@ void StepperStepPinSet(Stepper &stepper)
     }
     else
     {
-      if(stepper.status.position_steps > 0)
+      if(GPIOPinRead(stepper.LimitSwitchPin.PORT, stepper.LimitSwitchPin.PIN))
       {
-        stepper.status.position_steps--;
+        if(stepper.status.position_steps > 0)
+        {
+          stepper.status.position_steps--;
+        }
+        else
+        {
+          stepper.status.speed_steps_per_second = 0;
+          return;
+        }
       }
       else
       {
+        stepper.status.position_steps = 0;
         stepper.status.speed_steps_per_second = 0;
         return;
       }
@@ -187,6 +195,9 @@ void StepperInitGPIO(Stepper &stepper)
 
     GPIOPinTypeGPIOOutput(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN);
     GPIOPadConfigSet(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+
+    GPIOPinTypeGPIOInput(stepper.LimitSwitchPin.PORT, stepper.LimitSwitchPin.PIN);
+    GPIOPadConfigSet(stepper.LimitSwitchPin.PORT, stepper.LimitSwitchPin.PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);  // Enable weak pullup resistor
 
     GPIOPinWrite(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, 255); //Pull CS HIGH
 }
