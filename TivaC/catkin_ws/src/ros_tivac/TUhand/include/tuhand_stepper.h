@@ -88,7 +88,7 @@ void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
   else if(stepper.control.control_mode == CONTROL_MODE_HOME)
   {
     stepper.target_speed = -(((int)stepper.max_speed_steps_per_second)/2);
-    stepper.status.direction_forward = false;
+    //stepper.status.direction_forward = false;
   }
   else if(stepper.control.control_mode == CONTROL_MODE_OFF)
   {

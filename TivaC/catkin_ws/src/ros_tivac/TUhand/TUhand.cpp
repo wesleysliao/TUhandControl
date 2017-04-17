@@ -329,8 +329,7 @@ int main(void)
     nh.advertise(tendon2_status);
     nh.advertise(wrist_status);
 
-    //nh.subscribe(tendon1_control);
-    //nh.getHardware()->delay(100);
+    nh.subscribe(tendon1_control);
     //nh.subscribe(tendon2_control);
     nh.subscribe(wrist_control);
 
