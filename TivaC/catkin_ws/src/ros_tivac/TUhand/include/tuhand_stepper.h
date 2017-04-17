@@ -35,7 +35,6 @@ extern "C"
 #define CONTROL_MODE_Y_POSE   5
 #define CONTROL_MODE_GOTO     6
 
-
 struct Stepper {
   std::string name;
 
@@ -94,10 +93,6 @@ void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
   else if(stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
   {
     stepper.target_speed = (stepper.max_speed_steps_per_second*y_axis_1000)/1000;
-  }
-  else if(stepper.control.control_mode == CONTROL_MODE_HOME)
-  {
-    stepper.target_speed = -(stepper.max_speed_steps_per_second/2);
   }
   else if(stepper.control.control_mode == CONTROL_MODE_OFF)
   {
@@ -182,6 +177,15 @@ void StepperControlMode(Stepper &stepper, const stepper_msg::Stepper_Control &ms
     stepper.status.position_steps = 9223372036854775807;
     SetStepperDirection(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN, false);
     stepper.status.direction_forward = false;
+    stepper.target_speed = -(stepper.max_speed_steps_per_second/2);
+    StepperEnable(stepper);
+  }
+  else if(stepper.control.control_mode == CONTROL_MODE_GOTO)
+  {
+    if((stepper.control.target_position - stepper.status.position_steps) > 0)
+      stepper.target_speed = (stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
+    else
+      stepper.target_speed = -(stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
     StepperEnable(stepper);
   }
   else if(stepper.control.control_mode == CONTROL_MODE_X_AXIS  || stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
@@ -214,6 +218,13 @@ void StepperStepPinSet(Stepper &stepper)
     if((stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE) &&
        (stepper.control.target_position == stepper.status.position_steps) &&
        (stepper.status.direction_forward==stepper.pose_direction_forward))
+    {
+      stepper.status.speed_steps_per_second = 0;
+      return;
+    }
+
+    if((stepper.control.control_mode == CONTROL_MODE_GOTO) &&
+       (stepper.control.target_position == stepper.status.position_steps))
     {
       stepper.status.speed_steps_per_second = 0;
       return;

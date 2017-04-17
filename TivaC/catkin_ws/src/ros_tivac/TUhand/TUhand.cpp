@@ -135,7 +135,6 @@ ros::Publisher wrist_status("TUhand/WristStepper/status", &WristStepper.status);
 ros::Subscriber<stepper_msg::Stepper_Control> wrist_control("TUhand/WristStepper/control", &WristStepperControlHandler);
 
 
-
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
 
