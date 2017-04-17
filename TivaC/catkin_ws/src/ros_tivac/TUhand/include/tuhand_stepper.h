@@ -27,6 +27,14 @@ extern "C"
 #include "tivac_pin.h"
 
 
+#define CONTROL_MODE_OFF      0
+#define CONTROL_MODE_HOME     1
+#define CONTROL_MODE_X_AXIS   2
+#define CONTROL_MODE_Y_AXIS   3
+#define CONTROL_MODE_X_POSE   4
+#define CONTROL_MODE_Y_POSE   5
+#define CONTROL_MODE_GOTO     6
+
 
 struct Stepper {
   std::string name;
@@ -95,17 +103,20 @@ void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
   {
     stepper.target_speed = 0;
   }
-  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE)
+  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE)
   {
+    int joystick;
+    if(stepper.control.control_mode == CONTROL_MODE_X_POSE) joystick = x_axis_1000; else joystick = y_axis_1000;
+
     int adj_top_speed = (stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
 
     if(stepper.pose_direction_forward)
     {
-      stepper.target_speed = (adj_top_speed*x_axis_1000)/1000;
+      stepper.target_speed = (adj_top_speed*joystick)/1000;
     }
     else
     {
-      stepper.target_speed = -(adj_top_speed*x_axis_1000)/1000;
+      stepper.target_speed = -(adj_top_speed*joystick)/1000;
     }
     
   }
@@ -121,7 +132,7 @@ void StepperUpdate(Stepper &stepper)
         int original_speed = stepper.status.speed_steps_per_second;
 
         int accel = stepper.acceleration;
-        if(stepper.control.control_mode==CONTROL_MODE_X_POSE)
+        if(stepper.control.control_mode==CONTROL_MODE_X_POSE || stepper.control.control_mode==CONTROL_MODE_Y_POSE)
           accel = (stepper.acceleration*stepper.control.top_speed_percent)/100;
 
         if(stepper.status.speed_steps_per_second < stepper.target_speed)
@@ -173,15 +184,11 @@ void StepperControlMode(Stepper &stepper, const stepper_msg::Stepper_Control &ms
     stepper.status.direction_forward = false;
     StepperEnable(stepper);
   }
-  else if(stepper.control.control_mode == CONTROL_MODE_X_AXIS)
+  else if(stepper.control.control_mode == CONTROL_MODE_X_AXIS  || stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
   {
     StepperEnable(stepper);
   }
-  else if(stepper.control.control_mode == CONTROL_MODE_Y_AXIS)
-  {
-    StepperEnable(stepper);
-  }
-  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE)
+  else if(stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE )
   {
     stepper.pose_direction_forward = ((stepper.control.target_position - stepper.status.position_steps) > 0);
     StepperEnable(stepper);
@@ -204,7 +211,7 @@ void StepperStepPinSet(Stepper &stepper)
       return;
     }
 
-    if((stepper.control.control_mode == CONTROL_MODE_X_POSE) &&
+    if((stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE) &&
        (stepper.control.target_position == stepper.status.position_steps) &&
        (stepper.status.direction_forward==stepper.pose_direction_forward))
     {

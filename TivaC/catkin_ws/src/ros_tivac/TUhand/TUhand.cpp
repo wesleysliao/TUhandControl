@@ -85,12 +85,6 @@ ros::NodeHandle nh;
 #define DEFAULT_STEPPER_STEPMODE        2
 #define DEFAULT_STEPPER_PH_CURRENT      800
 
-#define CONTROL_MODE_OFF      0
-#define CONTROL_MODE_HOME     1
-#define CONTROL_MODE_X_AXIS   2
-#define CONTROL_MODE_Y_AXIS   3
-#define CONTROL_MODE_X_POSE   4
-
 #define PERIODIC_UPDATE_RATE_HZ 32
 
 
