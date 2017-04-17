@@ -122,32 +122,28 @@ Stepper Tendon2Stepper;
 Stepper WristStepper;
 
 void Tendon1StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-
-  if(msg.control_mode == CONTROL_MODE_OFF){
-    StepperDisable(Tendon1Stepper);
-  }
-  else if(msg.control_mode == CONTROL_MODE_HOME)
-  {
-    Tendon1Stepper.status.position_steps = 9223372036854775807;
-    StepperEnable(Tendon1Stepper);
-  }
-  else if(msg.control_mode == CONTROL_MODE_X_AXIS)
-  {
-    StepperEnable(Tendon1Stepper);
-  }
-  else if(msg.control_mode == CONTROL_MODE_Y_AXIS)
-  {
-    StepperEnable(Tendon1Stepper);
-  }
-
   Tendon1Stepper.control.control_mode = msg.control_mode;
+  StepperControlMode(Tendon1Stepper);
+}
+
+void Tendon2StepperControlHandler(const stepper_msg::Stepper_Control &msg){
+  Tendon2Stepper.control.control_mode = msg.control_mode;
+  StepperControlMode(Tendon2Stepper);
+}
+
+void WristStepperControlHandler(const stepper_msg::Stepper_Control &msg){
+  WristStepper.control.control_mode = msg.control_mode;
+  StepperControlMode(WristStepper);
 }
 
 ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
 ros::Subscriber<stepper_msg::Stepper_Control> tendon1_control("TUhand/Tendon1Stepper/control", &Tendon1StepperControlHandler);
 
 ros::Publisher tendon2_status("TUhand/Tendon2Stepper/status", &Tendon2Stepper.status);
+ros::Subscriber<stepper_msg::Stepper_Control> tendon2_control("TUhand/Tendon2Stepper/control", &Tendon2StepperControlHandler);
+
 ros::Publisher wrist_status("TUhand/WristStepper/status", &WristStepper.status);
+ros::Subscriber<stepper_msg::Stepper_Control> wrist_control("TUhand/WristStepper/control", &WristStepperControlHandler);
 
 
 
@@ -159,7 +155,7 @@ void JoystickClicked(void) {
     if (GPIOIntStatus(GPIO_JOYSTICK_CLICK_PORT, false) & GPIO_JOYSTICK_CLICK_PIN) {
         // PA5 was interrupt cause
         js_msg.select = true;
-        adc_joystick.publish(&js_msg);
+        //adc_joystick.publish(&js_msg);
         GPIOIntRegister(GPIO_JOYSTICK_CLICK_PORT, JoystickReleased);   // Register our handler function for port A
         GPIOIntTypeSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN,
             GPIO_RISING_EDGE);          // Configure PA5 for rising edge trigger
@@ -171,7 +167,7 @@ void JoystickReleased(void) {
     if (GPIOIntStatus(GPIO_JOYSTICK_CLICK_PORT, false) & GPIO_JOYSTICK_CLICK_PIN) {
         // PA5 was interrupt cause
         js_msg.select = false;
-        adc_joystick.publish(&js_msg);
+        //adc_joystick.publish(&js_msg);
         GPIOIntRegister(GPIO_JOYSTICK_CLICK_PORT, JoystickClicked); // Register our handler function for port F
         GPIOIntTypeSet(GPIO_JOYSTICK_CLICK_PORT, GPIO_JOYSTICK_CLICK_PIN,
             GPIO_FALLING_EDGE);         // Configure PF4 for falling edge trigger
@@ -249,7 +245,11 @@ void ReadADC(void){
       js_msg.x_axis_raw = x;
       js_msg.y_axis_raw = y;
 
-      adc_joystick.publish(&js_msg);
+      if(nh.connected())
+        {
+          adc_joystick.publish(&js_msg);
+        }
+      
 
       // Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
       // Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
@@ -262,21 +262,26 @@ void ReadADC(void){
 
 void PeriodicUpdate(void){
 
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+  TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-    StepperControlSpeed(Tendon1Stepper, js_msg.x_axis_raw, 0);
+  StepperControlSpeed(Tendon1Stepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
+  StepperControlSpeed(Tendon2Stepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
+  StepperControlSpeed(WristStepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
 
-    StepperUpdate(Tendon1Stepper);
-    StepperUpdate(Tendon2Stepper);
-    StepperUpdate(WristStepper);
+  StepperUpdate(Tendon1Stepper);
+  StepperUpdate(Tendon2Stepper);
+  StepperUpdate(WristStepper);
 
+  if(nh.connected())
+  {
     tendon1_status.publish(&Tendon1Stepper.status);
     tendon2_status.publish(&Tendon2Stepper.status);
     wrist_status.publish(&WristStepper.status);
+  }
 
-    nh.spinOnce();
+  nh.spinOnce();
 
-    ADCProcessorTrigger(ADC0_BASE, 1);
+  ADCProcessorTrigger(ADC0_BASE, 1);
 }
 
 void Tendon1StepperStepHandler(void)
@@ -317,6 +322,17 @@ int main(void)
     setupSharedStepperPins();
 
     nh.initNode();
+
+    nh.advertise(adc_joystick);
+
+    nh.advertise(tendon1_status);
+    nh.advertise(tendon2_status);
+    nh.advertise(wrist_status);
+
+    //nh.subscribe(tendon1_control);
+    //nh.getHardware()->delay(100);
+    //nh.subscribe(tendon2_control);
+    nh.subscribe(wrist_control);
 
     while(!nh.connected()) {nh.spinOnce();}
 
@@ -375,14 +391,6 @@ int main(void)
     StepperInitGPIO(WristStepper);
     StepperInitSPI(WristStepper);    
     StepperInitTimer(WristStepperStepHandler, WristStepper);
-
-
-    nh.advertise(adc_joystick);
-    nh.advertise(tendon1_status);
-    nh.advertise(tendon2_status);
-    nh.advertise(wrist_status);
-
-    nh.subscribe(tendon1_control);
 
 
     TimerDisable(TIMER0_BASE, TIMER_A);

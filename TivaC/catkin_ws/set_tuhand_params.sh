@@ -17,7 +17,7 @@ rosparam set /TUhand/WristStepper/max_speed_steps_per_second 2400
 rosparam set /TUhand/WristStepper/travel_limit_steps 160000
 rosparam set /TUhand/WristStepper/acceleration 80
 rosparam set /TUhand/WristStepper/microstep_mode 16
-rosparam set /TUhand/WristStepper/phase_current_ma 800
+rosparam set /TUhand/WristStepper/phase_current_ma 1600
 
 rosparam list /TUhand
 
