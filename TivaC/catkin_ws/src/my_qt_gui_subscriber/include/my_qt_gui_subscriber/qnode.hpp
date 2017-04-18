@@ -15,8 +15,9 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-
+#ifndef Q_MOC_RUN
 #include <ros/ros.h>
+#endif
 #include <string>
 #include <std_msgs/UInt16.h>
 #include <QThread>
@@ -57,15 +58,18 @@ public:
 
 	QStringListModel* loggingModel() { return &logging_model; }
         void log( const LogLevel &level, int x, int y);
+        void sendMsg();
 
 Q_SIGNALS:
 	void loggingUpdated();
     void rosShutdown();
 
 private:
+        adc_joystick_msg::ADC_Joystick js_msg;
 	int init_argc;
 	char** init_argv;
 	ros::Subscriber chatter_subscriber;
+        ros::Publisher chatter_publisher;
     QStringListModel logging_model;
 };
 

@@ -8,11 +8,29 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
+#ifndef Q_MOC_RUN
+#include <ros/ros.h>
+#include <ros/network.h>
+#endif
 
+#include <string>
+#include <sstream>
 #include <QtGui>
 #include <QMessageBox>
 #include <iostream>
 #include "../include/my_qt_gui_subscriber/main_window.hpp"
+#include "../include/my_qt_gui_subscriber/qnode.hpp"
+
+#include "adc_joystick_msg/ADC_Joystick.h"
+#include "stepper_msg/Stepper_Control.h"
+
+#define CONTROL_MODE_OFF      0
+#define CONTROL_MODE_HOME     1
+#define CONTROL_MODE_X_AXIS   2
+#define CONTROL_MODE_Y_AXIS   3
+#define CONTROL_MODE_X_POSE   4
+#define CONTROL_MODE_Y_POSE   5
+#define CONTROL_MODE_GOTO     6
 
 /*****************************************************************************
 ** Namespaces
@@ -22,6 +40,7 @@ namespace my_qt_gui_subscriber {
 
 using namespace Qt;
 
+
 /*****************************************************************************
 ** Implementation [MainWindow]
 *****************************************************************************/
@@ -30,6 +49,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	: QMainWindow(parent)
 	, qnode(argc,argv)
 {
+    ros::init(argc,argv,"my_qt_gui_subscriber");
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
     QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
 
@@ -50,6 +70,14 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
+    //Button Publish
+    //ros::init(argc,argv,"my_qt_gui_publisher");
+    //ros::NodeHandle n;
+    //QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(sendMsg()));
+    //chatter_publisher = n.advertise<adc_joystick_msg::ADC_Joystick>("adc_joystick", 1000);
+
+
+
 }
 
 MainWindow::~MainWindow() {}
@@ -173,6 +201,8 @@ void MainWindow::on_pushButton_clicked()
 
     ui.stackedWidget->setCurrentIndex(1);
 
+
+
 }
 
 
@@ -182,6 +212,15 @@ void MainWindow::on_pushButton_2_clicked()
 
     ui.stackedWidget->setCurrentIndex(2);
 
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_HOME;
+    ros::NodeHandle n;
+    chatter_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/Tendon1Stepper/control", 1000);
+    chatter_publisher.publish(smsg);
 }
 
 
@@ -254,6 +293,7 @@ void MainWindow::on_pushButton_10_clicked()
 {
 
     ui.stackedWidget->setCurrentIndex(0);
+
 
 }
 

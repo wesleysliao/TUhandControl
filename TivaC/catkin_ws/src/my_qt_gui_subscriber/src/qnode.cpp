@@ -9,9 +9,11 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-
+#ifndef Q_MOC_RUN
 #include <ros/ros.h>
 #include <ros/network.h>
+#endif
+
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -51,7 +53,7 @@ bool QNode::init() {
 		return false;
 	}
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
-	ros::NodeHandle n;
+    ros::NodeHandle n;
 	// Add your ros communications here.
     chatter_subscriber = n.subscribe("adc_joystick", 1000, &QNode::myCallback, this);
 	start();
@@ -67,9 +69,10 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 		return false;
 	}
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
-	ros::NodeHandle n;
+    ros::NodeHandle n;
 	// Add your ros communications here.
     chatter_subscriber = n.subscribe("adc_joystick", 1000, &QNode::myCallback, this);
+    //chatter_publisher = n.advertise<adc_joystick_msg::ADC_Joystick>("adc_joystick", 1000);
 	start();
 	return true;
 }
@@ -77,6 +80,7 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 void QNode::run() {
 	ros::NodeHandle n;
     chatter_subscriber = n.subscribe("adc_joystick", 1000, &QNode::myCallback, this);
+    //chatter_publisher = n.advertise<adc_joystick_msg::ADC_Joystick>("adc_joystick", 1000);
 	ros::spin();
 
 	std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
@@ -129,4 +133,15 @@ void QNode::log( const LogLevel &level, int x, int y) {
 	Q_EMIT loggingUpdated(); // used to readjust the scrollbar
 }
 
-}  // namespace my_qt_gui_subscriber
+/**void QNode::sendMsg()
+{
+    if(n.connected()) {
+        adc_joystick_msg::ADC_Joystick msg;
+        msg.x_axis_raw = 100;
+        msg.y_axis_raw = 100;
+        chatter_publisher.publish(msg);
+    }
+}*/
+
+
+}  // namespace my_qt_gui_subscriber#include <QtGui>

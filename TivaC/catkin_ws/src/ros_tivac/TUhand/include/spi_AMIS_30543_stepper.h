@@ -201,3 +201,27 @@ void SetStepperStepMode(uint32_t CSPort, uint8_t CSPins, uint8_t stepmode){
     SPIWriteByte(CSPort, CSPins, CR0, CR0_reg);
     SPIWriteByte(CSPort, CSPins, CR3, esm);
 }
+
+std::string SPIStepperGetErrors(uint32_t CSPort, uint8_t CSPins)
+{
+    uint32_t sr0_stat = SPIReadByte(CSPort, CSPins, SR0);
+    uint32_t sr1_stat = SPIReadByte(CSPort, CSPins, SR1);
+    uint32_t sr2_stat = SPIReadByte(CSPort, CSPins, SR2);
+
+    std::string errormsg;
+
+    errormsg = "Error: ";
+
+    if(sr0_stat & 0b01000000)
+        errormsg.append("Temp Warning");
+    if(sr2_stat & 0b00000100)
+        errormsg.append("Temp Shutdown");
+    if(sr0_stat & 0b00010000)
+        errormsg.append("Watchdog ");
+    if(sr0_stat & 0b00001100)
+        errormsg.append("Open coil ");
+    if((sr1_stat & 0b01111000 ) || (sr2_stat & 0b01111000 ))
+        errormsg.append("Overcurrent ");
+
+    return errormsg;
+}

@@ -81,6 +81,12 @@ void StepperDisable(Stepper &stepper){
     TimerDisable(stepper.TIMER_BASE, TIMER_A);
 }
 
+void StepperReadErrors(Stepper &stepper)
+{
+    stepper.status.errors = SPIStepperGetErrors(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN).c_str();
+}
+
+
 void StepperControlSpeed(Stepper &stepper, int x_axis_1000, int y_axis_1000)
 {
   if( abs(x_axis_1000) < 25) x_axis_1000 = 0;

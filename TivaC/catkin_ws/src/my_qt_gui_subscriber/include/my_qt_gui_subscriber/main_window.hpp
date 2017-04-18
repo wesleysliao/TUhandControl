@@ -53,11 +53,10 @@ public Q_SLOTS:
     ** Manual connections
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
-
     void on_pushButton_clicked();
-
-
     void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
 
 
     void on_pushButton_4_clicked();
@@ -96,6 +95,7 @@ public Q_SLOTS:
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
+        ros::Publisher chatter_publisher;
 };
 
 }  // namespace my_qt_gui_subscriber

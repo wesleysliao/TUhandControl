@@ -169,7 +169,7 @@ void SW1_SW2_pressed(void){
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);  // Clear interrupt flag
 
-        StepperEnable(Tendon1Stepper);
+        // StepperEnable(Tendon1Stepper);
         // StepperEnable(Tendon2Stepper);
         // StepperEnable(WristStepper);
     }
@@ -177,9 +177,9 @@ void SW1_SW2_pressed(void){
 
         GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);  // Clear interrupt flag
 
-        StepperDisable(Tendon1Stepper);
-        StepperDisable(Tendon2Stepper);
-        StepperDisable(WristStepper);
+        // StepperDisable(Tendon1Stepper);
+        // StepperDisable(Tendon2Stepper);
+        // StepperDisable(WristStepper);
 
     }
 }
@@ -190,31 +190,23 @@ void StepperError(void){
 
         GPIOIntClear(GPIO_STEPPER_ALL_ERR_PORT, GPIO_STEPPER_ALL_ERR_PIN);  // Clear interrupt flag
         
-        //StepperDisable();
+        StepperDisable(Tendon1Stepper);
+        StepperDisable(Tendon2Stepper);
+        StepperDisable(WristStepper);
 
-        // uint32_t sr0_stat = SPIReadByte(SR0);
-        // uint32_t sr1_stat = SPIReadByte(SR1);
-        // uint32_t sr2_stat = SPIReadByte(SR2);
+        StepperReadErrors(Tendon1Stepper);
+        StepperReadErrors(Tendon2Stepper);
+        StepperReadErrors(WristStepper);
 
-        // std::string errormsg;
+        if(nh.connected())
+        {
+          tendon1_status.publish(&Tendon1Stepper.status);
+          tendon2_status.publish(&Tendon2Stepper.status);
+          wrist_status.publish(&WristStepper.status);
+        }
 
-        // if(sr0_stat & 0b01000000)
-        //     errormsg.append("Temp Warning");
-        // if(sr2_stat & 0b00000100)
-        //     errormsg.append("Temp Shutdown");
-        // if(sr0_stat & 0b00010000)
-        //     errormsg.append("Watchdog ");
-        // if(sr0_stat & 0b00001100)
-        //     errormsg.append("Open coil ");
-        // if((sr1_stat & 0b01111000 ) || (sr2_stat & 0b01111000 ))
-        //     errormsg.append("Overcurrent ");
-
-        // Tendon1Stepper.status.errors = errormsg.c_str();
-
-        // tendon1_status.publish(&Tendon1Stepper.status);
     }
 }
-
 
 
 void ReadADC(void){
