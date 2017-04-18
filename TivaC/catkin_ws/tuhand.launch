@@ -1,0 +1,27 @@
+<launch>
+
+    <!--Stepper settings -->
+    <param name="/TUhand/Tendon1Stepper/max_speed_steps_per_second" type="int" value="32000" />
+    <param name="/TUhand/Tendon1Stepper/travel_limit_steps"         type="int" value="80000" />
+    <param name="/TUhand/Tendon1Stepper/acceleration"               type="int" value="800" />
+    <param name="/TUhand/Tendon1Stepper/microstep_mode"             type="int" value="16" />
+    <param name="/TUhand/Tendon1Stepper/phase_current_ma"           type="int" value="2800" />
+
+    <param name="/TUhand/Tendon2Stepper/max_speed_steps_per_second" type="int" value="32000" />
+    <param name="/TUhand/Tendon2Stepper/travel_limit_steps"         type="int" value="80000" />
+    <param name="/TUhand/Tendon2Stepper/acceleration"               type="int" value="800" />
+    <param name="/TUhand/Tendon2Stepper/microstep_mode"             type="int" value="16" />
+    <param name="/TUhand/Tendon2Stepper/phase_current_ma"           type="int" value="2800" />
+
+    <param name="/TUhand/WristStepper/max_speed_steps_per_second"   type="int" value="2400" />
+    <param name="/TUhand/WristStepper/travel_limit_steps"           type="int" value="160000" />
+    <param name="/TUhand/WristStepper/acceleration"                 type="int" value="80" />
+    <param name="/TUhand/WristStepper/microstep_mode"               type="int" value="16" />
+    <param name="/TUhand/WristStepper/phase_current_ma"             type="int" value="1600" />
+
+
+    <node name="tivaC_stepperboard" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/ttyACM0 _baud:=2500000" respawn="true" />
+
+    <node name="rpi_touchscreen_gui" pkg="my_qt_gui_subscriber" type="my_qt_gui_subscriber" respawn="true" />
+
+</launch>
