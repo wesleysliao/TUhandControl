@@ -8,11 +8,8 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-#ifndef Q_MOC_RUN
 #include <ros/ros.h>
 #include <ros/network.h>
-#endif
-
 #include <string>
 #include <sstream>
 #include <QtGui>
@@ -20,7 +17,6 @@
 #include <iostream>
 #include "../include/my_qt_gui_subscriber/main_window.hpp"
 #include "../include/my_qt_gui_subscriber/qnode.hpp"
-
 #include "adc_joystick_msg/ADC_Joystick.h"
 #include "stepper_msg/Stepper_Control.h"
 
@@ -31,6 +27,10 @@
 #define CONTROL_MODE_X_POSE   4
 #define CONTROL_MODE_Y_POSE   5
 #define CONTROL_MODE_GOTO     6
+
+#define TENDON_1    1
+#define TENDON_2    2
+#define WRIST       3
 
 /*****************************************************************************
 ** Namespaces
@@ -70,11 +70,10 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     if ( ui.checkbox_remember_settings->isChecked() ) {
         on_button_connect_clicked(true);
     }
-    //Button Publish
-    //ros::init(argc,argv,"my_qt_gui_publisher");
-    //ros::NodeHandle n;
-    //QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(sendMsg()));
-    //chatter_publisher = n.advertise<adc_joystick_msg::ADC_Joystick>("adc_joystick", 1000);
+
+    //Initialize Publisher
+    ros::NodeHandle n;
+    stepper_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/StepperControl", 1000);
 
 
 
@@ -195,124 +194,201 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	QMainWindow::closeEvent(event);
 }
 
-void MainWindow::on_pushButton_clicked()
+/**void MainWindow::on_pushButton_clicked()
 
 {
 
     ui.stackedWidget->setCurrentIndex(1);
+    adc_joystick_msg::ADC_Joystick smsg;
+    smsg.x_axis_raw = 100;
+    smsg.y_axis_raw = 100;
+    ros::NodeHandle n;
+    chatter_publisher = n.advertise<adc_joystick_msg::ADC_Joystick>("adc_joystick", 1000);
+    chatter_publisher.publish(smsg);
 
 
+}*/
 
-}
+//Main Menu
 
-
-void MainWindow::on_pushButton_2_clicked()
-
+void MainWindow::on_manual_mode_select_clicked()
 {
-
     ui.stackedWidget->setCurrentIndex(2);
+}
+
+//Manual Mode
+
+void MainWindow::on_manual_return_clicked()
+{
+    ui.stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_tendon1_select_clicked()
+{
+    ui.stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_tendon2_select_clicked()
+{
+    ui.stackedWidget->setCurrentIndex(4);
+}
+
+void MainWindow::on_wrist_select_clicked()
+{
+    ui.stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_home_all_clicked()
+{
+    stepper_msg::Stepper_Control smsg;
+    for(int i = 1; i < 4; i++)
+    {
+        smsg.control_mode = CONTROL_MODE_HOME;
+        smsg.stepper_index = i;
+        stepper_publisher.publish(smsg);
+    }
+    /**ros::NodeHandle n;
+    tendon1_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/Tendon1Stepper/control", 1000);
+    tendon2_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/Tendon2Stepper/control", 1000);
+    wrist_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/WristStepper/control", 1000);
+    tendon1_publisher.publish(smsg);
+    tendon2_publisher.publish(smsg);
+    wrist_publisher.publish(smsg);*/
 
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_disable_all_clicked()
+{
+    stepper_msg::Stepper_Control smsg;
+    for(int i = 1; i < 4; i++)
+    {
+        smsg.control_mode = CONTROL_MODE_OFF;
+        smsg.stepper_index = i;
+        stepper_publisher.publish(smsg);
+    }
+
+}
+
+//Tendon 1
+void MainWindow::on_tendon1_return_clicked()
+{
+    ui.stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_disable_tendon1_clicked()
+{
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_OFF;
+    smsg.stepper_index = TENDON_1;
+    stepper_publisher.publish(smsg);
+}
+
+void MainWindow::on_home_tendon1_clicked()
 {
     stepper_msg::Stepper_Control smsg;
     smsg.control_mode = CONTROL_MODE_HOME;
-    ros::NodeHandle n;
-    chatter_publisher = n.advertise<stepper_msg::Stepper_Control>("/TUhand/Tendon1Stepper/control", 1000);
-    chatter_publisher.publish(smsg);
+    smsg.stepper_index = TENDON_1;
+    stepper_publisher.publish(smsg);
 }
 
-
-void MainWindow::on_pushButton_4_clicked()
-
+void MainWindow::on_select_tendon1_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(3);
-
+    stepper_msg::Stepper_Control smsg;
+    if(ui.x_tendon1->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_X_AXIS;
+        smsg.stepper_index = TENDON_1;
+        stepper_publisher.publish(smsg);
+    }
+    else if(ui.y_tendon1->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_Y_AXIS;
+        smsg.stepper_index = TENDON_1;
+        stepper_publisher.publish(smsg);
+    }
 }
 
-
-void MainWindow::on_pushButton_5_clicked()
-
+//Tendon2
+void MainWindow::on_tendon2_return_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-    ui.label_4->setText("Current Pose: Pose 1");
-
+    ui.stackedWidget->setCurrentIndex(2);
 }
 
-
-void MainWindow::on_pushButton_6_clicked()
-
+void MainWindow::on_disable_tendon2_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-    ui.label_4->setText("Current Pose: Pose 2");
-
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_OFF;
+    smsg.stepper_index = TENDON_2;
+    stepper_publisher.publish(smsg);
 }
 
-
-void MainWindow::on_pushButton_7_clicked()
-
+void MainWindow::on_home_tendon2_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-    ui.label_5->setText("Current Actuator: Tendon Actuator 1");
-
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_HOME;
+    smsg.stepper_index = TENDON_2;
+    stepper_publisher.publish(smsg);
 }
 
-
-void MainWindow::on_pushButton_8_clicked()
-
+void MainWindow::on_select_tendon2_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-    ui.label_5->setText("Current Actuator: Tendon Actuator 2");
+    stepper_msg::Stepper_Control smsg;
+    if(ui.x_tendon2->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_X_AXIS;
+        smsg.stepper_index = TENDON_2;
+        stepper_publisher.publish(smsg);
+    }
+    else if(ui.y_tendon2->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_Y_AXIS;
+        smsg.stepper_index = TENDON_2;
+        stepper_publisher.publish(smsg);
+    }
 
 }
 
-
-void MainWindow::on_pushButton_9_clicked()
-
+//Wrist
+void MainWindow::on_wrist_return_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-    ui.label_5->setText("Current Actuator: Wrist Actuator");
-
+    ui.stackedWidget->setCurrentIndex(2);
 }
 
-
-void MainWindow::on_pushButton_10_clicked()
-
+void MainWindow::on_disable_wrist_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
-
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_OFF;
+    smsg.stepper_index = WRIST;
+    stepper_publisher.publish(smsg);
 }
 
-
-void MainWindow::on_pushButton_11_clicked()
-
+void MainWindow::on_home_wrist_clicked()
 {
-
-    ui.stackedWidget->setCurrentIndex(0);
-
+    stepper_msg::Stepper_Control smsg;
+    smsg.control_mode = CONTROL_MODE_HOME;
+    smsg.stepper_index = WRIST;
+    stepper_publisher.publish(smsg);
 }
 
-
-void MainWindow::on_pushButton_12_clicked()
-
+void MainWindow::on_select_wrist_clicked()
 {
+    stepper_msg::Stepper_Control smsg;
+    if(ui.x_wrist->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_X_AXIS;
+        smsg.stepper_index = WRIST;
+        stepper_publisher.publish(smsg);
+    }
+    else if(ui.y_wrist->isChecked())
+    {
+        smsg.control_mode = CONTROL_MODE_Y_AXIS;
+        smsg.stepper_index = WRIST;
+        stepper_publisher.publish(smsg);
+    }
 
-    ui.stackedWidget->setCurrentIndex(0);
 }
+
+
 
 }  // namespace my_qt_gui_subscriber
 

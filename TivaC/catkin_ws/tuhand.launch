@@ -24,7 +24,7 @@
     <param name="/ADC_Joystick/y_axis_zero"                         type="int" value="2066" />
 
 
-    <node name="tivaC_stepperboard" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/ttyACM0 _baud:=1000000" respawn="true" />
+    <node name="tivaC_stepperboard" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/ttyACM0 _baud:=1600000" respawn="true" />
 
     <node name="rpi_touchscreen_gui" pkg="my_qt_gui_subscriber" type="my_qt_gui_subscriber" respawn="true" />
 

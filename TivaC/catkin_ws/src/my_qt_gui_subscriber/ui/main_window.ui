@@ -53,180 +53,354 @@
            <string>Logging</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="0">
+           <item row="0" column="1">
             <widget class="QStackedWidget" name="stackedWidget">
-             <widget class="QWidget" name="page_3">
-              <widget class="QPushButton" name="pushButton">
+             <widget class="QWidget" name="main_menu">
+              <widget class="QPushButton" name="manual_mode_select">
                <property name="geometry">
                 <rect>
-                 <x>0</x>
-                 <y>10</y>
-                 <width>261</width>
-                 <height>211</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Pose Select</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="geometry">
-                <rect>
-                 <x>270</x>
-                 <y>10</y>
-                 <width>281</width>
-                 <height>211</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Actuator/Motor Select</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>260</y>
-                 <width>261</width>
-                 <height>221</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Home Motors</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_4">
-               <property name="geometry">
-                <rect>
-                 <x>270</x>
-                 <y>260</y>
-                 <width>281</width>
-                 <height>221</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Joystick/Motor Info</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_4">
-               <property name="geometry">
-                <rect>
-                 <x>50</x>
-                 <y>140</y>
-                 <width>191</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Current Pose: </string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="label_5">
-               <property name="geometry">
-                <rect>
-                 <x>280</x>
-                 <y>140</y>
-                 <width>251</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Current Actuator:</string>
-               </property>
-              </widget>
-             </widget>
-             <widget class="QWidget" name="page_2">
-              <widget class="QPushButton" name="pushButton_5">
-               <property name="geometry">
-                <rect>
-                 <x>90</x>
-                 <y>10</y>
-                 <width>321</width>
-                 <height>191</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Saved Pose 1</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="pushButton_6">
-               <property name="geometry">
-                <rect>
-                 <x>90</x>
-                 <y>270</y>
-                 <width>321</width>
-                 <height>191</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Saved Pose 2</string>
-               </property>
-              </widget>
-             </widget>
-             <widget class="QWidget" name="page_4">
-              <widget class="QPushButton" name="pushButton_7">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
+                 <x>130</x>
                  <y>0</y>
-                 <width>261</width>
-                 <height>171</height>
+                 <width>251</width>
+                 <height>101</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Manual Mode Settings</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pose_mode_select">
+               <property name="geometry">
+                <rect>
+                 <x>130</x>
+                 <y>100</y>
+                 <width>251</width>
+                 <height>101</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Pose Mode Settings</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="pose_mode"/>
+             <widget class="QWidget" name="manual_mode">
+              <widget class="QPushButton" name="tendon1_select">
+               <property name="geometry">
+                <rect>
+                 <x>60</x>
+                 <y>0</y>
+                 <width>161</width>
+                 <height>91</height>
                 </rect>
                </property>
                <property name="text">
                 <string>Tendon Actuator 1</string>
                </property>
               </widget>
-              <widget class="QPushButton" name="pushButton_8">
+              <widget class="QPushButton" name="tendon2_select">
                <property name="geometry">
                 <rect>
-                 <x>280</x>
+                 <x>220</x>
                  <y>0</y>
-                 <width>261</width>
-                 <height>171</height>
+                 <width>151</width>
+                 <height>91</height>
                 </rect>
                </property>
                <property name="text">
                 <string>Tendon Actuator 2</string>
                </property>
               </widget>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="wrist_select">
                <property name="geometry">
                 <rect>
-                 <x>130</x>
-                 <y>180</y>
-                 <width>261</width>
-                 <height>171</height>
+                 <x>370</x>
+                 <y>0</y>
+                 <width>151</width>
+                 <height>91</height>
                 </rect>
                </property>
                <property name="text">
                 <string>Wrist Actuator</string>
                </property>
               </widget>
-              <widget class="QPushButton" name="pushButton_10">
+              <widget class="QPushButton" name="home_all">
                <property name="geometry">
                 <rect>
-                 <x>50</x>
-                 <y>380</y>
-                 <width>221</width>
-                 <height>151</height>
+                 <x>180</x>
+                 <y>90</y>
+                 <width>131</width>
+                 <height>81</height>
                 </rect>
                </property>
                <property name="text">
-                <string>Save to Pose 1</string>
+                <string>Home All</string>
                </property>
               </widget>
-              <widget class="QPushButton" name="pushButton_11">
+              <widget class="QPushButton" name="disable_all">
                <property name="geometry">
                 <rect>
-                 <x>280</x>
-                 <y>380</y>
-                 <width>221</width>
-                 <height>151</height>
+                 <x>310</x>
+                 <y>90</y>
+                 <width>141</width>
+                 <height>81</height>
                 </rect>
                </property>
                <property name="text">
-                <string>Save to Pose 2</string>
+                <string>Disable All</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="manual_return">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>110</y>
+                 <width>99</width>
+                 <height>51</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Return</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="tendon1">
+              <widget class="QPushButton" name="tendon1_return">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>111</width>
+                 <height>61</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Return</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="select_tendon1">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>60</y>
+                 <width>141</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Select</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="home_tendon1">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>0</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Home</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="disable_tendon1">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>80</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Disable</string>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="x_tendon1">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>X Axis</string>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="y_tendon1">
+               <property name="geometry">
+                <rect>
+                 <x>240</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Y Axis</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="tendon2">
+              <widget class="QPushButton" name="disable_tendon2">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>80</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Disable</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="home_tendon2">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>0</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Home</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="select_tendon2">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>60</y>
+                 <width>141</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Select</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="tendon2_return">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>111</width>
+                 <height>61</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Return</string>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="x_tendon2">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>X Axis</string>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="y_tendon2">
+               <property name="geometry">
+                <rect>
+                 <x>240</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Y Axis</string>
+               </property>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="wrist">
+              <widget class="QRadioButton" name="y_wrist">
+               <property name="geometry">
+                <rect>
+                 <x>240</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Y Axis</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="select_wrist">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>60</y>
+                 <width>141</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Select</string>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="x_wrist">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>40</y>
+                 <width>71</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>X Axis</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="home_wrist">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>0</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Home</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="disable_wrist">
+               <property name="geometry">
+                <rect>
+                 <x>380</x>
+                 <y>80</y>
+                 <width>131</width>
+                 <height>71</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Disable</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="wrist_return">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>111</width>
+                 <height>61</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Return</string>
                </property>
               </widget>
              </widget>
@@ -236,8 +410,8 @@
                 <rect>
                  <x>10</x>
                  <y>50</y>
-                 <width>511</width>
-                 <height>471</height>
+                 <width>481</width>
+                 <height>91</height>
                 </rect>
                </property>
               </widget>
@@ -246,8 +420,8 @@
                 <rect>
                  <x>180</x>
                  <y>0</y>
-                 <width>121</width>
-                 <height>51</height>
+                 <width>101</width>
+                 <height>41</height>
                 </rect>
                </property>
                <property name="text">

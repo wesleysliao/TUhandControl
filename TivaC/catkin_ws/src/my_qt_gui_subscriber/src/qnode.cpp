@@ -9,11 +9,9 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-#ifndef Q_MOC_RUN
+
 #include <ros/ros.h>
 #include <ros/network.h>
-#endif
-
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -92,7 +90,7 @@ void QNode::myCallback(const adc_joystick_msg::ADC_Joystick& message_holder)
 {
 	//std::stringstream ss;
 	//ss << message_holder.data;
-    log(Info, (int)message_holder.x_axis_raw, (int)message_holder.y_axis_raw);
+    //log(Info, (int)message_holder.x_axis_raw, (int)message_holder.y_axis_raw);
     //ROS_INFO("=============received value is: %f===========",message_holder.data);
   //really could do something interesting here with the received data...but all we do is print it 
 } 

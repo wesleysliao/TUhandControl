@@ -53,6 +53,27 @@ public Q_SLOTS:
     ** Manual connections
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
+
+    void on_manual_mode_select_clicked();
+    void on_manual_return_clicked();
+    void on_tendon1_select_clicked();
+    void on_tendon2_select_clicked();
+    void on_wrist_select_clicked();
+    void on_home_all_clicked();
+    void on_disable_all_clicked();
+    void on_tendon1_return_clicked();
+    void on_disable_tendon1_clicked();
+    void on_home_tendon1_clicked();
+    void on_select_tendon1_clicked();
+    void on_tendon2_return_clicked();
+    void on_disable_tendon2_clicked();
+    void on_home_tendon2_clicked();
+    void on_select_tendon2_clicked();
+    void on_wrist_return_clicked();
+    void on_disable_wrist_clicked();
+    void on_home_wrist_clicked();
+    void on_select_wrist_clicked();
+    /**
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
 
@@ -89,13 +110,14 @@ public Q_SLOTS:
     void on_pushButton_11_clicked();
 
 
-    void on_pushButton_12_clicked();
+    void on_pushButton_12_clicked();*/
 
 
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
-        ros::Publisher chatter_publisher;
+        ros::Publisher stepper_publisher;
+
 };
 
 }  // namespace my_qt_gui_subscriber

@@ -15,9 +15,8 @@
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-#ifndef Q_MOC_RUN
+
 #include <ros/ros.h>
-#endif
 #include <string>
 #include <std_msgs/UInt16.h>
 #include <QThread>
