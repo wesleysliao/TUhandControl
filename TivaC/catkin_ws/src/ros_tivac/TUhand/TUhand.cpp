@@ -116,27 +116,30 @@ Stepper Tendon1Stepper;
 Stepper Tendon2Stepper;
 Stepper WristStepper;
 
-void Tendon1StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  StepperControlMode(Tendon1Stepper, msg);
-}
+#define TENDON1_STEPPER 1
+#define TENDON2_STEPPER 2
+#define WRIST_STEPPER 3
 
-void Tendon2StepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  StepperControlMode(Tendon2Stepper, msg);
-}
+void StepperControlHandler(const stepper_msg::Stepper_Control &msg){
 
-void WristStepperControlHandler(const stepper_msg::Stepper_Control &msg){
-  StepperControlMode(WristStepper, msg);
+  switch(msg.stepper_index){
+    case TENDON1_STEPPER:
+      StepperControlMode(Tendon1Stepper, msg);
+      break;
+    case TENDON2_STEPPER:
+      StepperControlMode(Tendon2Stepper, msg);
+      break;
+    case WRIST_STEPPER:
+      StepperControlMode(WristStepper, msg);
+      break;
+  }
 }
 
 ros::Publisher tendon1_status("TUhand/Tendon1Stepper/status", &Tendon1Stepper.status);
-ros::Subscriber<stepper_msg::Stepper_Control> tendon1_control("TUhand/Tendon1Stepper/control", &Tendon1StepperControlHandler);
-
 ros::Publisher tendon2_status("TUhand/Tendon2Stepper/status", &Tendon2Stepper.status);
-ros::Subscriber<stepper_msg::Stepper_Control> tendon2_control("TUhand/Tendon2Stepper/control", &Tendon2StepperControlHandler);
-
 ros::Publisher wrist_status("TUhand/WristStepper/status", &WristStepper.status);
-ros::Subscriber<stepper_msg::Stepper_Control> wrist_control("TUhand/WristStepper/control", &WristStepperControlHandler);
 
+ros::Subscriber<stepper_msg::Stepper_Control> stepper_control("TUhand/StepperControl", &StepperControlHandler);
 
 adc_joystick_msg::ADC_Joystick js_msg;
 ros::Publisher adc_joystick("adc_joystick", &js_msg);
@@ -313,7 +316,7 @@ int main(void)
     nh.advertise(tendon2_status);
     nh.advertise(wrist_status);
 
-    nh.subscribe(tendon1_control);
+    nh.subscribe(stepper_control);
     //nh.subscribe(tendon2_control);
     //nh.subscribe(wrist_control);
 
