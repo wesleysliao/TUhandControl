@@ -109,6 +109,9 @@ void StepperGetParamsFromROS(Stepper &stepper);
 
 //globals
 
+int x_axis_zero;
+int y_axis_zero;
+
 Stepper Tendon1Stepper;
 Stepper Tendon2Stepper;
 Stepper WristStepper;
@@ -217,13 +220,13 @@ void ReadADC(void){
 
   ADCSequenceDataGet(ADC0_BASE, 1, adc_values);
 
-  int x = ((((int)(adc_values[0]+adc_values[1])/2)-js_msg.x_axis_zero)*1000)/2048;
-  int y = ((((int)(adc_values[2]+adc_values[3])/2)-js_msg.y_axis_zero)*1000)/2048;
+  int x = ((((int)(adc_values[0]+adc_values[1])/2)-x_axis_zero)*1000)/2048;
+  int y = ((((int)(adc_values[2]+adc_values[3])/2)-y_axis_zero)*1000)/2048;
 
-  if( abs(x - js_msg.x_axis_raw) > 0 || abs(y - js_msg.y_axis_raw) > 0)
+  if( abs(x - js_msg.x_axis_1000) > 0 || abs(y - js_msg.y_axis_1000) > 0)
   {
-      js_msg.x_axis_raw = x;
-      js_msg.y_axis_raw = y;
+      js_msg.x_axis_1000 = x;
+      js_msg.y_axis_1000 = y;
 
       if(nh.connected())
         {
@@ -231,10 +234,10 @@ void ReadADC(void){
         }
       
 
-      // Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
-      // Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_raw-js_msg.y_axis_zero))/2048;
+      // Tendon1Stepper.target_speed = (Tendon1Stepper.max_speed_steps_per_second*(js_msg.x_axis_1000-x_axis_zero))/2048;
+      // Tendon2Stepper.target_speed = (Tendon2Stepper.max_speed_steps_per_second*(js_msg.y_axis_1000-y_axis_zero))/2048;
 
-      // WristStepper.target_speed = (WristStepper.max_speed_steps_per_second*(js_msg.x_axis_raw-js_msg.x_axis_zero))/2048;
+      // WristStepper.target_speed = (WristStepper.max_speed_steps_per_second*(js_msg.x_axis_1000-x_axis_zero))/2048;
 
   }
 }
@@ -244,9 +247,9 @@ void PeriodicUpdate(void){
 
   TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-  StepperControlSpeed(Tendon1Stepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
-  StepperControlSpeed(Tendon2Stepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
-  StepperControlSpeed(WristStepper, js_msg.x_axis_raw, js_msg.y_axis_raw);
+  StepperControlSpeed(Tendon1Stepper, js_msg.x_axis_1000, js_msg.y_axis_1000);
+  StepperControlSpeed(Tendon2Stepper, js_msg.x_axis_1000, js_msg.y_axis_1000);
+  StepperControlSpeed(WristStepper, js_msg.x_axis_1000, js_msg.y_axis_1000);
 
   StepperUpdate(Tendon1Stepper);
   StepperUpdate(Tendon2Stepper);
@@ -486,8 +489,11 @@ void setupJoystick(void)
   ADCIntEnable(ADC0_BASE, 1);
 
 
-  js_msg.x_axis_zero = 2085;
-  js_msg.y_axis_zero = 2066;
+  x_axis_zero = 2085;
+  y_axis_zero = 2066;
+
+  nh.getParam("/ADC_Joystick/x_axis_zero", &x_axis_zero, 1);
+  nh.getParam("/ADC_Joystick/y_axis_zero", &y_axis_zero, 1);
 }
 
 void setupSharedStepperPins(void)

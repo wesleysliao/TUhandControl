@@ -83,7 +83,7 @@ void StepperDisable(Stepper &stepper){
 
 void StepperReadErrors(Stepper &stepper)
 {
-    stepper.status.errors = SPIStepperGetErrors(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN).c_str();
+    stepper.status.errors = 1; //SPIStepperGetErrors(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN).c_str();
 }
 
 

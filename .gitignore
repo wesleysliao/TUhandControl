@@ -8,3 +8,5 @@ TivaC/catkin_ws/build/
 TivaC/catkin_ws/devel/
 
 TivaC/catkin_ws/install/
+
+TivaC/catkin_ws/src/my_qt_gui_subscriber/CATKIN_IGNORE
