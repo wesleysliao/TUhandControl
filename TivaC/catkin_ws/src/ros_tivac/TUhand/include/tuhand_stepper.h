@@ -83,7 +83,7 @@ void StepperDisable(Stepper &stepper){
 
 void StepperReadErrors(Stepper &stepper)
 {
-    stepper.status.errors = 1; //SPIStepperGetErrors(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN).c_str();
+    //stepper.status.errors = 1; //SPIStepperGetErrors(stepper.ChipSelectPin.PORT, stepper.ChipSelectPin.PIN).c_str();
 }
 
 
@@ -188,7 +188,7 @@ void StepperControlMode(Stepper &stepper, const stepper_msg::Stepper_Control &ms
   }
   else if(stepper.control.control_mode == CONTROL_MODE_GOTO)
   {
-    if((stepper.control.target_position - stepper.status.position_steps) > 0)
+    if((((int)stepper.control.target_position) - stepper.status.position_steps) > 0)
       stepper.target_speed = (stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
     else
       stepper.target_speed = -(stepper.max_speed_steps_per_second*stepper.control.top_speed_percent)/100;
@@ -200,7 +200,7 @@ void StepperControlMode(Stepper &stepper, const stepper_msg::Stepper_Control &ms
   }
   else if(stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE )
   {
-    stepper.pose_direction_forward = ((stepper.control.target_position - stepper.status.position_steps) > 0);
+    stepper.pose_direction_forward = ((((int)stepper.control.target_position) - stepper.status.position_steps) > 0);
     StepperEnable(stepper);
   }
 }
@@ -222,7 +222,7 @@ void StepperStepPinSet(Stepper &stepper)
     }
 
     if((stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE) &&
-       (stepper.control.target_position == stepper.status.position_steps) &&
+       (((int)stepper.control.target_position) == stepper.status.position_steps) &&
        (stepper.status.direction_forward==stepper.pose_direction_forward))
     {
       stepper.status.speed_steps_per_second = 0;
@@ -230,7 +230,7 @@ void StepperStepPinSet(Stepper &stepper)
     }
 
     if((stepper.control.control_mode == CONTROL_MODE_GOTO) &&
-       (stepper.control.target_position == stepper.status.position_steps))
+       (((int)stepper.control.target_position) == stepper.status.position_steps))
     {
       stepper.status.speed_steps_per_second = 0;
       return;

@@ -7,7 +7,7 @@ include_directories(${ROS_LIB_DIR})
 # Per project based definitions and options
 add_definitions(-DLED_HEARTBEAT)
 add_definitions(-DLED_COMM)
-add_definitions(-DROSSERIAL_BAUDRATE=1000000)
+add_definitions(-DROSSERIAL_BAUDRATE=1600000)
 add_definitions(-DTX_BUFFER_SIZE=512)
 add_definitions(-DRX_BUFFER_SIZE=512)
 

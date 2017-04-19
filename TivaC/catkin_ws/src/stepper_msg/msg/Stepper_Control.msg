@@ -1,3 +1,4 @@
+int8 stepper_index
 int64 target_position
 int8 top_speed_percent
 int8 control_mode

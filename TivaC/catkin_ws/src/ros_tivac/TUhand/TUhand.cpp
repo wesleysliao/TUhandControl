@@ -307,16 +307,20 @@ int main(void)
     nh.initNode();
 
     nh.advertise(adc_joystick);
+    nh.spinOnce();
 
     nh.advertise(tendon1_status);
     nh.advertise(tendon2_status);
     nh.advertise(wrist_status);
 
     nh.subscribe(tendon1_control);
-    nh.subscribe(tendon2_control);
-    nh.subscribe(wrist_control);
+    //nh.subscribe(tendon2_control);
+    //nh.subscribe(wrist_control);
 
     while(!nh.connected()) {nh.spinOnce();}
+
+    // nh.getParam("/ADC_Joystick/x_axis_zero", &x_axis_zero, 1);
+    // nh.getParam("/ADC_Joystick/y_axis_zero", &y_axis_zero, 1);
 
     Tendon1Stepper.name = std::string("Tendon1Stepper");
     Tendon1Stepper.ChipSelectPin.PIN = GPIO_STEPPER_1_CS_PIN;
@@ -491,9 +495,6 @@ void setupJoystick(void)
 
   x_axis_zero = 2085;
   y_axis_zero = 2066;
-
-  nh.getParam("/ADC_Joystick/x_axis_zero", &x_axis_zero, 1);
-  nh.getParam("/ADC_Joystick/y_axis_zero", &y_axis_zero, 1);
 }
 
 void setupSharedStepperPins(void)
