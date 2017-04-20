@@ -217,20 +217,16 @@ void StepperStepPinSet(Stepper &stepper)
     // Clear the timer interrupt
     TimerIntClear(stepper.TIMER_BASE, TIMER_TIMA_TIMEOUT);
 
-    if(!stepper.status.speed_steps_per_second){
-      return;
-    }
-
-    if((stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE) &&
-       (((int)stepper.control.target_position) == stepper.status.position_steps) &&
-       (stepper.status.direction_forward==stepper.pose_direction_forward))
-    {
-      stepper.status.speed_steps_per_second = 0;
-      return;
-    }
-
-    if((stepper.control.control_mode == CONTROL_MODE_GOTO) &&
-       (((int)stepper.control.target_position) == stepper.status.position_steps))
+    if(!stepper.status.speed_steps_per_second ||
+      ( ((stepper.control.target_position) == stepper.status.position_steps)) &&
+        (
+          (stepper.control.control_mode == CONTROL_MODE_GOTO) || 
+            (
+              stepper.status.direction_forward==stepper.pose_direction_forward &&
+              (stepper.control.control_mode == CONTROL_MODE_X_POSE || stepper.control.control_mode == CONTROL_MODE_Y_POSE) 
+            )
+        )
+      )
     {
       stepper.status.speed_steps_per_second = 0;
       return;
